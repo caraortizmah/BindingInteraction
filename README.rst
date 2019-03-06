@@ -1,4 +1,4 @@
-Sample Module Repository
+Module Repository for binding interaction tool
 ========================
 
 This simple project is an example repo for Python projects.
