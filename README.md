@@ -1,13 +1,9 @@
 # BindingInteraction
 
-=====
-
-.. code-block:: none
-
+```
     Date: 03/07/19
     Author: Carlos Andrés Ortiz Mahecha
-
-=====
+```
 
 `BindingInteraction` is a pipeline software that manages and uses other programs to do some tasks 
 related to calculate receptor-ligand binding energy of proteins in computational chemistry field.
@@ -27,7 +23,6 @@ due to the closed source license of this program.
 
 
 # BindingInteraction v1.0
-=====
 
 The aim of `BindingInteraction` pipeline is to automate tasks in computational chemistry that
 requires several replications to calculate binding energies in receptor-ligand complexes.
@@ -35,7 +30,6 @@ This pipeline is open source (see the LICENSE file for details).
 
 
 ## Download
-=====
 
 To get the git version do
 
@@ -43,7 +37,6 @@ To get the git version do
 
 
 ## Documentation and usage
-=====
 
 All information is at:
 
@@ -51,29 +44,25 @@ All information is at:
     $ make html
 
 ## Installation
-=====
 
 For installing `BindingInteraction` pipeline, you just run:
 
     $ sudo python setup.py install
 
 ## Requirements
-=====
 
-    * Python 2.7 or higher or Python 3.1 or higher
-    * Dowser software
-    * MOPAC 2016
-    * Chimera
-    * Propka-3.1
-    * GAMESS
-    * Facio FMO util
+    * [Python 2.7 or higher] (https://www.python.org/downloads/) - Page of python
+    * [Dowser software] (http://) - Dowser software
+    * [MOPAC 2016] (http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
+    * Chimera (https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
+    * Propka-3.1 (https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
+    * GAMESS (https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
+    * Facio FMO util (http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
 ## Citation
-=====
 
 Users of `BindingInteraction` pipeline must cite the following references:
 
-.. code-block:: none
 
     * doi: xxxx
     * doi: xxxx
