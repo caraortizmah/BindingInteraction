@@ -1,15 +1,18 @@
-BindingInteraction
+# BindingInteraction
 
 =====
 
-#Date: 03/07/19
-#Author: Carlos Andrés Ortiz Mahecha
+.. code-block:: none
 
+    Date: 03/07/19
+    Author: Carlos Andrés Ortiz Mahecha
+
+=====
 
 `BindingInteraction` is a pipeline software that manages and uses other programs to do some tasks 
 related to calculate receptor-ligand binding energy of proteins in computational chemistry field.
 
-`BindingInteraction` uses some programs and does several tasks detailed below:::
+`BindingInteraction` uses some programs and does several tasks detailed below:
 
      1. Dowser and DowserX softwares for putting waters on a molecular structure
      2. MOPAC software for optimizing geometries with dowsed waters.
@@ -24,24 +27,49 @@ due to the closed source license of this program.
 
 
 # BindingInteraction v1.0
+=====
 
 The aim of `BindingInteraction` pipeline is to automate tasks in computational chemistry that
 requires several replications to calculate binding energies in receptor-ligand complexes.
 This pipeline is open source (see the LICENSE file for details).
 
+
 ## Download
+=====
 
 To get the git version do
 
-::
-
     $ git clone https://github.com/caraortizmah/bindinginteraction.git
 
+
 ## Documentation and usage
+=====
 
+All information is at:
 
+    $ cd doc
+    $ make html
+
+## Installation
+=====
+
+For installing `BindingInteraction` pipeline, you just run:
+
+    $ sudo python setup.py install
+
+## Requirements
+=====
+
+    * Python 2.7 or higher or Python 3.1 or higher
+    * Dowser software
+    * MOPAC 2016
+    * Chimera
+    * Propka-3.1
+    * GAMESS
+    * Facio FMO util
 
 ## Citation
+=====
 
 Users of `BindingInteraction` pipeline must cite the following references:
 
