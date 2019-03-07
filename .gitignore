@@ -8,7 +8,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+<<<<<<< HEAD
 env/
+=======
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
 build/
 develop-eggs/
 dist/
@@ -20,9 +23,17 @@ lib64/
 parts/
 sdist/
 var/
+<<<<<<< HEAD
 *.egg-info/
 .installed.cfg
 *.egg
+=======
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -42,8 +53,14 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+<<<<<<< HEAD
 *,cover
 .hypothesis/
+=======
+*.cover
+.hypothesis/
+.pytest_cache/
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
 
 # Translations
 *.mo
@@ -52,6 +69,10 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+<<<<<<< HEAD
+=======
+db.sqlite3
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
 
 # Flask stuff:
 instance/
@@ -66,7 +87,11 @@ docs/_build/
 # PyBuilder
 target/
 
+<<<<<<< HEAD
 # IPython Notebook
+=======
+# Jupyter Notebook
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
 .ipynb_checkpoints
 
 # pyenv
@@ -75,6 +100,7 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
+<<<<<<< HEAD
 # dotenv
 .env
 
@@ -88,3 +114,29 @@ ENV/
 
 # Rope project settings
 .ropeproject
+=======
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+>>>>>>> e285edca48a37648ac12a15dae81d16d74bac431
