@@ -52,11 +52,17 @@ For installing `BindingInteraction` pipeline, you just run:
 ### Requirements
 
    *[Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
+   
    *[Dowser software](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser software
+   
    *[MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
+   
    *[Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
+   
    *[Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
+   
    *[GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
+   
    *[Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
 ## Citation
@@ -65,4 +71,5 @@ Users of `BindingInteraction` pipeline must cite the following references:
 
 
    *[doi: xxxx](http://)
+   
    *[doi: xxxx](http://)
