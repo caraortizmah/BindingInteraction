@@ -22,47 +22,47 @@ In our case, that program is Facio. However, Facio is not controlled by `Binding
 due to the closed source license of this program.
 
 
-# BindingInteraction v1.0
+## BindingInteraction v1.0
 
 The aim of `BindingInteraction` pipeline is to automate tasks in computational chemistry that
 requires several replications to calculate binding energies in receptor-ligand complexes.
 This pipeline is open source (see the LICENSE file for details).
 
 
-## Download
+### Download
 
 To get the git version do
 
     $ git clone https://github.com/caraortizmah/bindinginteraction.git
 
 
-## Documentation and usage
+### Documentation and usage
 
 All information is at:
 
     $ cd doc
     $ make html
 
-## Installation
+### Installation
 
 For installing `BindingInteraction` pipeline, you just run:
 
     $ sudo python setup.py install
 
-## Requirements
+### Requirements
 
-    [Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
-    * [Dowser software](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser software
-    * [MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
-    * [Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
-    * [Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
-    * [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
-    * [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
+   *[Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
+   *[Dowser software](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser software
+   *[MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
+   *[Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
+   *[Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
+   *[GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
+   *[Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
 ## Citation
 
 Users of `BindingInteraction` pipeline must cite the following references:
 
 
-    * doi: xxxx
-    * doi: xxxx
+   *[doi: xxxx](http://)
+   *[doi: xxxx](http://)
