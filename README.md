@@ -1,7 +1,7 @@
 # BindingInteraction
 
 ```
-    Date: 03/07/19
+    Date: 04/18/18
     Author: Carlos Andrés Ortiz Mahecha
 ```
 
@@ -52,8 +52,10 @@ For installing `BindingInteraction` pipeline, you just run:
 ### Requirements
 
 * [Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
+
+* [VMD](https://www.ks.uiuc.edu/Research/vmd/) - Page of VMD
    
-* [Dowser software](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser software
+* [Dowser plugin](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser in VMD
    
 * [MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
    
