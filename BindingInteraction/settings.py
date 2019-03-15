@@ -72,21 +72,43 @@ def manager():
     print("** Something goes wrong... bye")
     sys.exit()
 
-class Save:
+class info():
 
   """
-  This class saves information about the path of each program in a file:
+  Information needed to start
+  """
+
+  def __init__(self):
+    """
+    Variables of paths
+    """
+    if (os.path.isfile('./conf_path.csv')):
+      self.isfile = True
+    else:
+      self.isfile = False
+
+      self.vmd = ''
+      self.mopac = ''
+      self.chimera = ''
+      self.propka = ''
+      self.gamess = ''
+      self.facio = ''
+      self.wine = ''
+      self.path_dict = {}
+
+class Actions:
+
+  """
+  This class presents several actions to execute with the information about the path of each program in a file:
   """
 
   def __init__(self):
     """
     Verify if the file of paths exist or not
     """
+    init = info()
+    self.isfile=init.isfile
     self.path_dict_file = {}
-    if (os.path.isfile('./conf_path.csv')): #change place
-      self.isfile = True
-    else:
-      self.isfile = False
 
   def options(self):
     """
@@ -107,7 +129,7 @@ class Save:
 
     if (option == 1):
       print("** Loading information from file")
-      file.open()
+      file.open(True)
     elif (option == 2):
       print("** Assigning new paths")
       file.edit()
@@ -121,84 +143,112 @@ class Save:
       print("** Something goes wrong... bye")
       manager()
 
-  def open(self):
+  def open(self, fromfile, returning=False):
     """
-    open file if exits
+    open path files if exits
     """
-    if (self.isfile):
-      print("** List of paths: ")
-      print("** Program \t\t Path")
-      with open("conf_path.csv", "r") as f:
-        creader = csv.reader(f, delimiter=",")
-        for row in creader:
-          if (row[1]==''):
-            print("** ", row[0], "\t\tNo assigned")
+    path_file=file.get_paths_file()
+    path=paths.get_paths()
+    if (fromfile):
+      if (self.isfile):
+        print("** ./conf_path.csv already exist")
+        print("** Paths files from the file")
+        print("**")
+        print("** Program \t\t Path")
+        for key in path_file.keys():
+          if (path_file[key]==''):
+            print("** ", key, "\t\tPath no assigned")
           else:
-            print("** ", row[0], "\t\t", row[1])
-
-    else:
-      print("conf_path.csv does not exits")
-      dec=v_input("Do you want to create it? (y/n)")
-      dec=dec.upper()
-      while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
-        dec = v_input("** Select 'y' or 'n': ")
-      if (dec=='Y'):
-        print("edit")
-        file.edit()
+            print("** ", key, "\t\t ", path_file[key])
       else:
-        print("Returning... bye")
-        manager()
+        print("** ./conf_path.csv does not exits")
+        dec=v_input("Do you want to create it? (y/n)")
+        dec=dec.upper()
+        while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
+          dec = v_input("** Select 'y' or 'n': ")
+        if (dec=='Y'):
+          print("** editing...")
+          file.edit()
+        else:
+          print("Returning... bye")
+          manager()
+    else:
+      print("** Paths files from temporary memory")
+      print("**")
+      print("** Program \t\t Path")
+      for key in path.keys():
+        if (path[key]==''):
+          print("** ", key, "\t\tPath no assigned")
+        else:
+          print("** ", key, "\t\t ", path[key])
+    if (returning):
+      file.options()
 
   def edit(self):
     """
     create or save conf_path.csv
     """
+    path_file=file.get_paths_file()
+    path=paths.get_paths()
     if (self.isfile):
-      path_file=file.get_paths_file()
-      print("** ./conf_path.csv already exist")
+      print("** Edition of paths from file")
+      print("**")
+      print("")
+      print("")
+      file.open(True)
+      file.open(False)
+      print("**Do you want to save files of temporary memory to file?")
+      dec=v_input("**y/n")
+      dec=dec.upper()
+      while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
+        dec = v_input("** Select 'y' or 'n': ")
+      if (dec=='Y'):
+        for key in path.keys():
+          if (path[key]!=''):
+            path_file[key]=path[key]
+        print("** files saved")
+        paths.path_dict=file.replace()
+        file.save_paths_file()
+      else:
+        print("Returning... bye")
+        manager()
+    else:
       paths.selection()
-      file.open()
-    else:
-      
-      try:
-        with open("conf_path.csv", "w") as f:
-          writer = csv.writer(f, delimiter=",")
-          for key in path_file.keys():
-            f.write("%s , %s\n"%(key,path_file[key]))
-        print("** information saved in conf_path.csv")
-        self.isfile = True
-      except IOError:
-        print("** Something goes wrong: I/O error")
-      except:
-        print("** Something goes wrong")
-      print("** Edited and Saved")
 
-    manager()
-
-  def save(self):
+  def replace(self):
     """
-    create or save conf_path.csv
+    replace paths of programs
     """
-    path_file={}
+    path_file=file.get_paths_file()
+    path=paths.get_paths()
     if (self.isfile):
-      print("** ./conf_path.csv already exist")
-      file.open()
+      for key in path.keys():
+        if (path[key]!=''):
+          path_file[key]=path[key]
+        #paths.save_paths(key, path_file[key])
+      return path_file
     else:
-      path_file=paths.get_paths()
-      try:
-        with open("conf_path.csv", "w") as f:
-          writer = csv.writer(f, delimiter=",")
-          for key in path_file.keys():
-            f.write("%s , %s\n"%(key,path_file[key]))
-        print("** information saved in conf_path.csv")
-        self.isfile = True
-      except IOError:
-        print("** Something goes wrong: I/O error")
-      except:
-        print("** Something goes wrong")
-      print("** Edited and Saved")
+      return path_file    
 
-    manager()
+  def save_paths_file(self):
+    """
+    save all paths saved in a directory
+    """
+    paths_file=paths.path_dict
+    try:
+      with open("conf_path.csv", "w") as f:
+        writer = csv.writer(f, delimiter=",")
+        for key in path_file.keys():
+          f.write("%s , %s\n"%(key,path_file[key]))
+      print("** information saved in conf_path.csv")
+      self.isfile = True
+      file.options()
+    except IOError:
+      print("** Something goes wrong: I/O error")
+      manager()
+    except:
+      print("** Something goes wrong")
+      manager()
 
   def get_paths_file(self):
     """
@@ -227,19 +277,16 @@ class Path:
     """
     class Molecule needs a name of the protein
     """
-    if (os.path.isfile('./conf_path.csv')):
-      self.isfile = True
-      file.open()
-    else:
-      self.isfile = False
-      self.vmd = ''
-      self.mopac = ''
-      self.chimera = ''
-      self.propka = ''
-      self.gamess = ''
-      self.facio = ''
-      self.wine = ''
-      self.path_dict = {}
+    init = info()
+    self.isfile = init.isfile
+    self.vmd = ''
+    self.mopac = ''
+    self.chimera = ''
+    self.propka = ''
+    self.gamess = ''
+    self.facio = ''
+    self.wine = ''
+    self.path_dict = {}
 
   def selection(self):
     """
@@ -281,8 +328,9 @@ class Path:
       print("** Assigning Facio FMO util and wine paths")
       paths.facio_path()
     elif (option == 7):
-      print("** Showing paths")
-      paths.show_paths()
+      file.open(False)
+      print("** Showed paths")
+      manager()
     elif (option == 8):
       print("Returning... bye")
       manager()
@@ -380,6 +428,13 @@ class Path:
     self.path_dict['wine']=self.wine
     return self.path_dict
 
+  def save_paths(self, k, val):
+    """
+    save all paths 
+    """
+
+    self.path_dict[k]=val
+
 
 
 
@@ -396,7 +451,7 @@ if __name__ == '__main__':
   print("                                                            ")
   print("                                                            ")
 
+  file = Actions()
   paths = Path()
-  file = Save()
   manager()
 
