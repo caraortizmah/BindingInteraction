@@ -99,7 +99,12 @@ class info():
 class Actions:
 
   """
-  This class presents several actions to execute with the information about the path of each program in a file:
+  This class presents several actions to execute over paths using an 'options' function to take a decision such as:
+  1. Open
+  2. Edit
+  3. Replace
+  4. Save paths
+  5. Get paths
   """
 
   def __init__(self):
@@ -156,7 +161,7 @@ class Actions:
         print("**")
         print("** Program \t\t Path")
         for key in path_file.keys():
-          if (path_file[key]==''):
+          if (str(path_file[key])==''):
             print("** ", key, "\t\tPath no assigned")
           else:
             print("** ", key, "\t\t ", path_file[key])
@@ -177,7 +182,7 @@ class Actions:
       print("**")
       print("** Program \t\t Path")
       for key in path.keys():
-        if (path[key]==''):
+        if (str(path[key])==''):
           print("** ", key, "\t\tPath no assigned")
         else:
           print("** ", key, "\t\t ", path[key])
@@ -225,7 +230,6 @@ class Actions:
       for key in path.keys():
         if (path[key]!=''):
           path_file[key]=path[key]
-        #paths.save_paths(key, path_file[key])
       return path_file
     else:
       return path_file    
@@ -427,15 +431,6 @@ class Path:
     self.path_dict['facio']=self.facio
     self.path_dict['wine']=self.wine
     return self.path_dict
-
-  def save_paths(self, k, val):
-    """
-    save all paths 
-    """
-
-    self.path_dict[k]=val
-
-
 
 
 
