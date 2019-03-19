@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#************************************************************
+#***	  This code belongs to BindingInteractor pipeline   ***
+#***	                                                    ***
+#***	  this program has been developed under by:         ***
+#***                                                      ***
+#***             CARLOS ANDRES ORTIZ-MAHECHA              ***
+#***               caraortizmah@unal.edu.co               ***
+#***                                                      ***
+#***                                                      ***
+#************************************************************
+
+#help menu
+
+use(){
+	echo "* Usage of configuration:"
+	echo "*  $ ./configure [-p path/to/install] [-s path/to/scratch/results] [-h]"
+	echo "*"
+	echo "*   -p"
+	echo "*     Path to install BindingInteractor"
+	echo "*   -s"
+	echo "*     Path to save scratch results"
+	echo "*   -h"
+	echo "*     Printing this instructions"
+  echo "*"
+  echo "*     Example:"
+  echo "      ./configure -p /usr/local -s /scratch"
+}
+
+# paths for installation
+
+def='F'
+TOPDIR="."
+PREFIX="$HOME"
+BI="$PREFIX/BindingInteractor"
+SCRATCH="$PREFIX/BindingInteractor/scratch"
+PYTHON=`which python`
+
+while getopts "p:s:h" arg
+do
+  case $arg in
+       p) BI=$OPTARG
+          def='T';;
+       s) SCRATCH=$OPTARG
+          def='T';;
+       h) use
+          exit 0;;
+      \?) exit 1;;
+  esac
+done
+
+if [[ $def == 'T' ]]; then
+   echo "* BindingInteraction will use that configuration"
+else
+   echo "* BindingInteraction will use default configuration"
+fi
+
+#Save paths
+
+echo "PREFIX = $PREFIX" > config_path
+echo "BI = $BI" >> config_path
+echo "SCRATCH = $SCRATCH" >> config_path
+echo "PYTHON = $PYTHON" >> config_path
+
+echo "* DONE"
+echo "* type 'make' command to continue the installation"

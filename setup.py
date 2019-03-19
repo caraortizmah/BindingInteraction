@@ -39,7 +39,6 @@ setup(
         'Topic :: Scientific/Engineering :: Chemistry',
         'License :: GNU General Public License v3.0',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
