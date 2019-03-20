@@ -34,9 +34,21 @@ clean:
 
 install:
 	mkdir -p $(BI)
-	cp -rf * $(BI)
-	rm
-	mkdir
+	cp -rf * $(BI)/
+	cd $(BI)
+	$(PYTHON) compiler.py
+	mkdir -p bin
+	cd bin/
+	mv ../*.pyc bin/
+	mkdir src
+	cd src/
+	mkdir py
+	mkdir sh
+	cd py
+	mv ../../*.py py/
+	cd ../sh/
+	mv ../../*.sh sh/ 
+
 
 init:
       pip install -r requirements.txt
