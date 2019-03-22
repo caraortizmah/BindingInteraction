@@ -18,7 +18,7 @@ use(){
 	echo "*  $ ./configure [-p path/to/install] [-s path/to/scratch/results] [-h]"
 	echo "*"
 	echo "*   -p"
-	echo "*     Path to install BindingInteractor"
+	echo "*     Path to install BindingInteraction"
 	echo "*   -s"
 	echo "*     Path to save scratch results"
 	echo "*   -h"

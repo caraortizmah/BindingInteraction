@@ -10,13 +10,12 @@ ALLSUBDIRS = $(SUBDIRS) doc
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of:"
-	@echo "  clean      to remove build files"
-	@echo "  install    to install program on disk"
-	@echo "  init       to install requirements of BindingInteraction"
-	@echo "  test       to test the finished installation"
-	@echo "  html       to make standalone HTML files"
-	@echo "  htmlhelp   to make HTML files and a HTML help project"
-	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	@echo "  clean        to remove build files"
+	@echo "  install      to install program on disk"
+	@echo "  init         to install requirements of BindingInteraction"
+	@echo "  test         to test the finished installation"
+	@echo "  howto        to show instructions in HTML format"
+	@echo "  latex        to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
@@ -52,3 +51,7 @@ init:
 
 test:
       nosetests tests
+
+howto:
+      firefox	 Instructions_installation.html
+

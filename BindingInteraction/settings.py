@@ -329,7 +329,7 @@ class Path:
       print("** Assigning GAMESS path")
       paths.gamess_path()
     elif (option == 6):
-      print("** Assigning Facio FMO util and wine paths")
+      print("** Assigning Facio FMO software and wine paths")
       paths.facio_path()
     elif (option == 7):
       file.open(False)
