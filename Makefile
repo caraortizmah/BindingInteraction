@@ -9,17 +9,14 @@ SUBDIRS = BindingInteraction src
 ALLSUBDIRS = $(SUBDIRS) doc
 
 help:
-	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "Please use \`make <target>' where <target> is one of:"
 	@echo "  clean      to remove build files"
+	@echo "  install    to install program on disk"
+	@echo "  init       to install requirements of BindingInteraction"
+	@echo "  test       to test the finished installation"
 	@echo "  html       to make standalone HTML files"
 	@echo "  htmlhelp   to make HTML files and a HTML help project"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  text       to make plain text files"
-	@echo "  changes    to make an overview over all changed/added/deprecated items"
-	@echo "  doctest    to run doctests in the documentation"
-	@echo "  pydoc-topics  to regenerate the pydoc topics file"
-	@echo "  dist       to create a \"dist\" directory with archived docs for download"
-	@echo "  check      to run a check for frequent markup errors"
 
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
@@ -33,22 +30,22 @@ clean:
 	rm config_path
 
 install:
-	mkdir -p $(BI)
-	cp -rf * $(BI)/
-	cd $(BI)
+	cd ../
+	mv BindingInteraction/ $(PREFIX)
+	cd $(BI)/BindingInteraction/
 	$(PYTHON) compiler.py
+	cd ../
 	mkdir -p bin
-	cd bin/
-	mv ../*.pyc bin/
-	mkdir src
+	mv BindingInteraction/*.pyc bin/
+	mkdir -p src
 	cd src/
 	mkdir py
 	mkdir sh
-	cd py
-	mv ../../*.py py/
-	cd ../sh/
-	mv ../../*.sh sh/ 
-
+	cd ../
+	mv BindingInteraction/*.py py/
+	mv script/*.sh sh/
+	cd
+	mkdir -p $(SCRATCH)
 
 init:
       pip install -r requirements.txt
