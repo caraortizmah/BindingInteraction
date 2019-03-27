@@ -2,7 +2,7 @@
 *************************************
 BindingInteraction -v1.0.1
 
-@author Carlos Andres Ortiz-Mahecha 
+@author Carlos Andres Ortiz-Mahecha
   (email: caraortizmah@gmail.com)
   (email: caraortizmah@unal.edu.co)
 
@@ -58,7 +58,7 @@ def manager():
 
   if (option == 1):
     print("** Assigning information")
-    file.options()
+    mol.manager_mol()
   elif (option == 2):
     print("** Options from file")
     paths.selection()
@@ -78,7 +78,7 @@ class Molecule:
   2. Number of substitutions.
   3. Residue name.
   4. Chain letter.
-  
+
   """
 
   def __init__(self, molecule):
@@ -86,13 +86,15 @@ class Molecule:
     class Molecule needs a name of the protein
     """
     self.mol = molecule
-    self.path = "../conf/" + molecule + ".csv" 
+    self.path = "../conf/" + molecule + ".csv"
     self.c_lett = ''
     self.n_subs = 0
     self.res_name = ''
+    self.res_num = 0
     self.ad_n_subs = 0
     self.arg_dict = {}
     self.mol_info= {}
+    self.is_adv_feat= False
     print ("** creating object ...", self.mol)
     print ("** This program needs features for ", self.mol, " to continue (default argument)")
 
@@ -100,7 +102,7 @@ class Molecule:
     """
     class manager_mol interacts with the user and asks for molecule information
     """
-    print ("** Do you want to use features (1) or advanced features (2) ?") 
+    print ("** Do you want to use features (1) or advanced features (2) ?")
     case = v_input("** So, select one of them: ")
     if case == 1:
       mol.features()
@@ -121,16 +123,19 @@ class Molecule:
     chain_letter = ''
     residue_name = ''
     number_substitutions = 0
+    residue_num = 0
 
     while (type(chain_letter) == int) or (not chain_letter.strip()):
       chain_letter = v_input("** Put the letter of the chain: ")
     while (type(number_substitutions) == str) or (number_substitutions == 0):
       number_substitutions = v_input("** Put the number of mono-substitutions ")
+    while (type(residue_num) == str) or (residue_num == 0):
+      residue_num = v_input("** Put the number of the residue position ")
     while (type(residue_name) == int) or (not residue_name.strip()):
       residue_name = v_input("** Put the name of the residue ")
-    mol.get_features(chain_letter, number_substitutions, residue_name)
+    mol.get_features(chain_letter, number_substitutions, residue_num, residue_name)
 
-  def get_features(self, chain_letter, number_substitutions, residue_name):
+  def get_features(self, chain_letter, number_substitutions, residue_number, residue_name):
     """
     get_features receives letter of the chain, number of mono-substitutions and residue name.
     The residue name is written as three letter code for aminoacids e.g.:
@@ -139,6 +144,8 @@ class Molecule:
     self.c_lett = chain_letter
     self.n_subs = number_substitutions
     self.res_name = residue_name
+    self.res_num = residue_number
+    self.is_adv_feat = False
 
   def advanced_features(self):
     """
@@ -159,7 +166,7 @@ class Molecule:
 
   def get_advanced_features(self, number_substitutions, arguments):
     """
-    get_advanced_features receives number of substitutions and several residue names for each 
+    get_advanced_features receives number of substitutions and several residue names for each
       mono-substitution as follows:
       residue keyword is written as the chain letter and number residue;
       residue name is written as chain letter and number residue e.g.:
@@ -170,23 +177,24 @@ class Molecule:
     arg = arguments.split(",")
     for i in arg:
       key, value = i.split("=")
-      arg_d[key] = value
+      arg_d[key] = value #building a dictionary
     self.ad_n_subs = number_substitutions
     self.arg_dict = arg_d
+    self.is_adv_feat = True
 
   def get_mols(self):
     """
     prepare all information of molecule to be saved and return it in a dictionary
     """
-    self.c_lett = ''
-    self.res_name = ''
+    res_code=self.c_lett + str(self.res_num)
     self.arg_dict = {}
     self.mol_info['project']=self.mol
     self.mol_info['path']=self.path
-    self.mol_info['number_of_subs']=self.n_subs
-    for i in self.
-    self.mol_info['wine']=self.wine
-    return self.mol_info
+    self.mol_info['number_of_subs']=self.n_subs + self.ad_n_subs
+    self.mol_info['residue_position']=self.res_num
+    if (not self.is_adv_feat):
+      for i in self.n_subs:
+        self.arg_dict[res_code]=self.res_name
 
   def __del__(self):
     print ("** Destructor deleting object ", self.mol)
@@ -211,7 +219,7 @@ class Actions:
 
   def options(self):
     """
-    Select and option to load from file, save, edit or adding file with molecule program 
+    Select and option to load from file, save, edit or adding file with molecule program
     """
 
     print("** Select an option:")
@@ -223,7 +231,7 @@ class Actions:
     clause = (option != 1) and (option != 2) and (option != 3) and (option != 4)
     while (type(option) == str) or (clause):
       print("option ",option)
-      option = v_input("** Select just a number in the four options ")
+      option = v_input("** Select just a number in the three options ")
 
     if (option == 1):
       print("** Loading information from file")
@@ -245,7 +253,7 @@ class Actions:
     """
     if (fromfile):
       if (self.isfile):
-        print("** %s already exist ", self.path)
+        print("** %s already exist ", mol.path)
         print("** Molecule information from the file")
         print("**")
         print("** Project \t\t Path")
@@ -257,14 +265,14 @@ class Actions:
           else:
             print("** ", key, "\t\t ", mol_file[key])
       else:
-        print("** %s does not exits ", self.path)
+        print("** %s does not exits ", mol.path)
         print("**")
         print("")
     else:
       print("** Paths files from temporary memory")
       print("**")
       print("** Project \t\t Path")
-      mol=mols.get_mols()
+      mol=mol.get_mols()
       for key in mol.keys():
         if ((str(mol[key])=='') or (str(mol[key])=='-')):
           print("** ", key, "\t\tInformation of molecule no assigned")
@@ -273,11 +281,11 @@ class Actions:
 
   def edit(self):
     """
-    create or save self.path ../conf/name_project.csv
+    create or save mol.path ../conf/name_project.csv
     """
-    #paths.path_dict has temporary information
-    #paths.path_dict pass information to path
-    path=paths.get_paths()
+    #mol.mol_info has temporary information
+    #mol.mol_info pass information to molecule
+    molecule=mol.get_mols()
     print("**")
     print("")
     print("")
@@ -291,31 +299,35 @@ class Actions:
       while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
         dec = v_input("** Select 'y' or 'n': ")
       if (dec=='Y'):
-        for key in path.keys():
-          if (path[key]==''):
-            paths.path_dict[key]="-"
-        file.save_paths_file()
+        for key in molecule.keys():
+          if (molecule[key]==''):
+            mol.mol_info[key]="-"
+        file.save_mols_file()
         print("** files saved")
       else:
         print("Returning... bye")
         manager()
     else:
       print("** Saving...")
-      file.save_paths_file()
+      file.save_mols_file()
       print("** files saved")
-    paths.selection()   
+    mol.manager_mol()
 
-  def save_paths_file(self):
+  def save_mols_file(self):
     """
     save all paths saved in a directory
     """
     try:
-      with open(self.path, "w") as f:
+      with open(mol.path, "w") as f:
         writer = csv.writer(f, delimiter=",")
-        for key in paths.path_dict.keys():
-          if ((paths.path_dict[key]!='') and (paths.path_dict[key]!='-')):
-            f.write("%s , %s\n"%(key,paths.path_dict[key]))
-      print("** information saved in %s ", self.path)
+        for key in mol.mol_info.keys():
+          if ((mol.mol_info[key]!='') and (mol.mol_info[key]!='-')):
+            f.write("%s , %s\n"%(key,mol.mol_info[key]))
+        for key in mol.arg_dict.keys():
+          if ((mol.arg_dict[key]!='') and (mol.arg_dict[key]!='-')):
+            f.write("%s , %s\n"%(key,mol.arg_dict[key]))
+
+      print("** information saved in %s ", mol.path)
       self.isfile = True
     except IOError:
       print("** Something goes wrong: I/O error")
@@ -327,7 +339,7 @@ class Actions:
     extract all paths saved in a directory
     """
     if (self.isfile):
-      with open(self.path, "r") as f:
+      with open(mol.path, "r") as f:
         creader = csv.reader(f, delimiter=",")
         for row in creader:
           self.mol_dict_file[row[0]]=row[1]
@@ -351,5 +363,4 @@ if __name__ == '__main__':
   while (not str(mol_name).strip()):
     mol_name=v_input("** Put the name of the protein:  ")
   mol=Molecule(mol_name)
-  mol.manager_mol()
   manager()

@@ -1,0 +1,4 @@
+PREFIX = /home/caom
+BI = /home/caom/BindingInteraction
+SCRATCH = /home/caom/BindingInteraction/scratch
+PYTHON = /home/caom/anaconda3/bin/python

@@ -42,7 +42,7 @@ install:
 	mkdir -p src
 	mv BindingInteraction/*.pyc bin/
 	mv BindingInteraction/*.py src/
-	mv Scripts/*.sh src/
+	#mv Scripts/*.sh src/
 	rm -rf BindingInteraction/
 	rm -rf Scripts/
 	mkdir -p work
