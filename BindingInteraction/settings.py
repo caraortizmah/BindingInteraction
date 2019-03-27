@@ -82,7 +82,7 @@ class info():
     """
     Variables of paths
     """
-    if (os.path.isfile('./conf_path.csv')):
+    if (os.path.isfile('../conf/conf_path.csv')):
       self.isfile = True
     else:
       self.isfile = False
@@ -102,8 +102,7 @@ class Actions:
   This class presents several actions to execute over paths using an 'options' function to take a decision such as:
   1. Open
   2. Edit
-  3. Replace
-  4. Save paths
+  3. Save paths
   5. Get paths
   """
 
@@ -122,86 +121,75 @@ class Actions:
 
     print("** Select an option:")
     print("** 1. Load information.")
-    print("** 2. Edit and Save information.")
-    print("** 3. Detele information.")
-    print("** 4. Return")
+    print("** 2. Save information.")
+    print("** 3. Return")
 
     option = v_input("** ")
     clause = (option != 1) and (option != 2) and (option != 3) and (option != 4)
     while (type(option) == str) or (clause):
       print("option ",option)
-      option = v_input("** Select just a number in the four options ")
+      option = v_input("** Select just a number in the three options ")
 
     if (option == 1):
       print("** Loading information from file")
       file.open(True)
+      file.options()
     elif (option == 2):
       print("** Assigning new paths")
       file.edit()
     elif (option == 3):
-      print("** Deleting information from path")
-      file.delete()
-    elif (option == 4):
       print("** Returning... bye")
       manager()
     else:
       print("** Something goes wrong... bye")
       manager()
 
-  def open(self, fromfile, returning=False):
+  def open(self, fromfile):
     """
     open path files if exits
     """
-    path_file=file.get_paths_file()
-    path=paths.get_paths()
     if (fromfile):
       if (self.isfile):
-        print("** ./conf_path.csv already exist")
+        print("** ../conf/conf_path.csv already exist")
         print("** Paths files from the file")
         print("**")
         print("** Program \t\t Path")
+
+        path_file=file.get_paths_file()
         for key in path_file.keys():
           if (str(path_file[key])==''):
             print("** ", key, "\t\tPath no assigned")
           else:
             print("** ", key, "\t\t ", path_file[key])
       else:
-        print("** ./conf_path.csv does not exits")
-        dec=v_input("Do you want to create it? (y/n)")
-        dec=dec.upper()
-        while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
-          dec = v_input("** Select 'y' or 'n': ")
-        if (dec=='Y'):
-          print("** editing...")
-          file.edit()
-        else:
-          print("Returning... bye")
-          manager()
+        print("** ../conf/conf_path.csv does not exits")
+        print("**")
+        print("")
     else:
       print("** Paths files from temporary memory")
       print("**")
       print("** Program \t\t Path")
+      path=paths.get_paths()
       for key in path.keys():
-        if (str(path[key])==''):
+        if ((str(path[key])=='') or (str(path[key])=='-')):
           print("** ", key, "\t\tPath no assigned")
         else:
           print("** ", key, "\t\t ", path[key])
-    if (returning):
-      file.options()
 
   def edit(self):
     """
-    create or save conf_path.csv
+    create or save ../conf/conf_path.csv
     """
-    path_file=file.get_paths_file()
+    #paths.path_dict has temporary information
+    #paths.path_dict pass information to path
     path=paths.get_paths()
+    print("**")
+    print("")
+    print("")
+    file.open(True)
+    file.open(False)
     if (self.isfile):
-      print("** Edition of paths from file")
-      print("**")
-      print("")
-      print("")
-      file.open(True)
-      file.open(False)
+      print("Edition")
       print("**Do you want to save files of temporary memory to file?")
       dec=v_input("**y/n")
       dec=dec.upper()
@@ -209,57 +197,42 @@ class Actions:
         dec = v_input("** Select 'y' or 'n': ")
       if (dec=='Y'):
         for key in path.keys():
-          if (path[key]!=''):
-            path_file[key]=path[key]
-        print("** files saved")
-        paths.path_dict=file.replace()
+          if (path[key]==''):
+            paths.path_dict[key]="-"
         file.save_paths_file()
+        print("** files saved")
       else:
         print("Returning... bye")
         manager()
     else:
-      paths.selection()
-
-  def replace(self):
-    """
-    replace paths of programs
-    """
-    path_file=file.get_paths_file()
-    path=paths.get_paths()
-    if (self.isfile):
-      for key in path.keys():
-        if (path[key]!=''):
-          path_file[key]=path[key]
-      return path_file
-    else:
-      return path_file    
+      print("** Saving...")
+      file.save_paths_file()
+      print("** files saved")
+    paths.selection()   
 
   def save_paths_file(self):
     """
     save all paths saved in a directory
     """
-    paths_file=paths.path_dict
     try:
-      with open("conf_path.csv", "w") as f:
+      with open("../conf/conf_path.csv", "w") as f:
         writer = csv.writer(f, delimiter=",")
-        for key in path_file.keys():
-          f.write("%s , %s\n"%(key,path_file[key]))
-      print("** information saved in conf_path.csv")
+        for key in paths.path_dict.keys():
+          if ((paths.path_dict[key]!='') and (paths.path_dict[key]!='-')):
+            f.write("%s , %s\n"%(key,paths.path_dict[key]))
+      print("** information saved in ../conf/conf_path.csv")
       self.isfile = True
-      file.options()
     except IOError:
       print("** Something goes wrong: I/O error")
-      manager()
     except:
       print("** Something goes wrong")
-      manager()
 
   def get_paths_file(self):
     """
     extract all paths saved in a directory
     """
     if (self.isfile):
-      with open("conf_path.csv", "r") as f:
+      with open("../conf/conf_path.csv", "r") as f:
         creader = csv.reader(f, delimiter=",")
         for row in creader:
           self.path_dict_file[row[0]]=row[1]
@@ -334,7 +307,7 @@ class Path:
     elif (option == 7):
       file.open(False)
       print("** Showed paths")
-      manager()
+      paths.selection()
     elif (option == 8):
       print("Returning... bye")
       manager()

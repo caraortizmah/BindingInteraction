@@ -43,6 +43,32 @@ def v_input(inp):
       out = int_inp
   return out
 
+def manager():
+  """
+  Manager
+  """
+  print("** Select an option:")
+  print("** 1. Assign information of project")
+  print("** 2. Open, save or edit information from  paths")
+  print("** 3. Exit")
+
+  option = v_input("** ")
+  while (type(option) == str) or ((option != 1) and (option != 2) and (option != 3)):
+    option = v_input("** Select just a number in the three options ")
+
+  if (option == 1):
+    print("** Assigning information")
+    file.options()
+  elif (option == 2):
+    print("** Options from file")
+    paths.selection()
+  elif (option == 3):
+    print("** Exit program molecule... bye")
+    sys.exit()
+  else:
+    print("** Something goes wrong... bye")
+    sys.exit()
+
 
 class Molecule:
 
@@ -60,11 +86,13 @@ class Molecule:
     class Molecule needs a name of the protein
     """
     self.mol = molecule
+    self.path = "../conf/" + molecule + ".csv" 
     self.c_lett = ''
     self.n_subs = 0
     self.res_name = ''
     self.ad_n_subs = 0
     self.arg_dict = {}
+    self.mol_info= {}
     print ("** creating object ...", self.mol)
     print ("** This program needs features for ", self.mol, " to continue (default argument)")
 
@@ -146,9 +174,164 @@ class Molecule:
     self.ad_n_subs = number_substitutions
     self.arg_dict = arg_d
 
+  def get_mols(self):
+    """
+    prepare all information of molecule to be saved and return it in a dictionary
+    """
+    self.c_lett = ''
+    self.res_name = ''
+    self.arg_dict = {}
+    self.mol_info['project']=self.mol
+    self.mol_info['path']=self.path
+    self.mol_info['number_of_subs']=self.n_subs
+    for i in self.
+    self.mol_info['wine']=self.wine
+    return self.mol_info
+
   def __del__(self):
     print ("** Destructor deleting object ", self.mol)
 
+class Actions:
+
+  """
+  This class presents some actions to execute over features of actions such as:
+  1. Open
+  2. Edit
+  3. Save
+  4. Get information
+  """
+
+  def __init__(self):
+    """
+    Verify if the file of paths exist or not
+    """
+    init = info()
+    self.isfile=init.isfile
+    self.mol_dict_file = {}
+
+  def options(self):
+    """
+    Select and option to load from file, save, edit or adding file with molecule program 
+    """
+
+    print("** Select an option:")
+    print("** 1. Load information.")
+    print("** 2. Save information.")
+    print("** 3. Return")
+
+    option = v_input("** ")
+    clause = (option != 1) and (option != 2) and (option != 3) and (option != 4)
+    while (type(option) == str) or (clause):
+      print("option ",option)
+      option = v_input("** Select just a number in the four options ")
+
+    if (option == 1):
+      print("** Loading information from file")
+      file.open(True)
+      file.options()
+    elif (option == 2):
+      print("** Assigning new parameters")
+      file.edit()
+    elif (option == 3):
+      print("** Returning... bye")
+      manager()
+    else:
+      print("** Something goes wrong... bye")
+      manager()
+
+  def open(self, fromfile):
+    """
+    open path files if exits
+    """
+    if (fromfile):
+      if (self.isfile):
+        print("** %s already exist ", self.path)
+        print("** Molecule information from the file")
+        print("**")
+        print("** Project \t\t Path")
+
+        mol_file=file.get_mol_file()
+        for key in mol_file.keys():
+          if (str(mol_file[key])==''):
+            print("** ", key, "\t\tInformation of molecule no assigned")
+          else:
+            print("** ", key, "\t\t ", mol_file[key])
+      else:
+        print("** %s does not exits ", self.path)
+        print("**")
+        print("")
+    else:
+      print("** Paths files from temporary memory")
+      print("**")
+      print("** Project \t\t Path")
+      mol=mols.get_mols()
+      for key in mol.keys():
+        if ((str(mol[key])=='') or (str(mol[key])=='-')):
+          print("** ", key, "\t\tInformation of molecule no assigned")
+        else:
+          print("** ", key, "\t\t ", mol[key])
+
+  def edit(self):
+    """
+    create or save self.path ../conf/name_project.csv
+    """
+    #paths.path_dict has temporary information
+    #paths.path_dict pass information to path
+    path=paths.get_paths()
+    print("**")
+    print("")
+    print("")
+    file.open(True)
+    file.open(False)
+    if (self.isfile):
+      print("Edition")
+      print("**Do you want to save files of temporary memory to file?")
+      dec=v_input("**y/n")
+      dec=dec.upper()
+      while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
+        dec = v_input("** Select 'y' or 'n': ")
+      if (dec=='Y'):
+        for key in path.keys():
+          if (path[key]==''):
+            paths.path_dict[key]="-"
+        file.save_paths_file()
+        print("** files saved")
+      else:
+        print("Returning... bye")
+        manager()
+    else:
+      print("** Saving...")
+      file.save_paths_file()
+      print("** files saved")
+    paths.selection()   
+
+  def save_paths_file(self):
+    """
+    save all paths saved in a directory
+    """
+    try:
+      with open(self.path, "w") as f:
+        writer = csv.writer(f, delimiter=",")
+        for key in paths.path_dict.keys():
+          if ((paths.path_dict[key]!='') and (paths.path_dict[key]!='-')):
+            f.write("%s , %s\n"%(key,paths.path_dict[key]))
+      print("** information saved in %s ", self.path)
+      self.isfile = True
+    except IOError:
+      print("** Something goes wrong: I/O error")
+    except:
+      print("** Something goes wrong")
+
+  def get_mol_file(self):
+    """
+    extract all paths saved in a directory
+    """
+    if (self.isfile):
+      with open(self.path, "r") as f:
+        creader = csv.reader(f, delimiter=",")
+        for row in creader:
+          self.mol_dict_file[row[0]]=row[1]
+    return self.mol_dict_file
 
 if __name__ == '__main__':
 
@@ -162,8 +345,11 @@ if __name__ == '__main__':
   print("")
   print("")
 
+  file = Actions()
   mol_name = ''
+  print("Assignation of project name")
   while (not str(mol_name).strip()):
     mol_name=v_input("** Put the name of the protein:  ")
   mol=Molecule(mol_name)
   mol.manager_mol()
+  manager()

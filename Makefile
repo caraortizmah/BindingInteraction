@@ -1,4 +1,4 @@
-TOPDIR=.
+TOPDIR=./
 ifndef SRCDIR
 	SRCDIR=$(shell pwd)
 endif
@@ -12,6 +12,7 @@ help:
 	@echo "Please use \`make <target>' where <target> is one of:"
 	@echo "  clean        to remove build files"
 	@echo "  install      to install program on disk"
+	@echo "  update       to recompile python files of src/ and update executables in bin/ folder (for your own develop)"
 	@echo "  init         to install requirements of BindingInteraction"
 	@echo "  test         to test the finished installation"
 	@echo "  howto        to show instructions in HTML format"
@@ -30,28 +31,43 @@ clean:
 
 install:
 	cd ../
-	mv BindingInteraction/ $(PREFIX)
-	cd $(BI)/BindingInteraction/
+	mkdir -p $(BI)
+	cp -rfu BindingInteraction/* $(BI)
+	cd $(BI)
+	$(PYTHON) BindingInteraction/compiler.py
+	cd BindingInteraction/
 	$(PYTHON) compiler.py
 	cd ../
 	mkdir -p bin
-	mv BindingInteraction/*.pyc bin/
 	mkdir -p src
-	cd src/
-	mkdir py
-	mkdir sh
-	cd ../
-	mv BindingInteraction/*.py py/
-	mv script/*.sh sh/
-	cd
+	mv BindingInteraction/*.pyc bin/
+	mv BindingInteraction/*.py src/
+	mv Scripts/*.sh src/
+	rm -rf BindingInteraction/
+	rm -rf Scripts/
+	mkdir -p work
 	mkdir -p $(SCRATCH)
+	mkdir -p conf
+
+update:
+	cd $(BI)
+	cp src/*.py bin/
+	cd bin/
+	$(PYTHON) compiler.py
+	rm *.py
+	cd ../
 
 init:
-      pip install -r requirements.txt
+	pip install -r requirements.txt
 
 test:
-      nosetests tests
+	dir="1"
+	@echo 'test '
+	@echo 'pwd $(PWD)...'
+	ifeq ($(dir),1)
+		@echo 'same pwd'
+	endif
 
 howto:
-      firefox	 Instructions_installation.html
+	firefox	 Instructions_installation.html
 
