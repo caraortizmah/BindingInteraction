@@ -20,6 +20,8 @@ from collections import OrderedDict
 
 import io
 import sys
+import os
+import csv
 
 def v_input(inp):
   """
@@ -59,9 +61,10 @@ def manager():
   if (option == 1):
     print("** Assigning information")
     mol.manager_mol()
+    manager()
   elif (option == 2):
     print("** Options from file")
-    paths.selection()
+    file.options()
   elif (option == 3):
     print("** Exit program molecule... bye")
     sys.exit()
@@ -97,6 +100,8 @@ class Molecule:
     self.is_adv_feat= False
     print ("** creating object ...", self.mol)
     print ("** This program needs features for ", self.mol, " to continue (default argument)")
+    print ("**")
+    print ("")
 
   def manager_mol(self):
     """
@@ -193,11 +198,27 @@ class Molecule:
     self.mol_info['number_of_subs']=self.n_subs + self.ad_n_subs
     self.mol_info['residue_position']=self.res_num
     if (not self.is_adv_feat):
-      for i in self.n_subs:
+      for i in range(self.n_subs):
         self.arg_dict[res_code]=self.res_name
 
   def __del__(self):
     print ("** Destructor deleting object ", self.mol)
+
+#class info():
+
+#  """
+#  Information needed to start
+#  """
+
+#  def __init__(self):
+#    """
+#    Variables of paths
+#    """
+#    if (os.path.isfile(mol.path)):
+#      self.isfile = True
+#    else:
+#      self.isfile = False
+
 
 class Actions:
 
@@ -213,8 +234,8 @@ class Actions:
     """
     Verify if the file of paths exist or not
     """
-    init = info()
-    self.isfile=init.isfile
+    #init = info()
+    self.isfile=False
     self.mol_dict_file = {}
 
   def options(self):
@@ -357,8 +378,8 @@ if __name__ == '__main__':
   print("")
   print("")
 
-  file = Actions()
   mol_name = ''
+  file = Actions()
   print("Assignation of project name")
   while (not str(mol_name).strip()):
     mol_name=v_input("** Put the name of the protein:  ")
