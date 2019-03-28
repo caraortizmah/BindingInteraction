@@ -87,14 +87,6 @@ class info():
     else:
       self.isfile = False
 
-      self.vmd = ''
-      self.mopac = ''
-      self.chimera = ''
-      self.propka = ''
-      self.gamess = ''
-      self.facio = ''
-      self.wine = ''
-      self.path_dict = {}
 
 class Actions:
 

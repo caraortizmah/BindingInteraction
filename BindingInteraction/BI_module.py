@@ -72,6 +72,22 @@ def manager():
     print("** Something goes wrong... bye")
     sys.exit()
 
+class info():
+
+  """
+  Information needed to start
+  """
+
+  def __init__(self, project):
+    """
+    Variables of paths
+    """
+    self.mol = project
+    self.path = "../conf/" + project + ".csv"
+    if (os.path.isfile(self.path)):
+      self.isfile = True
+    else:
+      self.isfile = False
 
 class Molecule:
 
@@ -84,12 +100,12 @@ class Molecule:
 
   """
 
-  def __init__(self, molecule):
+  def __init__(self):
     """
     class Molecule needs a name of the protein
     """
-    self.mol = molecule
-    self.path = "../conf/" + molecule + ".csv"
+    self.mol = init.mol
+    self.path = init.path
     self.c_lett = ''
     self.n_subs = 0
     self.res_name = ''
@@ -200,25 +216,13 @@ class Molecule:
     if (not self.is_adv_feat):
       for i in range(self.n_subs):
         self.arg_dict[res_code]=self.res_name
+    self.mol_info.update(self.arg_dict)
 
-  def __del__(self):
-    print ("** Destructor deleting object ", self.mol)
+    return self.mol_info
 
-#class info():
 
-#  """
-#  Information needed to start
-#  """
-
-#  def __init__(self):
-#    """
-#    Variables of paths
-#    """
-#    if (os.path.isfile(mol.path)):
-#      self.isfile = True
-#    else:
-#      self.isfile = False
-
+  #def __del__(self):
+  #  print ("** Destructor deleting object ", self.mol)
 
 class Actions:
 
@@ -234,8 +238,7 @@ class Actions:
     """
     Verify if the file of paths exist or not
     """
-    #init = info()
-    self.isfile=False
+    self.isfile=init.isfile
     self.mol_dict_file = {}
 
   def options(self):
@@ -274,7 +277,7 @@ class Actions:
     """
     if (fromfile):
       if (self.isfile):
-        print("** %s already exist ", mol.path)
+        print("** %s already exist ", init.path)
         print("** Molecule information from the file")
         print("**")
         print("** Project \t\t Path")
@@ -286,23 +289,23 @@ class Actions:
           else:
             print("** ", key, "\t\t ", mol_file[key])
       else:
-        print("** %s does not exits ", mol.path)
+        print("** %s does not exits ", init.path)
         print("**")
         print("")
     else:
       print("** Paths files from temporary memory")
       print("**")
       print("** Project \t\t Path")
-      mol=mol.get_mols()
-      for key in mol.keys():
-        if ((str(mol[key])=='') or (str(mol[key])=='-')):
+      mols=mol.get_mols()
+      for key in mols.keys():
+        if ((str(mols[key])=='') or (str(mols[key])=='-')):
           print("** ", key, "\t\tInformation of molecule no assigned")
         else:
-          print("** ", key, "\t\t ", mol[key])
+          print("** ", key, "\t\t ", mols[key])
 
   def edit(self):
     """
-    create or save mol.path ../conf/name_project.csv
+    create or save init.path ../conf/name_project.csv
     """
     #mol.mol_info has temporary information
     #mol.mol_info pass information to molecule
@@ -339,7 +342,7 @@ class Actions:
     save all paths saved in a directory
     """
     try:
-      with open(mol.path, "w") as f:
+      with open(init.path, "w") as f:
         writer = csv.writer(f, delimiter=",")
         for key in mol.mol_info.keys():
           if ((mol.mol_info[key]!='') and (mol.mol_info[key]!='-')):
@@ -348,7 +351,7 @@ class Actions:
           if ((mol.arg_dict[key]!='') and (mol.arg_dict[key]!='-')):
             f.write("%s , %s\n"%(key,mol.arg_dict[key]))
 
-      print("** information saved in %s ", mol.path)
+      print("** information saved in %s ", init.path)
       self.isfile = True
     except IOError:
       print("** Something goes wrong: I/O error")
@@ -360,7 +363,7 @@ class Actions:
     extract all paths saved in a directory
     """
     if (self.isfile):
-      with open(mol.path, "r") as f:
+      with open(init.path, "r") as f:
         creader = csv.reader(f, delimiter=",")
         for row in creader:
           self.mol_dict_file[row[0]]=row[1]
@@ -379,9 +382,12 @@ if __name__ == '__main__':
   print("")
 
   mol_name = ''
-  file = Actions()
   print("Assignation of project name")
   while (not str(mol_name).strip()):
     mol_name=v_input("** Put the name of the protein:  ")
-  mol=Molecule(mol_name)
+  
+  init=info(mol_name)
+  file=Actions()
+  mol=Molecule()
+  
   manager()
