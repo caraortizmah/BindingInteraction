@@ -95,11 +95,11 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
          'console_scripts': [
-             'BindingInteraction=frontdesk:main',
+             'BindingInteraction=BindingInteraction.frontdesk:main',
          ],
      },
-    scripts=[
-        'scripts/ps.sh',
-        'scripts/ls'
-    ],
+    #scripts=[
+    #    'scripts/ps.sh',
+    #    'scripts/ls'
+    #],
 )
