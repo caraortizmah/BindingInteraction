@@ -2,12 +2,13 @@
 See for more: 
 https://github.com/caraortizmah/bindinginteraction.git
 """
+# latin-1
 
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import io
+import io, os, sys
 
 from setuptools import setup, find_packages
 
@@ -26,7 +27,7 @@ setup(
     description=description,
     long_description=readme,
     url='https://github.com/caraortizmah/BindingInteraction',
-    author='Carlos Andrés Ortiz-Mahecha',
+    author='Carlos Andres Ortiz-Mahecha',
     author_email='caraortizmah@unal.edu.co',
     license=license,
 
@@ -62,8 +63,10 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'requests>=2.8.0',
+        'requests>=2.7.0',
     ],
+
+    python_requires='>=2.6, !=3.0.*, !=3.1.*, !=3.2.*, <4',
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -90,9 +93,13 @@ setup(
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
-    # entry_points={
-    #     'console_scripts': [
-    #         'sample=sample:main',
-    #     ],
-    # },
+    entry_points={
+         'console_scripts': [
+             'BindingInteraction=frontdesk:main',
+         ],
+     },
+    scripts=[
+        'scripts/ps.sh',
+        'scripts/ls'
+    ],
 )

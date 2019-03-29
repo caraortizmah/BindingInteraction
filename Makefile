@@ -30,24 +30,23 @@ clean:
 	rm config_path
 
 install:
-	cd ../
 	mkdir -p $(BI)
-	cp -rfu BindingInteraction/* $(BI)
-	cd $(BI)
+	cp -rfu $(SRCDIR)/* $(BI)/
+	cd $(BI)/
 	$(PYTHON) BindingInteraction/compiler.py
-	cd BindingInteraction/
-	$(PYTHON) compiler.py
-	cd ../
-	mkdir -p bin
-	mkdir -p src
-	mv BindingInteraction/*.pyc bin/
-	mv BindingInteraction/*.py src/
+	#cd BindingInteraction/
+	#$(PYTHON) compiler.py
+	#cd ../
+	#mkdir -p bin
+	#mkdir -p src
+	#mv BindingInteraction/*.pyc bin/
+	#mv BindingInteraction/*.py src/
 	#mv Scripts/*.sh src/
-	rm -rf BindingInteraction/
-	rm -rf Scripts/
-	mkdir -p work
-	mkdir -p $(SCRATCH)
-	mkdir -p conf
+	#rm -rf BindingInteraction/
+	#rm -rf Scripts/
+	#mkdir -p work
+	#mkdir -p $(SCRATCH)
+	#mkdir -p conf
 
 update:
 	cd $(BI)
@@ -64,9 +63,11 @@ test:
 	dir="1"
 	@echo 'test '
 	@echo 'pwd $(PWD)...'
-	ifeq ($(dir),1)
-		@echo 'same pwd'
-	endif
+	@echo ' srcdir: $(SRCDIR)...'
+	@echo '$(VIRTUAL_ENV)'
+	#ifeq ($(dir),1)
+	#	@echo 'same pwd'
+	#endif
 
 howto:
 	firefox	 Instructions_installation.html
