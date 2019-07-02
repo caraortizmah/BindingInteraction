@@ -11,12 +11,13 @@ ALLSUBDIRS = $(SUBDIRS) doc
 help:
 	@echo "Please use \`make <target>' where <target> is one of:"
 	@echo "  clean        to remove build files"
-	@echo "  install      to install program on disk"
-	@echo "  update       to recompile python files of src/ and update executables in bin/ folder (for your own develop)"
-	@echo "  init         to install requirements of BindingInteraction"
-	@echo "  test         to test the finished installation"
+	@echo "  require      to install python requirements of BindingInteraction"
+	@echo "  init         to prepare folders with external bash programs before installing BindingInteraction"
 	@echo "  howto        to show instructions in HTML format"
-	@echo "  latex        to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	@echo "  man 					to show manual of the pipeline"
+	#@echo "  update       to recompile python files of src/ and update executables in bin/ folder (for your own develop)"
+	#@echo "  latex        to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+	#@echo "  test         to test the finished installation"
 
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
@@ -29,11 +30,11 @@ clean:
 	rm -rf $(TOPDIR)/doc/latex
 	rm config_path
 
-install:
-	mkdir -p $(BI)
-	cp -rfu $(SRCDIR)/* $(BI)/
-	cd $(BI)/
-	$(PYTHON) BindingInteraction/compiler.py
+#install:
+	#mkdir -p $(BI)
+	#cp -rfu $(SRCDIR)/* $(BI)/
+	#cd $(BI)/
+	#$(PYTHON) BindingInteraction/compiler.py
 	#cd BindingInteraction/
 	#$(PYTHON) compiler.py
 	#cd ../
@@ -56,8 +57,11 @@ update:
 	rm *.py
 	cd ../
 
-init:
+require:
 	pip install -r requirements.txt
+
+init:
+	mkdir scratch
 
 test:
 	dir="1"
@@ -70,5 +74,7 @@ test:
 	#endif
 
 howto:
-	firefox	 Instructions_installation.html
+	firefox	 docs/Instructions_installation.html
 
+man:
+	firefox docs/BindingInteraction_Manual.html

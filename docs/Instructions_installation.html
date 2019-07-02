@@ -4,63 +4,48 @@
 <h1 style="color: #5e9ca0;">BindingInteraction</h1>
 <h2 style="color: #2e6c80;">You need the following programs before installing BindingInteraction:</h2>
 <ul>
-<li>Python 2.7 or 3</li>
+<li>Python 2.7 or upper</li>
 <li>MOPAC2016</li>
 <li>VMD with Dowser plugin</li>
-<li>Chimera</li>
-<li>Propka3.1</li>
+<li>UCSF Chimera</li>
+<li>Propka 3.1</li>
 <li>GAMESS</li>
 <li>Facio (FMO software)</li>
 <li>Wine</li>
 </ul>
-<h2 style="color: #2e6c80;">For installing BindingInteractor pipeline:</h2>
-<p>Open a console and type</p>
-<table class="editorDemoTable" style="width: 1165px;" border="1">
+<h2 style="color: #2e6c80;">For installing BindingInteraction pipeline:</h2>
+<p>Open a console and type the following commands</p>
+<table class="editorDemoTable" style="width: 1000px;" border="1">
 <thead>
 <tr>
-<td style="width: 65px;">Step</td>
-<td style="width: 400px;">Instruction</td>
+<td style="width: 45px;">Step</td>
+<td style="width: 480px;">Instruction</td>
 <td style="width: 600px;">Command</td>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="width: 65px;">1</td>
-<td style="width: 550px;">On BindingInteraction/ type and follow the instructions</td>
-<td style="width: 772px;">./configure</td>
+<td style="width: 45px;">1</td>
+<td style="width: 480px;">Configure program and scratch path for the installation</td>
+<td style="width: 600px;">./configure -p 'program_path' -s 'scratch_path'</td>
 </tr>
 <tr>
-<td style="width: 65px;">2</td>
-<td style="width: 550px;">type and wait (it could take several minutes)</td>
-<td style="width: 772px;">make init</td>
+<td style="width: 45px;">2</td>
+<td style="width: 480px;">Install python requirements before (it could take several minutes)</td>
+<td style="width: 600px;">make require</td>
 </tr>
 <tr>
-<td style="width: 65px;">3</td>
-<td style="width: 550px;">type</td>
-<td style="width: 772px;">make install</td>
+<td style="width: 45px;">3</td>
+<td style="width: 480px;">Prepare folders and other programs before installing BindingInteraction</td>
+<td style="width: 600px;">make init</td>
 </tr>
 <tr>
-<td style="width: 65px;">4</td>
-<td style="width: 550px;">create a folder on opt</td>
-<td style="width: 772px;">mkdir -p /opt/BindingInteraction/</td>
-</tr>
-<tr>
-<td style="width: 65px;">5</td>
-<td style="width: 550px;">copy this file on opt</td>
-<td style="width: 772px;">cp BindingInteraction.pyc /opt/BindingInteraction/</td>
-</tr>
-<tr>
-<td style="width: 65px;">6</td>
-<td style="width: 550px;">Open your .bashrc and type at the end</td>
-<td style="width: 772px;">alias BindingInteraction='/opt/BindingInteraction/indingInteraction.pyc '</td>
-</tr>
-<tr>
-<td style="width: 65px;">7</td>
-<td style="width: 550px;">After saving changes in bashrc</td>
-<td style="width: 772px;">source .bashrc</td>
+<td style="width: 45px;">4</td>
+<td style="width: 480px;">Install BindingInteraction</td>
+<td style="width: 600px;">sudo python setup.py install</td>
 </tr>
 </tbody>
 </table>
 <p><strong>&nbsp;</strong></p>
-<p><strong>Now yo can enjoy BindingInteraction pipeline!</strong></p>
+<p><strong>Now you can enjoy BindingInteraction pipeline!</strong></p>
 <p><strong>&nbsp;</strong></p>
