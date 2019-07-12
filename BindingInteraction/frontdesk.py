@@ -62,9 +62,10 @@ def main():
     option = v_input("** Select just a number in the three options ")
 
   if (option == 1):
-    call(["python", "BI_module.py"])
-    mysetts = BindingInteraction.settings
-    return mysetts
+    #call(["python", "BI_module.py"])
+    #mysetts = BindingInteraction.settings
+    BindingInteraction.settings.main()
+    #return mysetts
     main()
   elif (option == 2):
     call(["python", "settings.py"])

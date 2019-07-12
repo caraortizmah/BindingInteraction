@@ -397,21 +397,25 @@ class Path:
     self.path_dict['wine']=self.wine
     return self.path_dict
 
+  def main():
+    """
+    Initialization
+    """
+    print("************************************************************")
+    print("**                                                        **")
+    print("**              BINDINGINTERACTION 1.0.1                  **")
+    print("**                  Program Paths                         **")
+    print("**                                                        **")
+    print("************************************************************")
+    print("                                                            ")
+    print("                                                            ")
+    print("                                                            ")
 
+    file = Actions()
+    paths = Path()
+    manager()
 
 if __name__ == '__main__':
 
-  print("************************************************************")
-  print("**                                                        **")
-  print("**              BINDINGINTERACTION 1.0.1                  **")
-  print("**                  Program Paths                         **")
-  print("**                                                        **")
-  print("************************************************************")
-  print("                                                            ")
-  print("                                                            ")
-  print("                                                            ")
-
-  file = Actions()
-  paths = Path()
-  manager()
+  main()
   
