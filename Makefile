@@ -61,7 +61,8 @@ require:
 	pip install -r requirements.txt
 
 init:
-	mkdir scratch
+	mkdir -p scratch
+	mkdir -p conf
 
 test:
 	dir="1"

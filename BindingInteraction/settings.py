@@ -2,7 +2,7 @@
 *************************************
 BindingInteraction
 
-@author Carlos Andres Ortiz-Mahecha 
+@author Carlos Andres Ortiz-Mahecha
   (email: caraortizmah@gmail.com)
   (email: caraortizmah@unal.edu.co)
 
@@ -50,6 +50,16 @@ def manager():
   """
   Manager
   """
+  print("************************************************************")
+  print("**              BINDINGINTERACTION 1.0.1                  **")
+  print("**                  Program Paths                         **")
+  print("************************************************************")
+  print("                                                            ")
+
+  global file, paths
+  file = Actions()
+  paths = Path()
+
   print("** Select an option:")
   print("** 1. Check saved paths")
   print("** 2. Assign paths")
@@ -82,7 +92,7 @@ class info():
     """
     Variables of paths
     """
-    if (os.path.isfile('../conf/conf_path.csv')):
+    if (os.path.isfile('conf/conf_path.csv')):
       self.isfile = True
     else:
       self.isfile = False
@@ -124,11 +134,11 @@ class Actions:
 
     if (option == 1):
       print("** Loading information from file")
-      file.open(True)
-      file.options()
+      self.open(True)
+      self.options()
     elif (option == 2):
-      print("** Assigning new paths")
-      file.edit()
+      print("** Assigning paths")
+      self.edit()
     elif (option == 3):
       print("** Returning... bye")
       manager()
@@ -147,14 +157,14 @@ class Actions:
         print("**")
         print("** Program \t\t Path")
 
-        path_file=file.get_paths_file()
+        path_file=self.get_paths_file()
         for key in path_file.keys():
           if (str(path_file[key])==''):
             print("** ", key, "\t\tPath no assigned")
           else:
             print("** ", key, "\t\t ", path_file[key])
       else:
-        print("** ../conf/conf_path.csv does not exits")
+        print("**conf/conf_path.csv does not exist")
         print("**")
         print("")
     else:
@@ -162,6 +172,7 @@ class Actions:
       print("**")
       print("** Program \t\t Path")
       path=paths.get_paths()
+      print("paths----: ",path)
       for key in path.keys():
         if ((str(path[key])=='') or (str(path[key])=='-')):
           print("** ", key, "\t\tPath no assigned")
@@ -178,40 +189,43 @@ class Actions:
     print("**")
     print("")
     print("")
-    file.open(True)
-    file.open(False)
+    self.open(True)
+    self.open(False)
     if (self.isfile):
       print("Edition")
-      print("**Do you want to save files of temporary memory to file?")
+      print("**Do you want to save paths from temporary memory?")
       dec=v_input("**y/n")
       dec=dec.upper()
       while (type(dec) == int) or (not dec.strip()) or ((dec!='Y') and (dec!='N')):
         dec = v_input("** Select 'y' or 'n': ")
       if (dec=='Y'):
+        #print("path: ",path)
         for key in path.keys():
           if (path[key]==''):
             paths.path_dict[key]="-"
-        file.save_paths_file()
+            #print ("_____",paths.path_dict[key])
+        self.save_paths_file()
         print("** files saved")
       else:
         print("Returning... bye")
         manager()
     else:
       print("** Saving...")
-      file.save_paths_file()
+      self.save_paths_file()
       print("** files saved")
-    paths.selection()   
+    paths.selection()
 
   def save_paths_file(self):
     """
     save all paths saved in a directory
     """
     try:
-      with open("../conf/conf_path.csv", "w") as f:
+      with open("conf/conf_path.csv", "w") as f:
         writer = csv.writer(f, delimiter=",")
         for key in paths.path_dict.keys():
-          if ((paths.path_dict[key]!='') and (paths.path_dict[key]!='-')):
-            f.write("%s , %s\n"%(key,paths.path_dict[key]))
+          #print("key: ", key, "paths: ", paths.path_dict[key])
+          #if ((paths.path_dict[key]!='') or (paths.path_dict[key]!='-')):
+          f.write("%s , %s\n"%(key,paths.path_dict[key]))
       print("** information saved in ../conf/conf_path.csv")
       self.isfile = True
     except IOError:
@@ -224,7 +238,7 @@ class Actions:
     extract all paths saved in a directory
     """
     if (self.isfile):
-      with open("../conf/conf_path.csv", "r") as f:
+      with open("conf/conf_path.csv", "r") as f:
         creader = csv.reader(f, delimiter=",")
         for row in creader:
           self.path_dict_file[row[0]]=row[1]
@@ -401,15 +415,7 @@ class Path:
     """
     Initialization
     """
-    print("************************************************************")
-    print("**                                                        **")
-    print("**              BINDINGINTERACTION 1.0.1                  **")
-    print("**                  Program Paths                         **")
-    print("**                                                        **")
-    print("************************************************************")
-    print("                                                            ")
-    print("                                                            ")
-    print("                                                            ")
+
 
     file = Actions()
     paths = Path()
@@ -418,4 +424,4 @@ class Path:
 if __name__ == '__main__':
 
   main()
-  
+

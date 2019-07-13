@@ -23,7 +23,9 @@ import io
 import sys
 import os
 import csv
-import BindingInteraction.settings, BindingInteraction.BI_module
+from BindingInteraction import settings
+
+#import BindingInteraction.settings, BindingInteraction.BI_module
 
 
 def v_input(inp):
@@ -62,11 +64,10 @@ def main():
     option = v_input("** Select just a number in the three options ")
 
   if (option == 1):
-    #call(["python", "BI_module.py"])
-    #mysetts = BindingInteraction.settings
-    BindingInteraction.settings.main()
-    #return mysetts
-    main()
+    file = settings.Actions()
+    paths = settings.Path()
+    settings.manager()
+    #main()
   elif (option == 2):
     call(["python", "settings.py"])
     main()
@@ -92,4 +93,4 @@ if __name__ == '__main__':
 
   main()
 
-  
+
