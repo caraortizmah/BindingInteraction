@@ -61,8 +61,8 @@ def manager():
   paths = Path()
 
   print("** Select an option:")
-  print("** 1. Check saved paths")
-  print("** 2. Assign paths")
+  print("** 1. Assign paths")
+  print("** 2. Check saved paths")
   print("** 3. Exit")
 
   option = v_input("** ")
@@ -70,13 +70,13 @@ def manager():
     option = v_input("** Select just a number in the four options ")
 
   if (option == 1):
-    print("** Cheking paths of programs")
-    file.options()
-  elif (option == 2):
     print("** Assigning paths")
     paths.selection()
+  elif (option == 2):
+    print("** Cheking program paths")
+    file.options()
   elif (option == 3):
-    print("** Exit program paths... bye")
+    print("**bye...")
     sys.exit()
   else:
     print("** Something goes wrong... bye")
@@ -159,7 +159,7 @@ class Actions:
 
         path_file=self.get_paths_file()
         for key in path_file.keys():
-          if (str(path_file[key])==''):
+          if (str(path_file[key])=='' or str(path_file[key])=='-'):
             print("** ", key, "\t\tPath no assigned")
           else:
             print("** ", key, "\t\t ", path_file[key])
@@ -188,9 +188,12 @@ class Actions:
     path=paths.get_paths()
     print("**")
     print("")
-    print("")
+    print("From file:")
     self.open(True)
+    print("")
+    print("From temporary file:")
     self.open(False)
+    print("")
     if (self.isfile):
       print("Edition")
       print("**Do you want to save paths from temporary memory?")
@@ -219,13 +222,18 @@ class Actions:
     """
     save all paths saved in a directory
     """
+    path=paths.get_paths()
     try:
       with open("conf/conf_path.csv", "w") as f:
         writer = csv.writer(f, delimiter=",")
-        for key in paths.path_dict.keys():
+        #for key in paths.path_dict.keys():
+        print("SAVING....")
+        print("path: ", path)
+        for key in path.keys():
           #print("key: ", key, "paths: ", paths.path_dict[key])
           #if ((paths.path_dict[key]!='') or (paths.path_dict[key]!='-')):
-          f.write("%s , %s\n"%(key,paths.path_dict[key]))
+          #f.write("%s , %s\n"%(key,paths.path_dict[key]))
+          f.write("%s , %s\n"%(key,path[key]))
       print("** information saved in ../conf/conf_path.csv")
       self.isfile = True
     except IOError:
@@ -270,6 +278,7 @@ class Path:
     self.facio = ''
     self.wine = ''
     self.path_dict = {}
+    global path_dict
 
   def selection(self):
     """
@@ -284,7 +293,8 @@ class Path:
     print("** 5. GAMESS.")
     print("** 6. Facio FMO util.")
     print("** 7. Show paths.")
-    print("** 8. Return")
+    print("** 8. Save paths.")
+    print("** 9. Return")
 
     option = v_input("** ")
     cluase = (option != 1) and (option != 2) and (option != 3) and (option != 4) and (option != 5) \
@@ -294,27 +304,30 @@ class Path:
 
     if (option == 1):
       print("** Assigning VMD path")
-      paths.vmd_path()
+      self.vmd_path()
     elif (option == 2):
       print("** Assigning MOPAC path")
-      paths.mopac_path()
+      self.mopac_path()
     elif (option == 3):
       print("** Assigning Chimera path")
-      paths.chimera_path()
+      self.chimera_path()
     elif (option == 4):
       print("** Assigning Propka3.1 path")
-      paths.propka_path()
+      self.propka_path()
     elif (option == 5):
       print("** Assigning GAMESS path")
-      paths.gamess_path()
+      self.gamess_path()
     elif (option == 6):
-      print("** Assigning Facio FMO software and wine paths")
-      paths.facio_path()
+      print("** Assigning Facio FMO software and wine path")
+      self.facio_path()
     elif (option == 7):
       file.open(False)
       print("** Showed paths")
-      paths.selection()
+      self.selection()
     elif (option == 8):
+      file.save_paths_file()
+      manager()
+    elif (option == 9):
       print("Returning... bye")
       manager()
     else:
@@ -329,7 +342,7 @@ class Path:
     while (type(path) == int) or (not path.strip()):
       path = v_input("** Put the path of vmd: ")
     self.vmd = path
-    paths.selection()
+    self.selection()
 
   def mopac_path(self):
     """
@@ -339,7 +352,7 @@ class Path:
     while (type(path) == int) or (not path.strip()):
       path = v_input("** Put the path of mopac: ")
     self.mopac = path
-    paths.selection()
+    self.selection()
 
   def chimera_path(self):
     """
@@ -349,7 +362,7 @@ class Path:
     while (type(path) == int) or (not path.strip()):
       path = v_input("** Put the path of chimera: ")
     self.chimera = path
-    paths.selection()
+    self.selection()
 
   def propka_path(self):
     """
@@ -359,17 +372,17 @@ class Path:
     while (type(path) == int) or (not path.strip()):
       path = v_input("** Put the path of propka: ")
     self.propka = path
-    paths.selection()
+    self.selection()
 
   def gamess_path(self):
     """
-    recevie path of gamess
+    receive path of gamess
     """
     path = ''
     while (type(path) == int) or (not path.strip()):
       path = v_input("** Put the path of gamess: ")
     self.gamess = path
-    paths.selection()
+    self.selection()
 
   def facio_path(self):
     """
@@ -383,7 +396,7 @@ class Path:
     while (type(path2) == int) or (not path2.strip()):
       path2 = v_input("** Put the path of wine: ")
     self.wine = path2
-    paths.selection()
+    self.selection()
 
   def show_paths(self):
     """
