@@ -85,11 +85,3 @@ For installing the `BindingInteraction` pipeline, follow the next steps:
    
 * [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
-## Citation
-
-Users of `BindingInteraction` pipeline must cite the following references:
-
-
-* [doi: xxxx](http://)
-   
-* [doi: xxxx](http://)
