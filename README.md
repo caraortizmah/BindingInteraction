@@ -45,6 +45,10 @@ To get the git version type
 All information for installing the pipeline can be obtained by typing:
 
     $ make howto
+    
+### Preliminary issues
+
+Install Dowser: oficial page is no longer working properly ([Hermans Dowser](http://danger.med.unc.edu/hermans/dowser/dowser.htm) - ) but you can donwload through github (https://github.com/caraortizmah/dowser).
 
 ### Installation
 
