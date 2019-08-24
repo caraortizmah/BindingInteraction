@@ -73,6 +73,10 @@ test:
 	#ifeq ($(dir),1)
 	#	@echo 'same pwd'
 	#endif
+	
+script:
+
+        ./organizer.sh $(BI)
 
 howto:
 	firefox	 docs/Instructions_installation.html
