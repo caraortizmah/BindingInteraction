@@ -75,8 +75,9 @@ test:
 	#endif
 	
 script:
-
+        cd BindingInteraction/
         ./organizer.sh $(BI)
+	cd ../
 
 howto:
 	firefox	 docs/Instructions_installation.html
