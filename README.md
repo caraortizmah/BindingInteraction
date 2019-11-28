@@ -69,7 +69,6 @@ For installing the `BindingInteraction` pipeline, follow the next steps:
 4th step: Install BindingInteraction
 
     $ sudo python setup.py install
-    
 
 ### Requirements
 
@@ -89,3 +88,9 @@ For installing the `BindingInteraction` pipeline, follow the next steps:
    
 * [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
+
+### Reference and Citation
+
+Please cite the following reference in publications:
+
+*   Ortiz-Mahecha, Carlos A., Bohórquez, Hugo J., Agudelo, William A., Patarroyo, Manuel A., Patarroyo, Manuel E. and Suárez, Carlos F. ["Assessing peptide binding to MHC II: An accurate semi-empirical quantum mechanics-based proposal."](https://doi.org/10.1021/acs.jcim.9b00672) Journal of Chemical Information and Modeling, (2019). - DOI: 10.1021/acs.jcim.9b00672
