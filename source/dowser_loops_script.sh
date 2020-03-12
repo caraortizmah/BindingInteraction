@@ -92,4 +92,7 @@ do
 
 done
 
+let iter=$iter-1
+cp "$iter"_iter/step_"$iter".pdb final_step.pdb
+
 echo "$arg"
