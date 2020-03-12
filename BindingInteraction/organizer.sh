@@ -1,18 +1,62 @@
 #!/bin/bash
 
 arg="$1"
+dir_pdb="$2"
+name_pdb="$3"
 
 cd $arg/../
 mkdir -p BI_scripts
 cd BI_scripts/
+mkdir -p original
+cp $dir_pdb/$name_pdb original/
+
+#adding waters with Dowser * First step
+
+mkdir -p dowser
+cd dowser/
+mkdir -p folder_1
+cd ../
+cp $arg/source/dowser_loops_script.sh dowser/
+cp $arg/source/dowser_beta.tcl dowser/folder_1/
+cp $arg/source/dowser.tcl dowser/folder_1/
+cp $arg/source/prepare_st.tcl dowser/folder_1/
+cd dowser/
+./dowser_loops_script.sh $name_pdb
+cd ..
+
+#Changing format * Second step
+
 mkdir -p 2nd_step
 cp $arg/source/script_dow_to_mopac.sh 2nd_step/
+mv dowser/final_step.pdb 2nd_step/
+cd 2nd_step/
+./script_dow_to_mopac.sh final_step.pdb
+cd ..
+
+#Adding Hydrogens * Third step
+
 mkdir -p 3rd_step
 cp $arg/source/addH.sh 3rd_step/
+cp 2nd_step/pdbformopac_*.pdb 3rd_step/molpdbw.pdb
+cd 3rd_step/
+./addH.sh molpdbw.pdb
+cd ..
+
+#Optimizing only Hydrogens * Fourth step
+
 mkdir -p 4th_step
 cp $arg/source/script_addH_tooptH.sh 4th_step/
+cp 3rd_step/molpdbw.arc 4th_step/
+cd 4th_step/
+./script_addH_tooptH.sh molpdbw.arc
+cd ..
+
+#Optimizing all molecule restrictely * Fifth step
+
 mkdir -p 5th_step
 cp $arg/source/script_optH_to_optall.sh 5th_step/
+
+
 mkdir -p 6th_step
 cp $arg/source/arc_to_pdb.sh 6th_step/
 mkdir -p charges
@@ -31,14 +75,7 @@ cp $arg/source/exec_test_fmo.sh FMO_set/
 cp $arg/source/script_arc_to_pdb.sh FMO_set/
 cp $arg/source/script_dftb_inp.sh FMO_set/
 cp $arg/source/dftb_input.info FMO_set/
-mkdir -p dowser
-cd dowser/
-mkdir -p folder_1
-cd ../
-cp $arg/source/dowser_loops_script.sh dowser/
-cp $arg/source/dowser_beta.tcl dowser/folder_1/
-cp $arg/source/dowser.tcl dowser/folder_1/
-cp $arg/source/prepare_st.tcl dowser/folder_1/
+
 mkdir -p mutation_step
 cp $arg/source/mut_arc_to_pdb.sh mutation_step/
 cp $arg/source/script_addH.sh mutation_step/
