@@ -7,6 +7,9 @@ name_pdb="$3"
 cd $arg/../
 mkdir -p BI_scripts
 cd BI_scripts/
+
+# First part: Geometry starting point
+#****
 mkdir -p original
 cp $dir_pdb/$name_pdb original/
 
@@ -55,10 +58,25 @@ cd ..
 
 mkdir -p 5th_step
 cp $arg/source/script_optH_to_optall.sh 5th_step/
+cp 4th_step/input_OptH.arc 5th_step/
+cd 5th_step/
+./script_optH_to_optall.sh input_OptH.arc
+cd ..
 
+#Optimizing all molecule restrictely * sixth step
 
 mkdir -p 6th_step
 cp $arg/source/arc_to_pdb.sh 6th_step/
+cp $arg/source/del_waters.sh 6th_step/
+cp 5th_step/input_Optall.arc 6th_step/org_coord.arc
+cd 6th_step/
+./arc_to_pdb.sh org_coord.arc
+./del_waters.sh org_coord.pdb
+cd ..
+#****
+
+# Second part: Single points
+#****
 mkdir -p charges
 cp $arg/source/exec_pka.sh charges/
 cp $arg/source/exec_test.sh charges/
@@ -69,6 +87,9 @@ cp $arg/source/script_build_spmop.sh charges/
 cp $arg/source/script_H_charges.sh charges/
 cp $arg/source/script_H_charges_aux.sh charges/
 cp $arg/source/script_other_sp.sh charges/
+
+
+
 mkdir -p FMO_set
 cp $arg/source/exec_dftb_to_inps.sh FMO_set/
 cp $arg/source/exec_test_fmo.sh FMO_set/
