@@ -10,7 +10,7 @@ name_f="$(echo "$name_pdb" | cut -d'.' -f1)"
 cd $work_dir
 
 mkdir -p $name_f
-cp $dir_pdb/$name_pdb $name_f/
+cp -p $dir_pdb/$name_pdb $name_f/
 cd $name_f/
 
 #mkdir -p BI_scripts
@@ -19,7 +19,7 @@ cd $name_f/
 # First part: Geometry starting point
 #****
 mkdir -p original
-cp $name_pdb original/
+cp -p $name_pdb original/
 
 #adding waters with Dowser * First step
 
@@ -27,10 +27,11 @@ mkdir -p dowser
 cd dowser/
 mkdir -p folder_1
 cd ../
-cp $arg/source/dowser_loops_script.sh dowser/
-cp $arg/source/dowser_beta.tcl dowser/folder_1/
-cp $arg/source/dowser.tcl dowser/folder_1/
-cp $arg/source/prepare_st.tcl dowser/folder_1/
+cp -p $arg/$name_pdb dowser/
+cp -p $arg/source/dowser_loops_script.sh dowser/
+cp -p $arg/source/dowser_beta.tcl dowser/folder_1/
+cp -p $arg/source/dowser.tcl dowser/folder_1/
+cp -p $arg/source/prepare_st.tcl dowser/folder_1/
 cd dowser/
 ./dowser_loops_script.sh $name_pdb
 cd ..
@@ -38,7 +39,7 @@ cd ..
 #Changing format * Second step
 
 mkdir -p 2nd_step
-cp $arg/source/script_dow_to_mopac.sh 2nd_step/
+cp -p $arg/source/script_dow_to_mopac.sh 2nd_step/
 mv dowser/final_step.pdb 2nd_step/
 cd 2nd_step/
 ./script_dow_to_mopac.sh final_step.pdb
@@ -47,8 +48,8 @@ cd ..
 #Adding Hydrogens * Third step
 
 mkdir -p 3rd_step
-cp $arg/source/addH.sh 3rd_step/
-cp 2nd_step/pdbformopac_*.pdb 3rd_step/molpdbw.pdb
+cp -p $arg/source/addH.sh 3rd_step/
+cp -p 2nd_step/pdbformopac_*.pdb 3rd_step/molpdbw.pdb
 cd 3rd_step/
 ./addH.sh molpdbw.pdb
 cd ..
@@ -56,8 +57,8 @@ cd ..
 #Optimizing only Hydrogens * Fourth step
 
 mkdir -p 4th_step
-cp $arg/source/script_addH_tooptH.sh 4th_step/
-cp 3rd_step/molpdbw.arc 4th_step/
+cp -p $arg/source/script_addH_tooptH.sh 4th_step/
+cp -p 3rd_step/molpdbw.arc 4th_step/
 cd 4th_step/
 ./script_addH_tooptH.sh molpdbw.arc
 cd ..
@@ -65,8 +66,8 @@ cd ..
 #Optimizing all molecule restrictely * Fifth step
 
 mkdir -p 5th_step
-cp $arg/source/script_optH_to_optall.sh 5th_step/
-cp 4th_step/input_OptH.arc 5th_step/
+cp -p $arg/source/script_optH_to_optall.sh 5th_step/
+cp -p 4th_step/input_OptH.arc 5th_step/
 cd 5th_step/
 ./script_optH_to_optall.sh input_OptH.arc
 cd ..
@@ -74,9 +75,9 @@ cd ..
 #Optimizing all molecule restrictely * sixth step
 
 mkdir -p 6th_step
-cp $arg/source/arc_to_pdb.sh 6th_step/
-cp $arg/source/del_waters.sh 6th_step/
-cp 5th_step/input_Optall.arc 6th_step/org_coord.arc
+cp -p $arg/source/arc_to_pdb.sh 6th_step/
+cp -p $arg/source/del_waters.sh 6th_step/
+cp -p 5th_step/input_Optall.arc 6th_step/org_coord.arc
 cd 6th_step/
 ./arc_to_pdb.sh org_coord.arc
 ./del_waters.sh org_coord.pdb
