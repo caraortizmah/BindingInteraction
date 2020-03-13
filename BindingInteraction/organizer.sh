@@ -3,15 +3,23 @@
 arg="$1"
 dir_pdb="$2"
 name_pdb="$3"
+work_dir="$4"
 
-cd $arg/../
-mkdir -p BI_scripts
-cd BI_scripts/
+name_f="$(echo "$name_pdb" | cut -d'.' -f1)"
+
+cd $work_dir
+
+mkdir -p $name_f
+cp $dir_pdb/$name_pdb $name_f/
+cd $name_f/
+
+#mkdir -p BI_scripts
+#cd BI_scripts/
 
 # First part: Geometry starting point
 #****
 mkdir -p original
-cp $dir_pdb/$name_pdb original/
+cp $name_pdb original/
 
 #adding waters with Dowser * First step
 
