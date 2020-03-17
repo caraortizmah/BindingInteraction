@@ -74,7 +74,7 @@ For installing the `BindingInteraction` pipeline, follow the next steps:
 
 * [Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
 
-* [VMD](https://www.ks.uiuc.edu/Research/vmd/) - Page of VMD
+* [VMD version 1.9.1 (February 1, 2012)](https://www.ks.uiuc.edu/Research/vmd/) - Page of VMD
    
 * [Dowser plugin](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser in VMD
    
