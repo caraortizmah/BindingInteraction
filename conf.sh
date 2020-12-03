@@ -21,6 +21,7 @@ if [ -f "$FILE" ]; then
 		if [[ -z "${MHCBI_PATH// }" ]] ; then # This ( ${param //} ) expands the param variable and replaces all matches of the pattern (a single space) with nothing
 			echo "Pipeline path is empty"
 		else
+		        MHCBI_PATH=$(echo "$MHCBI_PATH" | awk '$1=$1') #remove blank spaces (head & tail)
 			echo "mhcbi_path finished" $MHCBI_PATH
 		fi
 	else
@@ -35,6 +36,7 @@ if [ -f "$FILE" ]; then
 		if [[ -z "${WORK_PATH// }" ]] ; then
 			echo "Work directory is empty"
 		else
+		        WORK_PATH=$(echo "$WORK_PATH" | awk '$1=$1')
 			echo "work_path finished" $WORK_PATH
 		fi
 	else
@@ -49,6 +51,7 @@ if [ -f "$FILE" ]; then
 		if [[ -z "${PDB_PATH// }" ]] ; then
 			echo "PDB structure path is empty"
 		else
+		        PDB_PATH=$(echo "$PDB_PATH" | awk '$1=$1')
 			echo "pdb_path finished" $PDB_PATH
 		fi
 	else
@@ -63,6 +66,7 @@ if [ -f "$FILE" ]; then
 		if [[ -z "${PDB_NAME// }" ]] ; then
 			echo "PDB structure name is empty"
 		else
+		        PDB_NAME=$(echo "$PDB_NAME" | awk '$1=$1')
 			echo "pdb_name finished" $PDB_NAME
 		fi
 	else
@@ -82,17 +86,28 @@ if [ -f "$FILE" ]; then
 		else
 			echo "work_name finished" $WORK_NAME
 		fi
+		WORK_NAME=$(echo "$WORK_NAME" | awk '$1=$1')
 	else
 		echo "To-do work name was not detected"
 		echo "Work name will be assigned as pdb structure name"
 		WORK_NAME=$(echo "$PDB_NAME" | cut -d'.' -f1)
 		echo "work_name finished" $WORK_NAME
+		WORK_NAME=$(echo "$WORK_NAME" | awk '$1=$1')
 	fi
 
 	#Creating directories
-
-	#mkdir -p $work_path
-	#cp -r source/ $work_path
+	
+	cd ${WORK_PATH}
+	mkdir -p ${WORK_NAME}
+	cd ${MHCBI_PATH}
+	cp -r source/ ${WORK_PATH}/${WORK_NAME}
+	cd ${WORK_PATH}/${WORK_NAME}/
+	mkdir -p optimizations
+	mkdir -p mutations
+	mkdir -p calculations
+	
+	cp source/organizer.sh .
+	./organizer.sh
 	
 else
 	echo "First of all set the list of directories"
