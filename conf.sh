@@ -96,19 +96,30 @@ if [ -f "$FILE" ]; then
 	fi
 
 	#Creating directories
-	
+
 	cd ${WORK_PATH}
 	mkdir -p ${WORK_NAME}
 	cd ${MHCBI_PATH}
 	cp -r source/ ${WORK_PATH}/${WORK_NAME}
-	cp ${MHCBI_PATH}/paths.log ${WORK_PATH}/${WORK_NAME}
 	cd ${WORK_PATH}/${WORK_NAME}/
+	cp ${PDB_PATH}/${PDB_NAME} .
 	mkdir -p optimizations
 	mkdir -p mutations
 	mkdir -p calculations
 	
+  cat << EOF > paths.out
+***Path List***
+***Do not change any word in this file***
+1 :$MHCBI_PATH
+2 :$PDB_PATH
+3 :$PDB_NAME
+4 :$WORK_PATH
+5 :$WORK_NAME
+***
+EOF
+
 	cp source/organizer.sh .
-	./organizer.sh ${MHCBI_PATH} ${PDB_PATH} ${PDB_NAME} ${WORK_PATH}/${WORK_NAME}
+	./organizer.sh
 	
 else
 	echo "First of all set the list of directories"
