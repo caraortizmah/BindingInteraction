@@ -2,7 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
-#This program creates an input for optimizing restrictively the mono-substituted residue
+#This program creates an input for optimizing restrictively the mono- or multiple-substituted residue
 
 arg="$1"
 org="$2"
