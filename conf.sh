@@ -101,13 +101,14 @@ if [ -f "$FILE" ]; then
 	mkdir -p ${WORK_NAME}
 	cd ${MHCBI_PATH}
 	cp -r source/ ${WORK_PATH}/${WORK_NAME}
+	cp ${MHCBI_PATH}/paths.log ${WORK_PATH}/${WORK_NAME}
 	cd ${WORK_PATH}/${WORK_NAME}/
 	mkdir -p optimizations
 	mkdir -p mutations
 	mkdir -p calculations
 	
 	cp source/organizer.sh .
-	./organizer.sh
+	./organizer.sh ${MHCBI_PATH} ${PDB_PATH} ${PDB_NAME} ${WORK_PATH}/${WORK_NAME}
 	
 else
 	echo "First of all set the list of directories"
