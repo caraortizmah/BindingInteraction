@@ -1,0 +1,35 @@
+||
+|| Author: Carlos Andres Ortiz Mahecha
+||  caraortizmah@gmail.com
+||  #This is a template for listing residue changes to create new pdbs. This template makes part of
+||   BindingInteraction pipeline.
+||=======================================================================================================||
+||- Mutation format                | - Example 1:                - | - Example 2:                      - ||
+||- Features:                      | - 1 pdb name per 1 Mutation - | - 1 pdb name per several muations - ||
+||- (1). Name file (3 letters)     | ----------------------------- | ----------------------------------- ||
+||- (2). Residue name (3 letters)  |    (1)    (2)    (3)    (4)   |    (1)     (2)      (3)      (4)    ||
+||- (3). Number of residue         |  ---------------------------  |  ---------------------------------  ||
+||- (4). Chain of residue          |    A11    Ala     11     p    |    A11     Ala       11       p     ||
+||- Each row had to be filled out  |    A15    Glu     15     a    |    efg     Lys       19       b     ||
+||- regarding these three features |    abc    His    254     b    |    A11     Glu       15       a     ||
+||-------------------------------- | ----------------------------- | ----------------------------------- ||
+||=======================================================================================================||
+
+****Do not delete the template****
+*** Fil out the new pdbs' features
+*** Begin  
+-----------------------------------
+   (1)     (2)      (3)      (4)   
+-----------------------------------
+   P01     Lys       1        p
+   P02     Lys       2        p
+   P03     Lys       3        p
+   P04     Lys       4        p
+   P05     Lys       5        p
+   P06     Lys       6        p
+   P07     Lys       7        p
+   P08     Lys       8        p
+   P09     Lys       9        p
+   P10     Lys      10        p
+-----------------------------------
+*** End 
