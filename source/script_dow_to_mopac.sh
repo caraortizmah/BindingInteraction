@@ -22,7 +22,10 @@ sed -i 's/TRE/HOH/g' aux_step.pdb #Replace all words "TRE" by "HOH"
 sed -i 's/OW/O /g' aux_step.pdb #Replace all words "OW" by "O"
 sed -i 's/HETATM/ATOM   /g' aux_step.pdb #Replace all words "HETATM" by "ATOM"
 
-awk 'BEGIN{i=1} NF=="12"{if ($5=="W") printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8.3f  %3.2f  %3.2f%12s\n",$1,$2,$3,$4,$5,i++,$7,$8,$9,$10,$11,$12; else printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8.3f  %3.2f  %3.2f%12s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_step.pdb > aux_step2.pdb #Fix format and renumber atoms 
+awk 'BEGIN{i=1; j=1} NF=="12"{if ($3 =="H1" || $3 =="H2") {j++; i++;} else {printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8.3f  %3.2f  %3.2f%12s\n",$1,j++,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12}}' aux_step.pdb > aux_step1.pdb #Fix format and renumber atoms 
+
+awk 'BEGIN{i=1} NF=="12"{if ($5=="W") printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8.3f  %3.2f  %3.2f%12s\n",$1,$2,$3,$4,$5,i++,$7,$8,$9,$10,$11,$12; else printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8.3f  %3.2f  %3.2f%12s\n",$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_step1.pdb > aux_step2.pdb #Fix format and renumber atoms 
+
 
 babel -h -ipdb aux_step2.pdb -opdb pdbformopac_"$arg" #Call babel to add hidrogens in pdb file
 
