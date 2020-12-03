@@ -6,11 +6,18 @@
 
 mopac16="/opt/mopac/MOPAC2016.exe" #Path of mopac program
 
-for i in `ls *.arc` #for each arc files, program execute the lines below
-do
+arg="$1"
 
-  j="$(echo "$i" | cut -d'.' -f1)" #Remove the extension (".arc") of the file
-  awk 'NF=="12"{printf "ATOM%7d%-2s%3s %1s%4d%12.3f%8.3f%8.3f  1.00  0.00%12s\n",$2,substr($0,16,6),$4,$5,$6,$7,$9,$11,substr($1,1,1)}' "$i" >> "$j".pdb #Set pdb format to output .arc file
+if [ -z "$arg" ] #execution of this program waits an additional argument
+then
+  echo "It lacks one argument to execute the script"                                                  
+  echo "For instance: ./script_arc_to_pdb.sh output.arc"
+  exit 1
+else
+  echo "Executing script_arc_to_pdb.sh over "$arg #This argument is an output pdb file from dowser execution
+fi
 
-  echo "fin"
-done
+j="$(echo "$arg" | cut -d'.' -f1)" #Remove the extension (".arc") of the file
+awk 'NF=="12"{printf "ATOM%7d%-2s%3s %1s%4d%12.3f%8.3f%8.3f  1.00  0.00%12s\n",$2,substr($0,16,6),$4,$5,$6,$7,$9,$11,substr($1,1,1)}' "$arg" >> "$j".pdb #Set pdb format to output .arc file
+
+echo "fin"
