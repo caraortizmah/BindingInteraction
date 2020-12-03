@@ -6,9 +6,21 @@
 
 chimera="/opt/UCSF/Chimera64-1.9/bin/chimera" #Path of chimera
 
-$chimera --nogui --script SCRIPT_MOPAC_DR1.py #execution of chimera without graphic enviroment
+py="$1"
+tag="$2"
 
-for i in `ls 1BX2_geom_chim-*`
+if [ -z "$py" ] || [ -z "$tag"  ]
+then                                                                                              
+  echo "It lacks one or more arguments to execute the script"                                                  
+  echo "For instance: ./script_chimera_swap.sh name_chimera_script pdbs_main_name"
+  exit 1                                                                                          
+else                                                                                              
+  echo "Running script... "
+fi
+
+$chimera --nogui --script "$py" #execution of chimera without graphic environment
+
+for i in `ls "$tag"-*.pdb`
 do
   sed -i 's/HETATM/ATOM  /g' "$i" #replacing HETATM by ATOM
 done
