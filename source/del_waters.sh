@@ -4,11 +4,23 @@
 #caraortizmah@gmail.com
 #This program deletes water coordinates from an pdb file returning it in the same format.
 
-for i in `ls *.pdb` #for each pdb files, program execute the lines below
-do
+arg="$1"
+org="$2"
+name="$3"
 
-  j="$(echo "$i" | cut -d'.' -f1)" #Remove the extension (".pdb") of the file
-  awk '$4!="HOH"{print $0}' "$i" >> "$j"_noW.pdb
+if [ -z "$arg" ] || [ -z "$org"  ] || [ -z "$name"  ] #execution of this program waits an additional argument
+then
+  echo "It lacks one argument to execute the script"                                                  
+  echo "For instance: ./del_waters.sh output.pdb output.arc main_name"
+  exit 1
+else
+  echo "Executing del_waters.sh over "$arg and $mop #This argument is an output pdb file from dowser execution
+fi
+
+#j="$(echo "$arg" | cut -d'.' -f1)" #Remove the extension (".pdb") of the file
+awk '$4!="HOH"{print $0}' "$arg" >> "$name"_noW.pdb
   
-  echo "fin"
-done
+#k="$(echo "$org" | cut -d'.' -f1)" #Remove the extension (".arc") of the file
+awk '$4!="HOH"{print $0}' "$org" >> "$name"_noW.arc
+
+echo "fin"
