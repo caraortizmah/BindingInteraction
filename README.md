@@ -5,33 +5,25 @@
     Author: Carlos Andrés Ortiz Mahecha
 ```
 
-`BindingInteraction` is pipeline software that manages and uses other programs to do some tasks 
-related to calculating protein peptides receptor-ligand binding energy in the field of computational chemistry.
-BindingInteraction has been applied to receptor-ligand complexes, such as Major Histocompatibility
-Complex class II (MHC II) proteins. 
-You can therefore extrapolate it to other approaches (i.e. MHC-like). 
+`MHC Binding Interaction (MHCBI)` is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry. 
+The MHCBI has been used with receptor-ligand complexes, such as major histocompatibility complex (MHC) proteins. 
+It can therefore be extrapolated to other non-covalent interaction systems (i.e. MHC-like structures).
 
-`BindingInteraction` uses some programs and does several tasks detailed below:
+The `MHCBI` uses some programmes and does several tasks as detailed below:
 
-     1. Dowser and DowserX softwares for fitting waters into a molecular structure.
-     2. MOPAC software for optimizing geometries having dowsed waters.
-     3. Dunbrack library on Chimera software for substituting residues for others
-         specifically selected by the user. 
-     4. Propka 3.1 for assigning charges to molecular structures.
-     5. GAMESS software for calculating energies using FMO-DFTB3 theory level.
+     1. Dowser and DowserX software for putting water molecules into a protein structure.
+     2. MOPAC software for several kinds of calculation using semi-empirical quantum methods (SQM), such as optimisation geometries and single point energies, as in this methodology.
+     3. Dunbrack library on graphical interface Chimera software for substituting residues for others selected by the user. 
+     4. Propka 3.1 for assigning charge to a protein structure.
+     5. GAMESS software for calculating binding energies using the Fragment Molecular Orbital method (FMO) at SQM DFTB3.
 
-Calculations at FMO-DFTB3 theory level must have been fragmented by another program.
-In our case, that program is Facio. However, Facio is not controlled by `BindingInteraction`
-due to this program's closed source license.
+When the `MHCBI` uses GAMESS software, molecules must be fragmented prior to the single point energy calculation. These fragmentations are performed by a graphical user interface programme known as Facio; however, Facio is not controlled by `MHCBI` in script mode due to this programme is non-open source licence.
 
 
-## BindingInteraction v1.0
+## MHCBI v2.0
 
-The aim of the `BindingInteraction` pipeline is to automate tasks in computational chemistry
-requiring several replications for calculating binding energies in receptor-ligand complexes.
-
-This pipeline is open source (see the LICENSE file for details).
-
+The aim of the `MHCBI` pipeline is to automate tasks regarding binding energy methodology for MHC-like systems requiring several replications for estimating receptor-ligand interactions.
+This pipeline is open source GPL-3.0 License and intended to be adapted, modified or used according to user needs.
 
 ### Download
 
@@ -48,11 +40,26 @@ All information for installing the pipeline can be obtained by typing:
     
 ### Preliminary issues
 
-Install Dowser: oficial page is no longer working properly ([Hermans Dowser](http://danger.med.unc.edu/hermans/dowser/dowser.htm) - ) but you can donwload through github (https://github.com/caraortizmah/dowser).
+Install Dowser: oficial page is no longer working properly ([Hermans Dowser](http://danger.med.unc.edu/hermans/dowser/dowser.htm) - ) but you can donwload it through github (https://github.com/caraortizmah/dowser).
 
 ### Installation
 
-For installing the `BindingInteraction` pipeline, follow the next steps:
+The `MHCBI` pipeline is mostly written in Shell script and includes Python and Tcl languages for managing programme operations in graphical interface software, such as Dowser in VMD and Dunbrack’s library in Chimera.
+For installing the `MHCBI` pipeline, follow the next steps:
+
+Option 1:
+
+1st step: Set paths and configure all scripts in a work directory
+
+    $ ./setup.sh
+    
+2nd step: Execute the "organizers" script for the three stages of the pipeline
+
+    $ ./org_all.sh
+    $ ./org_mut.sh
+    $ ./org_calc.sh
+
+Option 2:
 
 1st step: Install python requirements if necessary (it could take several minutes)
 
@@ -62,7 +69,7 @@ For installing the `BindingInteraction` pipeline, follow the next steps:
 
     $ ./configure -p 'program_path' -s 'scratch_path'
 
-3rd step: Prepare folders and other bash programs before installing BindingInteraction
+3rd step: Prepare folders and other bash programs before installing the `MHCBI`
 
     $ make init
     
