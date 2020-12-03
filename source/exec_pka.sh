@@ -2,36 +2,23 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
-#This program find optimization files to execute them propka3.1.
+#This program executes propka3.1 in all pdb from "tobe_charged" folder.
 
-rungms="/usr/local/bin/rungms" #Path of rungms program
-propka="/home/caom/propka-3.1/scripts/propka31.py" #Path of propka3.1 program
+propka="/home/caom/bin/propka31"
 
-for i in `ls */` #Enter in each folders
+cd tobe_charged/
+mv res_charges.pdb res_charges.aux-pdb
+
+for i in `ls *.pdb`
+#for i in `ls 1kpv4_A12_2A.pdb` optional for specific pdb file
 do
-  
-  j="$(echo "$i" | cut -d':' -f1)" #cutting the ':' in the folders
-  if [ -d "$j" ]; then #Checking if a directory exists
-    echo "$j"
-    cd "$j" #Enter in that folder
-    
-    for ii in `ls */` #Enter in each folders
-    do
-      jj="$(echo "$ii" | cut -d':' -f1)" #cutting the ':' in the folders
-      if [[ "$ii" = *"opt_"* ]]; then #checking if the name has the word "opt" 
-        echo "$jj"
-        cd "$jj" #entering in the optimization folder
-        
- 	      for input in `ls *.pdb`
-        do
-	        $propka $input #executing propka program in all pdb files from $jj (optimization folder)
-          $propka -d $input #executing another option of propka
-          echo "execution of propka3.1 over $input"
-        done
-        cd ../
-      fi
-    done
-    cd ../
-  fi
+   j="$(echo "$i" | cut -d'.' -f1)"
+   mkdir -p $j
+   mv $i $j/
+   cd $j
+   $propka $i
+   $propka -d $i
+   echo "execution of propka3.1 over $i"
+   cd ..
 done
-
+cd ..
