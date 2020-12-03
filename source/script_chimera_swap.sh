@@ -2,7 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
-#This program converts a .arc file into a .pdb file
+#This program executes a script without graphic environment
 
 chimera="/opt/UCSF/Chimera64-1.9/bin/chimera" #Path of chimera
 
