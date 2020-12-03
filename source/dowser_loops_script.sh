@@ -35,7 +35,21 @@ do
  cp folder_1/* "$iter"_iter/
  cd "$iter"_iter/
  
- vmd -dispdev text -e prepare_st.tcl > output_"$iter".log
+ if [ $iter -eq 1 ]
+ then
+   vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log
+ else
+   vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log
+ fi
+ 
+ #if [ $iter -eq 1 ]
+ #then
+ #  vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log
+ #else
+ #  vmd -dispdev text -e prepare_st1.tcl > output_"$iter".log
+ #fi
+ 
+ #vmd -dispdev text -e prepare_st.tcl > output_"$iter".log
  
  #babel -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb
  
@@ -49,7 +63,7 @@ do
  
  babel -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb
 
- for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1)
+ for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1 | tail -2)
  do
    let var_1=$var_1+2
    let var_2=$(sed -n "$var_1"p output_"$iter".log | awk '{print $4}')
@@ -77,7 +91,7 @@ do
    echo "Dowserx puts $var_4 waters. It'll put more waters later"
  fi 
 
- if [ $var_3 -lt 3 ] && [ $var_4 -lt 2 ]
+ if [ $var_3 -lt 3 ] #&& [ $var_4 -lt 2 ]
  then
    clause=false
  else
