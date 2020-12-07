@@ -9,8 +9,9 @@ do
 	echo "**** The MHCBI Pipeline ****"
 	echo "Please select your option"
 	echo "1 Set paths"
-	echo "2 Configure workdir"
-	echo "3 End pipeline"
+	echo "2 Set external program paths"
+	echo "3 Configure pipeline"
+	echo "4 End pipeline setup"
 	echo " "
 	echo " "
 	read input
@@ -22,18 +23,23 @@ do
 			echo "...going to the menu..."
 			;;
 		2)
-			echo "***Configuring work directory***"
+			echo "***Assigning external program paths***"
+			echo " "
+			./pro_paths.sh
+			;;
+		3)
+			echo "***Configuring program directories and folders***"
 			echo " "
 			./conf.sh
 			echo "...going to the menu..."
 			;;
-		3)
+		4)
 			echo "  Closing pipeline... bye "
 			exit 1
 			;;
 		*)
 			#clear
-			echo "Sorry, you need to choose an option among 1 up to 3"
+			echo "Sorry, you need to choose an option among 1 up to 4"
 			;;
 		''|*[!0-9]*)
 			#clear

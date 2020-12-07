@@ -3,6 +3,7 @@
 #caraortizmah@gmail.com
 
 FILE=paths.out
+FILE2=pro_paths.out
 
 if [ -f "$FILE" ]; then
 	MHCBI_PATH=$(grep "1 " ${FILE} | cut -d':' -f2)
@@ -12,9 +13,21 @@ if [ -f "$FILE" ]; then
 	WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
 	echo "path.out doesn't exist"
-	echo "Configure the MHCBI pipeline executig setup.sh and select option 2)"
+	echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
 	exit 1
 fi
+
+if [ -f "$FILE2" ]; then
+  MOPAC_PATH=$(grep "1 " ${FILE2} | cut -d':' -f2)
+  PKA_PATH=$(grep "2 " ${FILE2} | cut -d':' -f2)
+  VMD_PATH=$(grep "3 " ${FILE2} | cut -d':' -f2)
+  GAMESS_PATH=$(grep "4 " ${FILE2} | cut -d':' -f2)
+else
+  echo "pro_path.out doesn't exist"
+  echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
+  exit 1
+fi
+
 
 #echo "prueba de organizer.sh"
 #echo ${MHCBI_PATH}
@@ -26,6 +39,7 @@ fi
 #Stage 1
 cp ${PDB_NAME} optimizations/
 cd optimizations
+cp ../${FILE2} .
 cp ../source/org_all.sh .
 cp ../source/part1.sh .
 cp ../source/part2.sh .
@@ -49,6 +63,7 @@ cp ../../source/script_optH_to_optall.sh .
 
 #Stage 2
 cd ../../mutations/
+cp ../${FILE2} .
 cp ../source/addH_m.sh .
 cp ../source/listm.log .
 cp ../source/mutmaker.sh .
@@ -62,6 +77,7 @@ cp ../source/script_res_charges.sh .
 
 #Stage 3
 cd ../calculations/
+cp ../${FILE2} .
 cp ../source/exec_pka.sh .
 cp ../source/exec_test.sh .
 cp ../source/org_calc.sh .
@@ -74,3 +90,7 @@ cp ../source/script_fishing_pka.sh .
 cp ../source/script_H_charges.sh .
 cp ../source/script_let.sh .
 cp ../source/script_other_sp.sh .
+
+
+echo "****** MHCBI says: ******"
+echo "  All folders and scripts were organized"

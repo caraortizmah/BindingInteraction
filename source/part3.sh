@@ -29,4 +29,8 @@ cp -p 5th_step/input_Optall.arc 6th_step/org_coord.arc
 cd 6th_step/
 ./arc_to_pdb.sh org_coord.arc
 ./del_waters.sh org_coord.pdb org_coord.arc $name_f
-cd ..
+cd ../../
+
+mkdir -p output
+cp ${name_f}/6th_step/${name_f}_noW.arc output/
+cp ${name_f}/6th_step/${name_f}_noW.pdb output/

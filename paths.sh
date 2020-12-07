@@ -9,7 +9,6 @@
 #  This is the configuration pipeline through Shell Script, a straightforward to use it.
 #*************************************
 
-read -p "Enter the MOPAC path name : " mopac_path
 read -p "Enter the MHCBI path name : " pipeline_path
 read -p "Enter the pdb structure path : " pdb_path
 read -p "Enter the pdb structure name : " pdb_name
