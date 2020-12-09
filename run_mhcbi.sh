@@ -12,7 +12,7 @@ if [ -f "$FILE" ]; then
   WORK_PATH=$(grep "4 " ${FILE} | cut -d':' -f2)
   WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
-  echo "paths.out doesn't exist"
+  echo "path.out doesn't exist"
   echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
   exit 1
 fi
@@ -23,7 +23,7 @@ if [ -f "$FILE2" ]; then
   VMD_PATH=$(grep "3 " ${FILE2} | cut -d':' -f2)
   GAMESS_PATH=$(grep "4 " ${FILE2} | cut -d':' -f2)
 else
-  echo "pro_paths.out doesn't exist"
+  echo "pro_path.out doesn't exist"
   echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
   exit 1
 fi
@@ -31,8 +31,6 @@ fi
 cd optimizations
 
 arg1=$(echo "${WORK_PATH}/${WORK_NAME}/optimizations")
-
-chmod +x org_all.sh
 
 ./org_all.sh ${arg1} ${PDB_PATH} ${PDB_NAME} ${arg1}
 
@@ -48,8 +46,6 @@ cd ../mutations
 arg2=$(echo "${WORK_PATH}/${WORK_NAME}/mutations")
 name=$(awk -F '.pdb'  '{print $1}'  <<<  "${PDB_NAME}")
 
-chmod +x org_mut.sh
-
 ./org_mut.sh ${arg2} ${name}_noW listm.log
 
 cp -r tobe_charged ../calculations/
@@ -58,8 +54,6 @@ echo "****** MHCBI says: ******"
 echo "  Stage 2 finished..."
 
 cd ../calculations
-
-chmod +x org_calc.sh
 
 ./org_calc.sh
 

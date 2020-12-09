@@ -120,8 +120,7 @@ if [ -f "$FILE" ]; then
 ***
 EOF
 
-	#cp source/organizer.sh .
-	#./organizer.sh
+  cd ${MHCBI_PATH} #pro_paths.log in this directory
 
 else
 	echo "First of all set the list of directories"
@@ -181,7 +180,7 @@ if [ -f "$FILE2" ]; then
 	#GAMESS path
 	let cond=`grep -c "GAMESS path" pro_paths.log`
 	if [ ${cond} -eq 1 ]; then
-		GAMESS_PATH=$(grep "gamess path" pro_paths.log | cut -d':' -f2)
+		GAMESS_PATH=$(grep "GAMESS path" pro_paths.log | cut -d':' -f2)
 		if [[ -z "${GAMESS_PATH// }" ]] ; then
 			echo "gamess path is empty"
 		else
@@ -193,6 +192,8 @@ if [ -f "$FILE2" ]; then
 		echo "Something in pro_paths.log would be wrong. Set all paths again"
 	fi
 
+  cd ${WORK_PATH}/${WORK_NAME}/ #locating pro_paths.out in the same place to paths.out
+
   cat << EOF > pro_paths.out
 ***Program path List***
 ***Do not change any word in this file***
@@ -203,10 +204,15 @@ if [ -f "$FILE2" ]; then
 ***
 EOF
 
+
 	cp source/organizer.sh .
-	cp source/run_mhcbi.sh .
+	cp source/run.sh .
 	echo "**** Bear in mind: "
-	echo "Run the pipeline typing ./run_mhcbi.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
+	echo "Run the pipeline typing ./run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
+	echo "*** "
+	echo "    "
+	chmod +x organizer.sh
+	chmod +x run.sh
 	./organizer.sh
 
 else
@@ -216,3 +222,6 @@ else
 fi
 
 echo "  Overall configuration finished"
+echo "  Now you can test the MHCBI pipeline"
+echo "  "
+

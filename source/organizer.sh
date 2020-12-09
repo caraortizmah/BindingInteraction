@@ -12,7 +12,7 @@ if [ -f "$FILE" ]; then
 	WORK_PATH=$(grep "4 " ${FILE} | cut -d':' -f2)
 	WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
-	echo "path.out doesn't exist"
+	echo "paths.out doesn't exist"
 	echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
 	exit 1
 fi
@@ -23,7 +23,7 @@ if [ -f "$FILE2" ]; then
   VMD_PATH=$(grep "3 " ${FILE2} | cut -d':' -f2)
   GAMESS_PATH=$(grep "4 " ${FILE2} | cut -d':' -f2)
 else
-  echo "pro_path.out doesn't exist"
+  echo "pro_paths.out doesn't exist"
   echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
   exit 1
 fi

@@ -25,7 +25,7 @@ cat << EOF > pro_paths.log
 MOPAC path : $mopac_path
 Propka 3.1 path : $pka_path
 VMD path : $vmd_path
-GAMESS path : $gamess_name
+GAMESS path : $gamess_path
 
 ***
 
