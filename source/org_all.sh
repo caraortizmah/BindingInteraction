@@ -1,13 +1,16 @@
 #!/bin/bash
 
-arg="$1"
-#main_name="$2"
-dir_pdb="$2"
-name_pdb="$3"
-work_dir="$4"
+ARG="$1"
+DIR_PDB="$2"
+NAME_PDB="$3"
+WORK_DIR="$4"
 
-name_f="$(echo "$name_pdb" | cut -d'.' -f1)"
+VMD="$5"
+BABEL="$6"
+MOPAC="$7"
 
-./part1.sh $arg $dir_pdb $name_pdb $work_dir > $name_f.log
-./part2.sh $arg $name_pdb $work_dir >> $name_f.log # $dir_pdb $name_pdb $work_dir >> $name_f.log
-./part3.sh $arg $name_pdb $work_dir >> $name_f.log # $dir_pdb $name_pdb $work_dir >> $name_f.log
+name_f="$(echo "$NAME_PDB" | cut -d'.' -f1)"
+
+./part1.sh $ARG $DIR_PDB $NAME_PDB $WORK_DIR $VMD $BABEL > $name_f.log
+./part2.sh $ARG $NAME_PDB $WORK_DIR $MOPAC >> $name_f.log # $DIR_PDB $NAME_PDB $WORK_DIR >> $name_f.log
+./part3.sh $ARG $NAME_PDB $WORK_DIR $MOPAC >> $name_f.log # $DIR_PDB $NAME_PDB $WORK_DIR >> $name_f.log

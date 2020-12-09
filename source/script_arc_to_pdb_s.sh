@@ -4,12 +4,11 @@
 #caraortizmah@gmail.com
 #This program converts a .arc file into a .mop file using arguments in the name
 
-mopac16="/opt/mopac/MOPAC2016.exe" #Path of MOPAC program
 arg="$1"
 
 if [ -z "$arg" ] # cheking if the argument is in the execution of the script
 then
-  echo "It lacks one argument to execute the script"                                                  
+  echo "It lacks one argument to execute the script"
   echo "For instance: ./script_arc_to_pdb_s.sh file.arc"
   exit 1
 else

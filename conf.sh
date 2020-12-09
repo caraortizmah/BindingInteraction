@@ -13,6 +13,48 @@
 FILE=paths.log
 FILE2=pro_paths.log
 
+#requires
+
+echo "  "
+echo "****Warning****"
+echo "Make sure that you hace already installed the following programs:"
+echo " "
+echo "Linux text processing tools such as:"
+echo "  1. Grep"
+echo "  2. Cut "
+echo "  3. Awk "
+echo "  4. Sed "
+echo "The chemical softwares and toolboxes such as"
+echo "  5. Open Babel"
+echo "  6. VMD - Visual Molecular Dynamics"
+echo "  7. MOPAC - Molecular Orbital PACkage"
+echo "  8. UCSF Chimera"
+echo "  9. PROPKA 3.1"
+echo " 10. GAMESS - General Atomic and Molecular Electronic Structure System"
+echo " 11. python 2.7 or higher"
+echo "****Warning****"
+echo "  "
+
+count=0
+while [ $count -eq 0 ]
+do
+	read -p "Do you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
+	answer=${answer,,}
+
+	if [ $answer == "yes" ] || [ $answer == "y" ]; then
+		echo " *** "
+		echo " "
+    count=1
+	elif [ $answer == "no" ] || [ $answer == "n" ]; then
+		echo "Please make sure that you have installed all of required programs prior to run MHCBI pipeline"
+		echo " bye..."
+		exit 1;
+	else
+		echo "Please enter again your answer - yes (y) or no (n)"
+	fi
+
+done
+
 #work directory
 if [ -f "$FILE" ]; then
 
@@ -192,6 +234,36 @@ if [ -f "$FILE2" ]; then
 		echo "Something in pro_paths.log would be wrong. Set all paths again"
 	fi
 
+	#OpenBabel path
+	let cond=`grep -c "Babel path" pro_paths.log`
+	if [ ${cond} -eq 1 ]; then
+		BABEL_PATH=$(grep "Babel path" pro_paths.log | cut -d':' -f2)
+		if [[ -z "${BABEL_PATH// }" ]] ; then
+			echo "OpenBabel path is empty"
+		else
+		        BABEL_PATH=$(echo "$BABEL_PATH" | awk '$1=$1')
+			echo "BABEL_PATH finished" $BABEL_PATH
+		fi
+	else
+		echo "openbabel path was not detected"
+		echo "Something in pro_paths.log would be wrong. Set all paths again"
+	fi
+
+	#Chimera path
+	let cond=`grep -c "Chimera path" pro_paths.log`
+	if [ ${cond} -eq 1 ]; then
+		CHIMERA_PATH=$(grep "Chimera path" pro_paths.log | cut -d':' -f2)
+		if [[ -z "${CHIMERA_PATH// }" ]] ; then
+			echo "Chimera path is empty"
+		else
+		        CHIMERA_PATH=$(echo "$CHIMERA_PATH" | awk '$1=$1')
+			echo "CHIMERA_PATH finished" $CHIMERA_PATH
+		fi
+	else
+		echo "Chimera path was not detected"
+		echo "Something in pro_paths.log would be wrong. Set all paths again"
+	fi
+
   cd ${WORK_PATH}/${WORK_NAME}/ #locating pro_paths.out in the same place to paths.out
 
   cat << EOF > pro_paths.out
@@ -201,6 +273,8 @@ if [ -f "$FILE2" ]; then
 2 :$PKA_PATH
 3 :$VMD_PATH
 4 :$GAMESS_PATH
+5 :$BABEL_PATH
+6 :$CHIMERA_PATH
 ***
 EOF
 

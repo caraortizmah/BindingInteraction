@@ -13,6 +13,8 @@ read -p "Enter the MOPAC path : " mopac_path
 read -p "Enter the Propka 3.1 path : " pka_path
 read -p "Enter the VMD path : " vmd_path
 read -p "Enter the GAMESS path : " gamess_path
+read -p "Enter the OpenBabel path : " babel_path
+read -p "Enter the Chimera path : " chimera_path
 
 cat << EOF > pro_paths.log
 
@@ -26,6 +28,8 @@ MOPAC path : $mopac_path
 Propka 3.1 path : $pka_path
 VMD path : $vmd_path
 GAMESS path : $gamess_path
+Babel path : $babel_path
+Chimera path : $chimera_path
 
 ***
 

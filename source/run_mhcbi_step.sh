@@ -22,47 +22,93 @@ if [ -f "$FILE2" ]; then
   PKA_PATH=$(grep "2 " ${FILE2} | cut -d':' -f2)
   VMD_PATH=$(grep "3 " ${FILE2} | cut -d':' -f2)
   GAMESS_PATH=$(grep "4 " ${FILE2} | cut -d':' -f2)
+  BABEL_PATH=$(grep "5 " ${FILE2} | cut -d':' -f2)
+  CHIMERA_PATH=$(grep "6 " ${FILE2} | cut -d':' -f2)
 else
   echo "pro_paths.out doesn't exist"
   echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
   exit 1
 fi
 
-cd optimizations
 
-arg1=$(echo "${WORK_PATH}/${WORK_NAME}/optimizations")
+let input=0
 
-chmod +x org_all.sh
+while [ $input -ne 3 ]; 2> /dev/null
+do
+  echo "**** Running MHCBI step by step ****"
+  echo "Please select your option"
+  echo "Stage 1: Optimizations"
+  echo "Stage 2: Substitutions"
+  echo "Stage 3: Calculations"
+  echo " "
+  echo " "
+  read input
+  case $input in
+    1)
+      echo "***Running Stage 1***"
+      echo " "
+      cd optimizations
 
-./org_all.sh ${arg1} ${PDB_PATH} ${PDB_NAME} ${arg1}
+      arg1=$(echo "${WORK_PATH}/${WORK_NAME}/optimizations")
 
-cp output/*.arc ${WORK_PATH}/${WORK_NAME}/mutations/
-cp output/*.pdb ${WORK_PATH}/${WORK_NAME}/mutations/
+      chmod +x org_all.sh
 
+      ./org_all.sh ${arg1} ${PDB_PATH} ${PDB_NAME} ${arg1} ${VMD_PATH} ${BABEL_PATH} ${MOPAC_PATH}
 
-echo "****** MHCBI says: ******"
-echo "  Stage 1 finished..."
+      cp output/*.arc ${WORK_PATH}/${WORK_NAME}/mutations/
+      cp output/*.pdb ${WORK_PATH}/${WORK_NAME}/mutations/
+      cd ..
 
-cd ../mutations
+      echo "****** MHCBI says: ******"
+      echo "  Stage 1 finished..."
+      ;;
+    2)
+      echo "***Running Stage 2***"
+      echo " "
 
-arg2=$(echo "${WORK_PATH}/${WORK_NAME}/mutations")
-name=$(awk -F '.pdb'  '{print $1}'  <<<  "${PDB_NAME}")
+      cd mutations
 
-chmod +x org_mut.sh
+      arg2=$(echo "${WORK_PATH}/${WORK_NAME}/mutations")
+      name=$(awk -F '.pdb'  '{print $1}'  <<<  "${PDB_NAME}")
 
-./org_mut.sh ${arg2} ${name}_noW listm.log
+      chmod +x org_mut.sh
 
-cp -r tobe_charged ../calculations/
+      ./org_mut.sh ${arg2} ${name}_noW listm.log ${CHIMERA_PATH} ${MOPAC_PATH}
 
-echo "****** MHCBI says: ******"
-echo "  Stage 2 finished..."
+      cp -r tobe_charged ../calculations/
+      cd ..
 
-cd ../calculations
+      echo "****** MHCBI says: ******"
+      echo "  Stage 2 finished..."
+      ;;
+    3)
+      echo "***Running Stage 3***"
+      echo " "
 
-chmod +x org_calc.sh
+      cd calculations
 
-./org_calc.sh
+      chmod +x org_calc.sh
 
-echo "****** MHCBI says: ******"
-echo "  Stage 3 finished..."
+      ./org_calc.sh ${PKA_PATH} ${MOPAC_PATH}
+
+      cd ..
+
+      echo "****** MHCBI says: ******"
+      echo "  Stage 3 finished..."
+      ;;
+    4)
+      echo "  Closing pipeline... bye "
+      exit 1
+      ;;
+    *)
+      #clear
+      echo "Sorry, you need to choose an option among 1 up to 3"
+      ;;
+    ''|*[!0-9]*)
+      #clear
+      echo "Sorry, you need to choose a numerical option"
+      let input=0
+      ;;
+  esac
+done
 

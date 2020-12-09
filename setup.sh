@@ -40,9 +40,11 @@ do
 		4)
 			echo "***Testing pipeline***"
 			echo " "
+			cd test
 			chmod +x test_mhcbi.sh
 			./test_mhcbi.sh
 			echo "...going to the menu..."
+			cd ..
 			;;
 		5)
 			echo "  Closing pipeline... bye "

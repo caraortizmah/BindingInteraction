@@ -1,9 +1,22 @@
 #!/bin/bash
 
 arg="$1"
-##dir_pdb="$2"
 name_pdb="$2"
 work_dir="$3"
+MOPAC="$4"
+
+if [ -z "$arg" ] || [ -z "$name_pdb"  ] || [ -z "$work_dir"  ] || [ -z "$MOPAC"  ] #execution of this program waits an additional argument
+then
+  echo "It lacks one or several arguments to execute this script: "
+  echo "1. Optimization work path"
+  echo "2. PDB name"
+  echo "3. Work dir (in this case is the same 1st argument)"
+  echo "4. MOPAC executable path"
+  echo "Please read org_all.sh or go to https://github.com/caraortizmah/BindingInteraction for checking source code"
+  exit 1
+else
+  echo "Executing Part 3 from Stage 1"
+fi
 
 name_f="$(echo "$name_pdb" | cut -d'.' -f1)"
 
@@ -17,7 +30,7 @@ mkdir -p 5th_step
 cp -p $arg/source/script_optH_to_optall.sh 5th_step/
 cp -p 4th_step/input_OptH.arc 5th_step/
 cd 5th_step/
-./script_optH_to_optall.sh input_OptH.arc
+./script_optH_to_optall.sh input_OptH.arc ${MOPAC}
 cd ..
 
 #Optimizing all molecule restrictely * sixth step

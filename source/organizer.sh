@@ -22,6 +22,8 @@ if [ -f "$FILE2" ]; then
   PKA_PATH=$(grep "2 " ${FILE2} | cut -d':' -f2)
   VMD_PATH=$(grep "3 " ${FILE2} | cut -d':' -f2)
   GAMESS_PATH=$(grep "4 " ${FILE2} | cut -d':' -f2)
+  BABEL_PATH=$(grep "5 " ${FILE2} | cut -d':' -f2)
+  CHIMERA_PATH=$(grep "6 " ${FILE2} | cut -d':' -f2)
 else
   echo "pro_paths.out doesn't exist"
   echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"

@@ -1,12 +1,14 @@
 #!/bin/bash
 
-mopac16="/opt/mopac/MOPAC2016.exe"
-arg="$1"
+#mopac16="/opt/mopac/MOPAC2016.exe" - manual mode
 
-if [ -z "$arg" ]
+arg="$1"
+MOPAC="$2"
+
+if [ -z "$arg" ] || [ -z "$MOPAC" ]
 then
-  echo "It lacks one argument to execute the script"
-  echo "For instance: ./script_check_ch.sh output_mopac_file"
+  echo "It lacks one or several arguments to execute the script"
+  echo "For instance: ./script_check_ch.sh output_mopac_file and MOPAC path"
   exit 1
 else
   echo "Executing script_check_ch.sh over "$arg #they need also the input (.mop file)
@@ -25,11 +27,11 @@ then
       chain="$(echo $i | sed "s/[0-9]*//g")" #only returing the string
       rrnum=$rnum
       rnum=$rnum")"
- 
+
       mv "$mop" aux
       mv chosen_charges aux-chosen_charges
       awk -v x=$rrnum -v y=$chain '!($4==y && $3==x) {print $0}' aux-chosen_charges > chosen_charges
-      
+
       ./script_let.sh $mop
       #awk 'NR==1 {printf "%s\n\n\n",$0}' "$mop" > aux
 
@@ -37,11 +39,12 @@ then
 
     done
 
-    $mopac16 $mop
+    ${MOPAC} $mop
+    #$mopac16 $mop #manual mode
     echo "fin"
 
 else
-  
+
     echo "There is not any problem adding or removing H according on propka3.1"
 
 fi

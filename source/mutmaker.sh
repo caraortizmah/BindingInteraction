@@ -9,11 +9,11 @@ name="$2"
 listm="$3"
 
 if [ -z "$dir" ] || [ -z "$name" ] || [ -z "$listm" ]
-then                                                                                              
-  echo "It lacks one or two pdb file to execute the script"                                                  
-  echo "For instance: ./mutmaker.sh path name_pdb list_mutations"
-  exit 1                                                                                          
-else                                                                                              
+then
+  echo "It lacks one or several arguments to execute this script"
+  echo "For instance: ./mutmaker.sh path, name_pdb and list_mutations"
+  exit 1
+else
   echo "Creating a chimera script "
 fi
 
@@ -36,7 +36,7 @@ os.chdir("$dir")
 
 EOF
 
-let linen=$(grep -n "*** Begin" "$listm" | cut -d ":" -f1) #detecting the line number of the search 
+let linen=$(grep -n "*** Begin" "$listm" | cut -d ":" -f1) #detecting the line number of the search
 let linen=$linen+4 # line position of the features
 
 #llist=$(awk -v x=$linen 'NF=="4" && NR>=x {printf "%s%d\n", toupper($3),$2}' "$listm") #specific search using as filter NF and NR and returning 2ns and 3rd columns

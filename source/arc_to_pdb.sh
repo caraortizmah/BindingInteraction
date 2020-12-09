@@ -4,17 +4,16 @@
 #caraortizmah@gmail.com
 #This program changes a mopac output into a new input file with other specific instructions
 
-mopac16="/opt/mopac/MOPAC2016.exe" #Path of mopac program
 
 arg="$1"
 
 if [ -z "$arg" ] #execution of this program waits an additional argument
 then
-  echo "It lacks one argument to execute the script"                                                  
-  echo "For instance: ./script_arc_to_pdb.sh output.arc"
+  echo "It lacks one argument to execute this script"
+  echo "For instance: ./script_arc_to_pdb.sh arc file"
   exit 1
 else
-  echo "Executing script_arc_to_pdb.sh over "$arg #This argument is an output pdb file from dowser execution
+  echo "Executing arc_to_pdb.sh over "$arg #This argument is an output pdb file from dowser execution
 fi
 
 j="$(echo "$arg" | cut -d'.' -f1)" #Remove the extension (".arc") of the file

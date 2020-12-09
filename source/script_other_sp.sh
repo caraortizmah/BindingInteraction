@@ -4,12 +4,11 @@
 #caraortizmah@gmail.com
 #This program uses $arg to get the receptor and peptide input file
 
-mopac16="/opt/mopac/MOPAC2016.exe" #Path of MOPAC program
 arg="$1"
 
 if [ -z "$arg" ]
 then
-  echo "It lacks one argument to execute the script"                                                  
+  echo "It lacks one argument to execute the script"
   echo "For instance: ./script_other_sp.sh file"
   exit 1
 else
