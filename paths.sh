@@ -23,7 +23,6 @@ cat << EOF > paths.log
 
 ***PATHS
 
-MOPAC path : $mopac_path
 MHCBI path : $pipeline_path
 PDB path : $pdb_path
 PDB name : $pdb_name
