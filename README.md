@@ -2,11 +2,17 @@
 
 ```
     Date: 04/18/18
-    Modification: 12/02/20
     Author: Carlos Andrés Ortiz Mahecha
-    comment:
-     12/02/20 - Substantial changes in the installation and new kind of test based on MHC I results
+    
 ```
+[comment]: <> (****)
+
+[comment]: <> (Modification: 12/02/20)
+[comment]: <> (comment:)
+[comment]: <> (12/02/20 - Substantial changes in the installation and new kind of test based on MHC I results)
+[comment]: <> (Old install version were removed while is fixed)
+
+[comment]: <> (****)
 
 `MHC Binding Interaction (MHCBI)` is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry. 
 The MHCBI has been used with receptor-ligand complexes, such as major histocompatibility complex (MHC) proteins. 
@@ -78,15 +84,15 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
     $ ./clean.sh
 
 
-<> (Option 2:)
+[comment]: <> (Option 2:)
 
-<> (1st step: Install python requirements if necessary (it could take several minutes) $ make require)
+[comment]: <> (1st step: Install python requirements if necessary (it could take several minutes) $ make require)
     
-<> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
+[comment]: <> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
 
-<> (3rd step: Prepare folders and other bash programs before installing the `MHCBI` $ make init)
+[comment]: <> (3rd step: Prepare folders and other bash programs before installing the `MHCBI` $ make init)
     
-<> (4th step: Install BindingInteraction    $ sudo python setup.py install)
+[comment]: <> (4th step: Install BindingInteraction    $ sudo python setup.py install)
 
 
 ### Requirements
