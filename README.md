@@ -77,25 +77,17 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
     $ cd MHCBI_path (in MHCBI directory)
     $ ./clean.sh
 
-```
-Option 2:
 
-1st step: Install python requirements if necessary (it could take several minutes)
+<> (Option 2:)
 
-    $ make require
+<> (1st step: Install python requirements if necessary (it could take several minutes) $ make require)
     
-2nd step: Configure the installation program and scratch path
+<> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
 
-    $ ./configure -p 'program_path' -s 'scratch_path'
-
-3rd step: Prepare folders and other bash programs before installing the `MHCBI`
-
-    $ make init
+<> (3rd step: Prepare folders and other bash programs before installing the `MHCBI` $ make init)
     
-4th step: Install BindingInteraction
+<> (4th step: Install BindingInteraction    $ sudo python setup.py install)
 
-    $ sudo python setup.py install
-```
 
 ### Requirements
 
