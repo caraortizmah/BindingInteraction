@@ -16,19 +16,14 @@ read -p "Enter the path where to do this work : " work_dir
 read -p "Enter the name of your work : " work_name
 
 cat << EOF > paths.log
-
 ***List of directories:
 ----You can change paths only modifying this file
 !!!!Do not remove other parts of this file
-
 ***PATHS
-
 MHCBI path : $pipeline_path
 PDB path : $pdb_path
 PDB name : $pdb_name
 Work path : $work_dir
 Work name : $work_name
-
 ***
-
 EOF

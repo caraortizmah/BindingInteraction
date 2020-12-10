@@ -55,7 +55,7 @@ do
 
 done
 
-#work directory
+#MHCBI directory
 if [ -f "$FILE" ]; then
 
 	#Main path
@@ -145,7 +145,10 @@ if [ -f "$FILE" ]; then
 	mkdir -p ${WORK_NAME}
 	cd ${MHCBI_PATH}
 	cp -r source/ ${WORK_PATH}/${WORK_NAME}
-	cd ${WORK_PATH}/${WORK_NAME}/
+	cd ${WORK_PATH}/${WORK_NAME}/source/
+	chmod +x *.sh #giving permissions
+	chmod +x *.tcl
+	cd ../
 	cp ${PDB_PATH}/${PDB_NAME} .
 	mkdir -p optimizations
 	mkdir -p mutations
