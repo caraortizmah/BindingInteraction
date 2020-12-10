@@ -86,7 +86,7 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
 
 [comment]: <> (Option 2:)
 
-[comment]: <> (1st step: Install python requirements if necessary (it could take several minutes) $ make require)
+[comment]: <> (1st step: Install python requirements if necessary it could take several minutes $ make require)
     
 [comment]: <> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
 
