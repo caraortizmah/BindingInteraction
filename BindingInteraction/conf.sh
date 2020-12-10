@@ -292,6 +292,9 @@ EOF
 	chmod +x run.sh
 	./organizer.sh
 
+	echo "For running type: cd "${WORK_PATH}/${WORK_NAME}/
+	echo "and then type ./run.sh there"
+
 else
 	echo "Error: set the external program paths"
 	echo "(execute setup.sh and select option 2)"
