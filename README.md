@@ -3,7 +3,16 @@
 ```
     Date: 04/18/18
     Author: Carlos Andrés Ortiz Mahecha
+    
 ```
+[comment]: <> (****)
+
+[comment]: <> (Modification: 12/02/20)
+[comment]: <> (comment:)
+[comment]: <> (12/02/20 - Substantial changes in the installation and new kind of test based on MHC I results)
+[comment]: <> (Old install version were removed while is fixed)
+
+[comment]: <> (****)
 
 `MHC Binding Interaction (MHCBI)` is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry. 
 The MHCBI has been used with receptor-ligand complexes, such as major histocompatibility complex (MHC) proteins. 
@@ -49,33 +58,42 @@ For installing the `MHCBI` pipeline, follow the next steps:
 
 Option 1:
 
-1st step: Set paths and configure all scripts in a work directory
+1st step: Initialize the `MHCBI` pipeline
+
+    $ chmod +x init.sh
+    $ ./init.sh
+
+2nd step: Configure all pipeline scripts and set paths for external program and work directory
 
     $ ./setup.sh
     
-2nd step: Execute the "organizers" script for the three stages of the pipeline
+3nd step: Complete all steps in order
+ 
+    1. Paths for the `MHCBI` pipeline, work directory and PDB structure directory. 
+    2. Paths for required external programs.
+    3. Configuring pipeline for running.
+    4. Testing pipeline.
 
-    $ ./org_all.sh
-    $ ./org_mut.sh
-    $ ./org_calc.sh
+4th step: Follow the instructions for running pipeline in the designated place 
 
-Option 2:
+    $ ./run.sh
 
-1st step: Install python requirements if necessary (it could take several minutes)
+Optional step: For cleaning pipeline to re-configure or make any git procedure
 
-    $ make require
+    $ cd MHCBI_path (in MHCBI directory)
+    $ ./clean.sh
+
+
+[comment]: <> (Option 2:)
+
+[comment]: <> (1st step: Install python requirements if necessary it could take several minutes $ make require)
     
-2nd step: Configure the installation program and scratch path
+[comment]: <> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
 
-    $ ./configure -p 'program_path' -s 'scratch_path'
-
-3rd step: Prepare folders and other bash programs before installing the `MHCBI`
-
-    $ make init
+[comment]: <> (3rd step: Prepare folders and other bash programs before installing the `MHCBI` $ make init)
     
-4th step: Install BindingInteraction
+[comment]: <> (4th step: Install BindingInteraction    $ sudo python setup.py install)
 
-    $ sudo python setup.py install
 
 ### Requirements
 
@@ -93,7 +111,7 @@ Option 2:
    
 * [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
    
-* [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
+* [Facio FMO util (optional)](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
 
 ### Reference and Citation
