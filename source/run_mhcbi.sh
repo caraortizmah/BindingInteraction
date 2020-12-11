@@ -51,7 +51,7 @@ name=$(awk -F '.pdb'  '{print $1}'  <<<  "${PDB_NAME}")
 
 chmod +x org_mut.sh
 
-./org_mut.sh ${arg2} ${name}_noW listm.log ${CHIMERA_PATH} ${MOPAC_PATH}
+./org_mut.sh ${arg2} ${name}_noW.pdb listm.log ${CHIMERA_PATH} ${MOPAC_PATH}
 
 cp -r tobe_charged ../calculations/
 
