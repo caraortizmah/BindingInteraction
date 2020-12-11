@@ -127,39 +127,23 @@ if [ -f "$FILE" ]; then
 
   let input=0
 
-  while [ $input -ne 3 ]; 2> /dev/null
-  do
-    echo "Please select an option"
-    echo "1. Short test"
-    echo "2. Straight test"
+  echo "Please select an option"
+  echo "1. Short test"
+  echo "2. Straight test"
+  echo " "
+  read input
+  if [ ${input} == "1" ]; then
+    echo "***Using a fraction of 1BX2***"
+    PDB_NAME="1bx2-shortx2.pdb"
+    WORK_NAME="1bx2-short_test"
     echo " "
-    read input
-    case $input in
-      1)
-        echo "***Using a fraction of 1BX2***"
-        PDB_NAME="1bx2-shortx2.pdb"
-        WORK_NAME="1bx2-short_test"
-        echo " "
-        ;;
-      2)
-        echo "***Using 3OXS***"
-        PDB_NAME="example-3oxs.pdb"
-        WORK_NAME="3oxs_test"
-        echo " "
-        ;;
-      3)
-        echo "  Closing pipeline... bye "
-        exit 1
-        ;;
-      *)
-        echo "Sorry, you need to choose an option among 1 up to 3"
-        ;;
-      ''|*[!0-9]*)
-        echo "Sorry, you need to choose a numerical option"
-        let input=0
-        ;;
-    esac
-  done
+  elif [ ${input} == "2" ]; then
+    echo "***Using 3OXS***"
+    PDB_NAME="example-3oxs.pdb"
+    WORK_NAME="3oxs_test"
+  else
+    echo "Sorry, you need to choose an option between 1 and 2"
+  fi
 
   #change of paths for test
   PDB_PATH=$(echo "${MHCBI_PATH}/test/")
