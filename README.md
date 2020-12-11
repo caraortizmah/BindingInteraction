@@ -109,7 +109,7 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
    
 * [Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
 
-    #Optional
+    Optional
    
 * [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
    
