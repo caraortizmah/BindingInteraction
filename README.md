@@ -56,7 +56,7 @@ Install Dowser: oficial page is no longer working properly ([Hermans Dowser](htt
 The `MHCBI` pipeline is mostly written in Shell script and includes Python and Tcl languages for managing programme operations in graphical interface software, such as Dowser in VMD and Dunbrack’s library in Chimera.
 For installing the `MHCBI` pipeline, follow the next steps:
 
-Option 1:
+[comment]: <> (Option 1:)
 
 1st step: Initialize the `MHCBI` pipeline
 
