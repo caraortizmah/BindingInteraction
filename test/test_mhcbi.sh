@@ -42,9 +42,9 @@ done
 #cleaning previous test
 
 echo "cleaning previous test"
-rm *.out
-rm *.log
-rm conf.sh
+rm -f *.out
+rm -f *.log
+rm -f conf.sh
 rm -rf workdir_test
 
 
