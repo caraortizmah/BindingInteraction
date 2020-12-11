@@ -108,10 +108,12 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
 * [Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
    
 * [Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
+
+    #Optional
    
 * [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
    
-* [Facio FMO util (optional)](http://zzzfelis.sakura.ne.jp/) - Page of Facio
+* [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
 
 
 ### Reference and Citation
