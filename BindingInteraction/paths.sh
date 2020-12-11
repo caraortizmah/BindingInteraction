@@ -9,10 +9,11 @@
 #  This is the configuration pipeline through Shell Script, a straightforward to use it.
 #*************************************
 
-read -p "Enter the MHCBI path name : " pipeline_path
+echo "**********Setting work paths**********"
+
 read -p "Enter the pdb structure path : " pdb_path
 read -p "Enter the pdb structure name : " pdb_name
-read -p "Enter the path where to do this work : " work_dir
+read -p "Enter the to-do work path : " work_dir
 read -p "Enter the name of your work : " work_name
 
 cat << EOF > paths.log
@@ -20,7 +21,6 @@ cat << EOF > paths.log
 ----You can change paths only modifying this file
 !!!!Do not remove other parts of this file
 ***PATHS
-MHCBI path : $pipeline_path
 PDB path : $pdb_path
 PDB name : $pdb_name
 Work path : $work_dir

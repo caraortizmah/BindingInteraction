@@ -12,11 +12,12 @@ rm -f paths.log
 rm -f *.out
 rm -rf workdir_test
 cd ../BindingInteraction/
-mv -f ../clean.sh .
-mv ../conf.sh .
-mv ../paths.sh .
-mv ../pro_paths.sh .
-mv ../setup.sh .
+[ -f ../clean.sh ] && mv ../clean.sh .
+[ -f ../conf.sh ] && mv ../conf.sh .
+[ -f ../paths.sh ] && mv ../paths.sh .
+[ -f ../pro_path.sh ] && mv ../pro_paths.sh .
+[ -f ../setup.sh ] && mv ../setup.sh .
+[ -f ../install.sh ] && mv ../install.sh .
 chmod -x *.sh
 
 echo "****** MHCBI says: ******"

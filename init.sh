@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#*************************************
+# The MCH Binding Interaction (MHCBI) pipeline
+# @author Carlos Andres Ortiz-Mahecha
+#  (email: caraortizmah@gmail.com)
+#  (email: caraortizmah@unal.edu.co)
+# @comment:
+#  This is the initial program enabling installation, setup, and running.
+#*************************************
+
 #****************************************************************************************
 #******   The Major Histocompatibility Complex Binding Interaction  pipeline       ******
 #******                                                                            ******
@@ -21,10 +30,10 @@ echo "|||   https://github.com/caraortizmah/BindingInteraction   |||"
 echo "|||                                                        |||"
 echo "**************************************************************"
 
-cd BindingInteraction/
+mv BindingInteraction/install.sh .
+mv BindingInteraction/clean.sh .
 chmod +rx *.sh
-mv *.sh ../
-cd ..
+./install.sh
 
 echo ""
 echo "****** MHCBI says: ******"

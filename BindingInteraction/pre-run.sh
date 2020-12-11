@@ -11,24 +11,40 @@
 
 let input=0
 
-while [ $input -ne 3 ]; 2> /dev/null
+while [ $input -ne 5 ]; 2> /dev/null
 do
-	echo "**********The MHCBI Setup**********"
+	echo "**** The MHCBI Pipeline ****"
 	echo "Please select your option"
-	echo "1 Set external program paths"
-	echo "2 Test pipeline"
-	echo "3 End pipeline setup"
+	echo "1 Set work paths"
+	echo "2 Set external program paths"
+	echo "3 Configure pipeline"
+	echo "4 Test pipeline"
+	echo "5 End pipeline setup"
 	echo " "
 	echo " "
 	read input
 	case $input in
 		1)
-			echo "***Assigning external program paths***"
+			echo "***Assigning paths***"
 			echo " "
-			chmod +x pro_paths.sh
-			./pro_paths.sh
+			chmod +x paths.sh
+			./paths.sh
+			echo "...going to the menu..."
 			;;
 		2)
+			echo "***Assigning external program paths***"
+			echo " "
+			./pro_paths.sh
+			chmod +x pro_paths.sh
+			;;
+		3)
+			echo "***Configuring program directories and folders***"
+			echo " "
+			chmod +x conf.sh
+			./conf.sh
+			echo "...going to the menu..."
+			;;
+		4)
 			echo "***Testing pipeline***"
 			echo " "
 			cd test
@@ -37,13 +53,13 @@ do
 			echo "...going to the menu..."
 			cd ..
 			;;
-		3)
+		5)
 			echo "  Closing pipeline... bye "
 			exit 1
 			;;
 		*)
 			#clear
-			echo "Sorry, you need to choose an option among 1 up to 3"
+			echo "Sorry, you need to choose an option among 1 up to 5"
 			;;
 		''|*[!0-9]*)
 			#clear

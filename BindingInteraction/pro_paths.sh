@@ -9,12 +9,18 @@
 #
 #*************************************
 
+echo "**********Setting external program paths**********"
+
 read -p "Enter the MOPAC path : " mopac_path
 read -p "Enter the Propka 3.1 path : " pka_path
 read -p "Enter the VMD path : " vmd_path
-read -p "Enter the GAMESS path : " gamess_path
 read -p "Enter the OpenBabel path : " babel_path
 read -p "Enter the Chimera path : " chimera_path
+read -p "Enter the GAMESS path (optional): " gamess_path
+
+if [ -z "$gamess_path" ]; then
+  gamess_path="no-gamess"
+fi
 
 cat << EOF > pro_paths.log
 ***List of external program directories:
