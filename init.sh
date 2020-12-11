@@ -33,9 +33,10 @@ echo "**************************************************************"
 mv BindingInteraction/install.sh .
 mv BindingInteraction/clean.sh .
 chmod +rx *.sh
+echo "****** MHCBI says: ******"
+echo "  Starting pipeline "
 ./install.sh
 
 echo ""
-echo "****** MHCBI says: ******"
-echo "  Pipeline initialized"
+echo "Once you are in the MHCBI path"
 echo "  Type ./setup.sh"
