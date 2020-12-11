@@ -41,11 +41,11 @@ To get the git version type
     $ git clone https://github.com/caraortizmah/bindinginteraction.git
 
 
-### Documentation and usage
+[comment]: <> (### Documentation and usage)
 
-All information for installing the pipeline can be obtained by typing:
+[comment]: <> (All information for installing the pipeline can be obtained by typing:)
 
-    $ make howto
+[comment]: <> (    $ make howto)
     
 ### Preliminary issues
 
