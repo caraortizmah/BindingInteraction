@@ -95,25 +95,34 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
 [comment]: <> (4th step: Install BindingInteraction    $ sudo python setup.py install)
 
 
+### Requirements - Linux text processing tool
+
+* Grep 
+* Cut
+* Awk
+* Sed
+
 ### Requirements
 
-* [Python 2.7 or higher](https://www.python.org/downloads/) - Page of python
+* [Open Babel](http://openbabel.org/wiki/Main_Page) - Open Babel page
 
-* [VMD version 1.9.1 (February 1, 2012)](https://www.ks.uiuc.edu/Research/vmd/) - Page of VMD
+* [Python 2.7 or higher](https://www.python.org/downloads/) - Python page
+
+* [VMD version 1.9.1 (February 1, 2012)](https://www.ks.uiuc.edu/Research/vmd/) - VMD page
    
 * [Dowser plugin](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser in VMD
    
-* [MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - Page of MOPAC
+* [MOPAC 2016](http://openmopac.net/Download_MOPAC_Executable_Step2.html) - MOPAC page
    
-* [Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Page of Chimera
+* [Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Chimera page
    
 * [Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
 
     Optional
    
-* [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group 
+* [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group page
    
-* [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Page of Facio
+* [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Facio page
 
 
 ### Reference and Citation
