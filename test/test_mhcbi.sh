@@ -47,13 +47,6 @@ rm -f *.log
 rm -f conf.sh
 rm -rf workdir_test
 
-mkdir -p workdir_test
-#cp ../paths.log .
-cp ../conf.sh .
-cp ../source/get_propaths.sh .
-chmod +x get_propaths.sh
-./get_propaths.sh
-
 while :
 do
 
@@ -79,13 +72,13 @@ do
     break
   else
     echo "Sorry, you need to choose an option (1, 2 or 3)"
+    exit 1
   fi
 
 done
 
 PDB_PATH=$PWD
 WORK_PATH=$(echo "${PWD}/workdir_test")
-
 
 cat << EOF > paths.out
 ***Path List***
@@ -98,9 +91,16 @@ cat << EOF > paths.out
 ***
 EOF
 
+mkdir -p workdir_test
+cp ../pro_paths.log .
+cp ../conf.sh .
+cp ../source/get_propaths.sh .
+chmod +x get_propaths.sh
+./get_propaths.sh
+
 cd ${WORK_PATH}
 mkdir -p ${WORK_NAME}
-cp -r ../source/ ${WORK_PATH}/${WORK_NAME}
+cp -r ../../source/ ${WORK_PATH}/${WORK_NAME}
 cd ${WORK_PATH}/${WORK_NAME}/source/
 chmod +x *.sh #giving permissions
 chmod +x *.tcl
