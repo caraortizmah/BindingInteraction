@@ -17,7 +17,7 @@ FILE2=pro_paths.log
 
 echo "  "
 echo "****Warning****"
-echo "Make sure that you hace already installed the following programs:"
+echo "Make sure that you have already installed the following programs:"
 echo " "
 echo "Linux text processing tools such as:"
 echo "  1. Grep"

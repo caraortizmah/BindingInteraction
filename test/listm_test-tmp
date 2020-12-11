@@ -1,0 +1,28 @@
+||
+|| Author: Carlos Andres Ortiz Mahecha
+||  caraortizmah@gmail.com
+||  #This is a template for listing residue changes to create new pdbs. This template is part of
+||   the MHCBI pipeline.
+||=======================================================================================================||
+||- Mutation format                | - Example 1:                - | - Example 2:                      - ||
+||- Features:                      | - 1 pdb name per mutation   - | - 1 pdb name per several muations - ||
+||- (1). Name file (3 letters)     | ----------------------------- | ----------------------------------- ||
+||- (2). Residue name (3 letters)  |    (1)    (2)    (3)    (4)   |    (1)     (2)      (3)      (4)    ||
+||- (3). Residue number            |  ---------------------------  |  ---------------------------------  ||
+||- (4). Residue chain             |    A11    Ala     11     p    |    A11     Ala       11       p     ||
+||- Each row has to be filled out  |    A15    Glu     15     a    |    efg     Lys       19       b     ||
+||- regarding these four features  |    abc    His    254     b    |    A11     Glu       15       a     ||
+||-------------------------------- | ----------------------------- | ----------------------------------- ||
+||=======================================================================================================||
+
+****Do not delete the template****
+*** Fill out pdbs' features here
+*** Begin  - EXAMPLE FOR TESTING
+-----------------------------------
+   (1)     (2)      (3)      (4)
+-----------------------------------
+   P02     Lys      12        p
+   P06     Asp      16        p
+-----------------------------------
+*** End
+
