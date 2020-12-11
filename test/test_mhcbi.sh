@@ -174,7 +174,6 @@ EOF
   cp ../../pro_paths.out .
   mkdir -p optimizations
   mkdir -p mutations
-  cp ../../listm_test-tmp mutations/
   mkdir -p calculations
 
   cd ${WORK_PATH}/${WORK_NAME}/
@@ -186,6 +185,7 @@ EOF
   echo "    "
 
   ./organizer.sh
+  cp ../../listm_test-tmp mutations/listm.log
   ./run_mhcbi.sh
 
 else
