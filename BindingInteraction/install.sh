@@ -50,8 +50,8 @@ if [ "$pipeline_path" != "$PWD" ]; then
 	chmod +x *.sh
 	cp -r $git/source .
 	cp -r $git/test .
-	cp source/run.sh .
-	cp source/organizer.sh .
+	#cp source/pre-run.sh .
+	#cp source/organizer.sh .
 	echo "Go to the new directory"
 	echo "Type cd "$pipeline_path"/MHCBI/"
 
@@ -59,14 +59,14 @@ else
 
   echo "***No additional operations were needed..."
   cd BindingInteraction/
-  mv setup.sh ../
-  mv paths.sh ../
-  mv pro_paths.sh ../
-  mv conf.sh ../
-  mv clean.sh ../
+  mv -f setup.sh ../
+  mv -f paths.sh ../
+  mv -f pro_paths.sh ../
+  mv -f conf.sh ../
+  mv -f clean.sh ../
   cd ../
   chmod +x *.sh
-  cd ../
+  #cp source/pre-run.sh .
 	echo "Stay in the same directory: "$PWD
 
 fi

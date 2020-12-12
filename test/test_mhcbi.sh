@@ -116,12 +116,13 @@ cp ../../paths.out .
 cd ${WORK_PATH}/${WORK_NAME}/
 cp source/organizer.sh .
 cp source/run_mhcbi.sh .
-echo "**** Bear in mind: "
-echo "Run the pipeline typing ./run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
-echo "*** "
-echo "    "
 
 ./organizer.sh
 cp ../../listm_test-tmp mutations/listm.log
 ./run_mhcbi.sh
+
+echo "**** Bear in mind: "
+echo "Run the pipeline typing ./pre-run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
+echo "*** "
+echo "    "
 

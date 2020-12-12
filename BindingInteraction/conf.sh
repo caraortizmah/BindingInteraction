@@ -169,7 +169,7 @@ EOF
 
 else
 	echo "First of all set the list of directories"
-	echo "(execute setup.sh and select option 1)"
+	echo "(execute pre-run.sh and select option 1)"
 	exit 1
 fi
 
@@ -283,21 +283,21 @@ EOF
 
 
 	cp source/organizer.sh .
-	cp source/run.sh .
+	cp source/pre-run.sh .
 	echo "**** Bear in mind: "
-	echo "Run the pipeline typing ./run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
+	echo "To run the work pipeline, type: ./pre-run.sh (option 3) in this path: " ${WORK_PATH}/${WORK_NAME}/
 	echo "*** "
 	echo "    "
 	chmod +x organizer.sh
-	chmod +x run.sh
+	chmod +x pre-run.sh
 	./organizer.sh
 
 	echo "For running type: cd "${WORK_PATH}/${WORK_NAME}/
-	echo "and then type ./run.sh there"
+	echo "and then type ./pre-run.sh (option 3)"
 
 else
 	echo "Error: set the external program paths"
-	echo "(execute setup.sh and select option 2)"
+	echo "(execute setup.sh and select option 1)"
 	exit 1
 fi
 

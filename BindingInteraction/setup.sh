@@ -35,10 +35,13 @@ do
 			chmod +x test_mhcbi.sh
 			./test_mhcbi.sh
 			echo "...going to the menu..."
+			echo " "
+			echo
 			cd ..
 			;;
 		3)
-			echo "  Closing pipeline... bye "
+      echo "For configuring work paths and running the pipeline type: ./pre-run.sh"
+			echo "  Closing setup... bye "
 			exit 1
 			;;
 		*)

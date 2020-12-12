@@ -6,20 +6,19 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#  This is the setup for configuring external program paths and doing tests.
+#  This is the setup for configuring work paths and running pipeline.
 #*************************************
 
 let input=0
 
-while [ $input -ne 5 ]; 2> /dev/null
+while [ $input -ne 4 ]; 2> /dev/null
 do
-	echo "**** The MHCBI Pipeline ****"
+	echo "**********The MHCBI work**********"
 	echo "Please select your option"
 	echo "1 Set work paths"
-	echo "2 Set external program paths"
-	echo "3 Configure pipeline"
-	echo "4 Test pipeline"
-	echo "5 End pipeline setup"
+	echo "2 Configure MHCBI work"
+	echo "3 Run"
+	echo "4 End pipeline work"
 	echo " "
 	echo " "
 	read input
@@ -32,34 +31,28 @@ do
 			echo "...going to the menu..."
 			;;
 		2)
-			echo "***Assigning external program paths***"
-			echo " "
-			./pro_paths.sh
-			chmod +x pro_paths.sh
-			;;
-		3)
 			echo "***Configuring program directories and folders***"
 			echo " "
 			chmod +x conf.sh
 			./conf.sh
 			echo "...going to the menu..."
 			;;
-		4)
-			echo "***Testing pipeline***"
+		3)
+			echo "***Running work***"
 			echo " "
-			cd test
-			chmod +x test_mhcbi.sh
-			./test_mhcbi.sh
+			cp source/run.sh .
+			chmod +x run.sh
+			./run.sh
 			echo "...going to the menu..."
 			cd ..
 			;;
-		5)
-			echo "  Closing pipeline... bye "
+		4)
+			echo "  Closing the MHCBI pipeline... bye "
 			exit 1
 			;;
 		*)
 			#clear
-			echo "Sorry, you need to choose an option among 1 up to 5"
+			echo "Sorry, you need to choose an option among 1 up to 4"
 			;;
 		''|*[!0-9]*)
 			#clear

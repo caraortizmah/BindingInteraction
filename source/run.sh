@@ -22,6 +22,7 @@ do
       chmod +x run_mhcbi.sh
       ./run_mhcbi.sh
       echo "...going to the menu..."
+      rm -f run_mhcbi.sh
       ;;
     2)
       echo "***Assigning external program paths***"
@@ -29,6 +30,8 @@ do
       cp source/run_mhcbi_step.sh .
       chmod +x run_mhcbi_step.sh
       ./run_mhcbi_step.sh
+      echo "...going to the menu..."
+      rm -f run_mhcbi_step.sh
       ;;
     3)
       echo "  Closing pipeline... bye "
