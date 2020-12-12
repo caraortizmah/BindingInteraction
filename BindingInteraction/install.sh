@@ -59,8 +59,13 @@ else
 
   echo "***No additional operations were needed..."
   cd BindingInteraction/
+  mv setup.sh ../
+  mv paths.sh ../
+  mv pro_paths.sh ../
+  mv conf.sh ../
+  mv clean.sh ../
+  cd ../
   chmod +x *.sh
-  mv *.sh ../
   cd ../
 	echo "Stay in the same directory: "$PWD
 

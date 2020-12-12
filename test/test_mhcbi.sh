@@ -111,6 +111,7 @@ cp ../../pro_paths.out .
 mkdir -p optimizations
 mkdir -p mutations
 mkdir -p calculations
+cp ../../paths.out .
 
 cd ${WORK_PATH}/${WORK_NAME}/
 cp source/organizer.sh .
@@ -120,7 +121,6 @@ echo "Run the pipeline typing ./run.sh in this path: " ${WORK_PATH}/${WORK_NAME}
 echo "*** "
 echo "    "
 
-exit 1
 ./organizer.sh
 cp ../../listm_test-tmp mutations/listm.log
 ./run_mhcbi.sh

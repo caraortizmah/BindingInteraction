@@ -104,10 +104,8 @@ if [ -f "$FILE2" ]; then
     echo "Something in pro_paths.log would be wrong. Set all paths again"
   fi
 
-  cd ${WORK_PATH}/${WORK_NAME}/ #locating pro_paths.out in the same place to paths.out
-
-  cat << EOF > pro_paths.out
-***Program path List***
+cat << EOF > pro_paths.out
+***Program path List***"
 ***Do not change any word in this file***
 1 :$MOPAC_PATH
 2 :$PKA_PATH
