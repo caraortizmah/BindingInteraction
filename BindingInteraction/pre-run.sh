@@ -40,11 +40,28 @@ do
 		3)
 			echo "***Running work***"
 			echo " "
-			cp source/run.sh .
-			chmod +x run.sh
-			./run.sh
+			while :
+			do
+				read -p "Did you previously perform steps 1 and 2 from pre-run.sh? (Yes(Y/y)/No(N/n)) " answer
+				answer=${answer,,}
+
+				if [ -z "${answer}" ]; then
+					echo "Empty answer, please enter again your answer - yes (y) or no (n)"
+				elif [ $answer == "yes" ] || [ $answer == "y" ]; then
+					echo " "
+					cp source/run.sh .
+			    chmod +x run.sh
+			    ./run.sh
+					break
+				elif [ $answer == "no" ] || [ $answer == "n" ]; then
+					echo " "
+					read -p "Please, first of all complete steps 1 and 2 (in that order) prior to run your work "
+					break
+				else
+					echo "Please enter again your answer - yes (y) or no (n)"
+				fi
+			done			
 			echo "...going to the menu..."
-			cd ..
 			;;
 		4)
 			echo "  Closing the MHCBI pipeline... bye "

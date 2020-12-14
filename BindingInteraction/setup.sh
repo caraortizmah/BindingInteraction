@@ -40,6 +40,7 @@ do
 			cd ..
 			;;
 		3)
+      echo "In this directory ( "$PWD " ):"
       echo "For configuring work paths and running the pipeline type: ./pre-run.sh"
 			echo "  Closing setup... bye "
 			exit 1

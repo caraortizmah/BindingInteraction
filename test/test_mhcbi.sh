@@ -115,10 +115,12 @@ cp ../../paths.out .
 
 cd ${WORK_PATH}/${WORK_NAME}/
 cp source/organizer.sh .
+cp source/tester.sh .
 cp source/run_mhcbi.sh .
 
 ./organizer.sh
 cp ../../listm_test-tmp mutations/listm.log
+#./tester.sh
 ./run_mhcbi.sh
 
 echo "**** Bear in mind: "
