@@ -1,20 +1,61 @@
 <!-- #######                     BindingInteraction                  #########-->
+<p>&nbsp;</p>
 <!-- #######  https://github.com/caraortizmah/BindingInteraction.git #########-->
 <p>*********************************************</p>
-<h1 style="color: #5e9ca0;">BindingInteraction</h1>
-<h2 style="color: #2e6c80;">You need the following programs before installing BindingInteraction:</h2>
+<h1 style="color: #5e9ca0;"><span style="color: #999999;">About</span> the <span style="color: #3366ff;">MHC</span> BindingInteraction pipeline</h1>
+<p style="color: #2e6c80;"><span style="background-color: #99ccff;"><code><span style="background-color: #ccffcc;">The MHC Binding Interaction (MHCBI)</span></code></span>&nbsp;is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry. The <span style="background-color: #ccffcc;">MHCBI</span> has been used with receptor-ligand complexes, such as major histocompatibility complex (MHC) proteins. It can therefore be extrapolated to other non-covalent interaction systems (i.e. MHC-like structures).</p>
+<p style="color: #2e6c80;">Applications related to using MHCBI pipeline can be found in the following work:</p>
+<p style="padding-left: 30px;">Ortiz-Mahecha, Carlos A., Boh&oacute;rquez, Hugo J., Agudelo, William A., Patarroyo, Manuel A., Patarroyo, Manuel E. and Su&aacute;rez, Carlos F.&nbsp;<a href="https://doi.org/10.1021/acs.jcim.9b00672" rel="nofollow">"Assessing peptide binding to MHC II: An accurate semi-empirical quantum mechanics-based proposal."</a>&nbsp;Journal of Chemical Information and Modeling, (2019). - <span style="background-color: #ccffcc;">DOI: 10.1021/acs.jcim.9b00672</span></p>
+<p>&nbsp;</p>
+<h1><span style="color: #800080;">Program Documentation</span></h1>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">After typing&nbsp;</span></p>
+<pre><span style="background-color: #ccffcc;"><code>$ git clone https://github.com/caraortizmah/bindinginteraction.git</code></span></pre>
+<p><span style="color: #333399;">you can modify the <span style="background-color: #ccffcc;">MHCBI</span>&nbsp;pipeline creating your own version. For installing (in&nbsp;your current location) type</span></p>
+<p><span style="color: #333399;">$&nbsp; cd BindingInteraction</span></p>
+<p><span style="color: #333399;">The <span style="background-color: #ccffcc;">MHCBI</span> pipeline has four folders such as <em>BindingInteraction</em>, <em>docs</em>, <em>source</em>, <em>test</em>.&nbsp;</span></p>
+<p><span style="color: #333399;">In&nbsp;<span style="background-color: #ccffcc;"><em>BindingInteraction </em></span>folder there are essential scripts for installing and configuring the pipeline. Installation stage relies on this folder.</span></p>
+<p><span style="color: #333399;">In&nbsp;<em><span style="background-color: #ccffcc;">docs</span>&nbsp;</em>folder there are further information regarding installation and a brief manual for users.</span></p>
+<p><span style="color: #333399;">In&nbsp;<span style="background-color: #ccffcc;"><em>source </em></span>folder there are all scripts involved in the <span style="background-color: #ccffcc;">MHCBI</span> performance in every user proyect. This folder is the <span style="background-color: #ccffcc;">MHCBI</span> pipeline core.</span></p>
+<p><span style="color: #333399;">In <em><span style="background-color: #ccffcc;">test</span>&nbsp;</em>folder there are two PDB structure examples: short (MHC class II and straight (MHC class I) which user has to use to test the pipeline. </span></p>
+<p><span style="color: #333399;">In this folder short test is a shortened molecule from HLA-DR2 complexed with a peptide from human myelin basic protein (original PDB structure is known as 1BX2 in the protein data bank <a href="https://www.rcsb.org/structure/1bx2">see more</a>). Straight test is the HLA A*02:07 complexed with hepatitis B virus (HBV) core 18-27 peptide&nbsp;(original PDB structure is known as 3OXS in the protein data bank <a href="https://www.rcsb.org/structure/3OXS">see more</a>).</span></p>
+<p><span style="color: #333399;">After typing</span></p>
+<pre><span style="background-color: #ccffcc;"><code>$ chmod +x init.sh</code></span></pre>
+<pre><span style="background-color: #ccffcc;"><code>$ ./init.sh</code></span></pre>
+<p><span style="color: #333399;"> The <span style="background-color: #ccffcc;">MHCBI</span> asks about the location when you are going to install the pipeline. Answering <strong>yes</strong>, your location will be the same as the git location, otherwise (answering <strong>no</strong>) you have to provide the new location for installing it.</span></p>
+<hr />
+<h4><span style="color: #333399;">Before configuring the pipeline <span style="background-color: #ff9900;">you must be aware of installing the following programs previously:</span></span></h4>
+<p>&nbsp; &nbsp; Linux text processing tools:</p>
 <ul>
-<li>Python 2.7 or upper</li>
-<li>MOPAC2016</li>
-<li>VMD with Dowser plugin</li>
-<li>UCSF Chimera</li>
-<li>Propka 3.1</li>
-<li>GAMESS</li>
-<li>Facio (FMO software)</li>
-<li>Wine</li>
+<li>Grep</li>
+<li>Cut</li>
+<li>Awk</li>
+<li>Gawk</li>
+<li>Sed</li>
 </ul>
-<h2 style="color: #2e6c80;">For installing BindingInteraction pipeline:</h2>
-<p>Open a console and type the following commands</p>
+<p>&nbsp; &nbsp; &nbsp;Specialized softwares:</p>
+<ul>
+<li>Open Babel</li>
+<li>VMD - Visual Molecular Dynamics</li>
+<li>Dowser</li>
+<li>MOPAC - Molecular Orbital PACkage (MOPAC2016)</li>
+<li>UCSF Chimera</li>
+<li>PROPKA 3.1</li>
+<li>Python 2.7 or higher</li>
+</ul>
+<p>&nbsp; &nbsp; (Optional)</p>
+<ul>
+<li>GAMESS - General Atomic and Molecular Electronic Structure System</li>
+<li>Wine</li>
+<li>Facio (FMO software)</li>
+</ul>
+<hr />
+<p><span style="color: #333399;">Once you have installed all requirements and placed in the pre-installed pipeline&nbsp;location and after typing&nbsp;</span></p>
+<pre><span style="background-color: #ccffcc;"><code>$ ./setup.sh</code></span></pre>
+<p><span style="color: #333399;">You have to complete all steps in order. </span></p>
+<p><span style="color: #333399;">In the first step you must provide to the MHCBI the absolute path names for specialized programs (external program paths).</span></p>
+<p><span style="color: #333399;">In the second step you are going to test the MHCBI pipeline, be aware of the proper functioning of every absolute path.</span></p>
+<h2 style="color: #2e6c80;">To sum up:</h2>
 <table class="editorDemoTable" style="width: 1000px;" border="1">
 <thead>
 <tr>
@@ -26,26 +67,35 @@
 <tbody>
 <tr>
 <td style="width: 45px;">1</td>
-<td style="width: 480px;">Configure program and scratch path for the installation</td>
-<td style="width: 600px;">./configure -p 'program_path' -s 'scratch_path'</td>
+<td style="width: 480px;">Download repository from GitHub</td>
+<td style="width: 600px;">
+<p>git clone&nbsp;https://github.com/caraortizmah/BindingInteraction.git</p>
+</td>
 </tr>
 <tr>
 <td style="width: 45px;">2</td>
-<td style="width: 480px;">Install python requirements before (it could take several minutes)</td>
-<td style="width: 600px;">make require</td>
+<td style="width: 480px;">Initialize the MHCBI pipeline</td>
+<td style="width: 600px;">
+<p>cd ''git_MHCBI_path</p>
+<p>chmod +x init.sh</p>
+<p>./init.sh</p>
+</td>
 </tr>
 <tr>
 <td style="width: 45px;">3</td>
-<td style="width: 480px;">Prepare folders and other programs before installing BindingInteraction</td>
-<td style="width: 600px;">make init</td>
+<td style="width: 480px;">Configure the MHCBI&nbsp;</td>
+<td style="width: 600px;">
+<p>cd 'to-install_MHCBI_path'</p>
+<p>./setup.sh (option 1)</p>
+</td>
 </tr>
 <tr>
 <td style="width: 45px;">4</td>
-<td style="width: 480px;">Install BindingInteraction</td>
-<td style="width: 600px;">sudo python setup.py install</td>
+<td style="width: 480px;">Test the MHCBI</td>
+<td style="width: 600px;">./setup.sh (option 2)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Now you can enjoy BindingInteraction pipeline!</strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #0000ff;"><strong>Now you can run the MHCBI pipeline!</strong></span></p>
 <p><strong>&nbsp;</strong></p>
