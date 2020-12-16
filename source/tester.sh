@@ -57,13 +57,24 @@ fi
 
 #Second level
 
+current_dir="$(echo "${WORK_PATH}/${WORK_NAME}")"
+
+if [ "${current_dir}" = "$PWD" ]; then
+  echo "Directory: "${current_dir}
+  echo -e "Stage 1: work directory found...           \e[1;32m passed \e[0m"
+else
+  echo -e "Stage 1: work directory found...           \e[1;31m failed \e[0m"
+fi
+
+cd optimizations
+
 var="$(echo "${PDB_NAME}" | cut -d'.' -f1)"
 
 if [ -d ${var} ]; then
   echo -e "Stage 1: work folder found...           \e[1;32m passed \e[0m"
 else
   echo -e "Stage 1: work folder found...           \e[1;31m failed \e[0m"
-
+fi
 
 cd ${var}
 
@@ -201,7 +212,7 @@ else
   echo -e "Stage 1: Overall output stage 1 found...           \e[1;31m failed \e[0m"
 fi
 
-cd mutations
+cd ../mutations
 
 if [ -e "listm.log" ]; then
   echo -e "Stage 2: to-be-substituted residue list found...           \e[1;32m passed \e[0m"
@@ -215,7 +226,7 @@ else
   echo -e "Stage 2: Residues charged found...           \e[1;31m failed \e[0m"
 fi
 
-if [ -e "chimera_mut_"${var}".py" ]; then
+if [ -e "chimera_mut_${var}.py" ]; then
   echo -e "Stage 2: Chimera python script found...           \e[1;32m passed \e[0m"
 else
   echo -e "Stage 2: Chimera python script found...           \e[1;31m failed \e[0m"
@@ -229,22 +240,22 @@ fi
 
 cd tobe_charged
 
-let num="$(`ls *.pdb | wc -l`)"
+let num=$(ls *.pdb | wc -l)
 
-if [ ${num}=="1" ]; then
+if [ ${num} = "1" ]; then
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;33m incomplete \e[0m"
-elif [ ${num}=="0" ]; then
+elif [ ${num} = "0" ]; then
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;32m passed \e[0m"
 fi
 echo "Check yourself that substitutions amount (listm.log) matches with PDB structures number (inside tobe_charged folder)"
 
-let num="$(`ls *.arc | wc -l`)"
+let num=$(ls *.arc | wc -l)
 
-if [ ${num}=="1" ]; then
+if [ ${num} = "1" ]; then
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
-elif [ ${num}=="0" ]; then
+elif [ ${num} = "0" ]; then
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
@@ -261,22 +272,11 @@ fi
 
 cd tobe_charged
 
-let num="$(`ls *.pdb | wc -l`)"
+let num=$(ls *.arc | wc -l)
 
-if [ ${num}=="1" ]; then
-  echo -e "Stage 3: Substituted PDB structures found...           \e[1;33m incomplete \e[0m"
-elif [ ${num}=="0" ]; then
-  echo -e "Stage 3: Substituted PDB structures found...           \e[1;31m failed \e[0m"
-else
-  echo -e "Stage 3: Substituted PDB structures found...           \e[1;32m passed \e[0m"
-fi
-echo "Check yourself that substitutions amount (listm.log) matches with PDB structures number (inside tobe_charged folder)"
-
-let num="$(`ls *.arc | wc -l`)"
-
-if [ ${num}=="1" ]; then
+if [ ${num} = "1" ]; then
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
-elif [ ${num}=="0" ]; then
+elif [ ${num} = "0" ]; then
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
@@ -293,17 +293,18 @@ fi
 
 cd final_pdbs
 
-let num2="$(`ls *.pdb | wc -l`)"
+let num2=$(ls *.pdb | wc -l)
 
-if [ ${num}==${num2} ]; then
+if [ ${num} = ${num2} ]; then
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;32m passed \e[0m"
-elif [ ${num2}=="0" ]; then
+elif [ ${num2} = "0" ]; then
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;33m incomplete \e[0m"
 fi
 echo "Check yourself that substitutions an charged PDB structures match with the initial ones in tobe_charged folder"
 
+cd ../../
 
 echo "****** MHCBI says: ******"
 echo "  Explicitly scanning"
@@ -312,20 +313,20 @@ echo " "
 grep "NORMALLY" */*/*.out
 grep "NORMALLY" */*/*/*.out
 
-let subtotal1="$(grep "NORMALLY" */*/*.out | wc -l)"
-let subtotal2="$(grep "NORMALLY" */*/*/*.out | wc -l)"
+let subtotal1=$(grep "NORMALLY" */*/*.out | wc -l)
+let subtotal2=$(grep "NORMALLY" */*/*/*.out | wc -l)
 
-let total=$(subtotal1)+$(subtotal2)
-echo "Total results passed ... \e[1;32m" ${total} "\e[0m"
+let total=$(($subtotal1+$subtotal2))
+echo -e "Total results passed ... \e[1;32m $total \e[0m"
 
 grep "ABNORMALLY" */*/*.out
 grep "ABNORMALLY" */*/*/*.out
 
-let subtotal1="$(grep "ABNORMALLY" */*/*.out | wc -l)"
-let subtotal2="$(grep "ABNORMALLY" */*/*/*.out | wc -l)"
+let subtotal1=$(grep "ABNORMALLY" */*/*.out | wc -l)
+let subtotal2=$(grep "ABNORMALLY" */*/*/*.out | wc -l)
 
-let total=$(subtotal1)+$(subtotal2)
-echo "Total results failed ... \e[1;31m" ${total} "\e[0m"
+let total=$(($subtotal1+$subtotal2))
+echo -e "Total results failed ... \e[1;31m $total \e[0m"
 
 echo ""
 echo "Resume finished"
