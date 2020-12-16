@@ -88,8 +88,8 @@ For further information go to docs/ for reading the documentation
 
 [comment]: <> (Optional step: For cleaning pipeline to re-configure or make any git procedure)
 
-[comment]: <> (    $ cd MHCBI_path (in MHCBI directory))
-[comment]: <> (    $ ./clean.sh)
+[comment]: <> (     cd MHCBI_path in MHCBI directory)
+[comment]: <> (     ./clean.sh)
 
 
 [comment]: <> (Option 2:)
