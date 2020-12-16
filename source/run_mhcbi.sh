@@ -67,3 +67,6 @@ chmod +x org_calc.sh
 echo "****** MHCBI says: ******"
 echo "  Stage 3 finished..."
 
+cd ../
+cp source/tester.sh .
+./tester.sh

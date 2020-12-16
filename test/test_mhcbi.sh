@@ -120,8 +120,12 @@ cp source/run_mhcbi.sh .
 
 ./organizer.sh
 cp ../../listm_test-tmp mutations/listm.log
-#./tester.sh
 ./run_mhcbi.sh
+
+echo " "
+echo "****Checking test..."
+echo " "
+./tester.sh
 
 echo "**** Bear in mind: "
 echo "Run the pipeline typing ./pre-run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/

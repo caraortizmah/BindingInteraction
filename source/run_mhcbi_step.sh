@@ -33,13 +33,14 @@ fi
 
 let input=0
 
-while [ $input -ne 3 ]; 2> /dev/null
+while [ $input -ne 5 ]; 2> /dev/null
 do
   echo "**** Running MHCBI step by step ****"
   echo "Please select your option"
-  echo "Stage 1: Optimizations"
-  echo "Stage 2: Substitutions"
-  echo "Stage 3: Calculations"
+  echo "1. Stage 1: Optimizations"
+  echo "2. Stage 2: Substitutions"
+  echo "3. Stage 3: Calculations"
+  echo "4. Brief running check"
   echo " "
   echo " "
   read input
@@ -97,12 +98,20 @@ do
       echo "  Stage 3 finished..."
       ;;
     4)
+      echo "***Running brief check***"
+      echo " "
+
+      cp source/tester.sh .
+      ./tester.sh
+
+      ;;
+    5)
       echo "  Closing pipeline... bye "
       exit 1
       ;;
     *)
       #clear
-      echo "Sorry, you need to choose an option among 1 up to 3"
+      echo "Sorry, you need to choose an option among 1 up to 5"
       ;;
     ''|*[!0-9]*)
       #clear
