@@ -13,6 +13,8 @@
 FILE=paths.log
 FILE2=pro_paths.log
 
+MHCBI_PATH=$PWD
+
 #requires
 
 echo "  "
@@ -57,21 +59,6 @@ done
 
 #MHCBI directory
 if [ -f "$FILE" ]; then
-
-	#Main path
-	let cond=`grep -c "MHCBI path" paths.log`
-	if [ ${cond} -eq 1 ]; then
-		MHCBI_PATH=$(grep "MHCBI path" paths.log | cut -d':' -f2) # After this cut.. there is a non-empty string assigned in this variable
-		if [[ -z "${MHCBI_PATH// }" ]] ; then # This ( ${param //} ) expands the param variable and replaces all matches of the pattern (a single space) with nothing
-			echo "Pipeline path is empty"
-		else
-		        MHCBI_PATH=$(echo "$MHCBI_PATH" | awk '$1=$1') #remove blank spaces (head & tail)
-			echo "mhcbi_path finished" $MHCBI_PATH
-		fi
-	else
-		echo "Pipeline path was not detected"
-		echo "Something in paths.log would be wrong. Set all paths again"
-	fi
 
 	#Work directory
 	let cond=`grep -c "Work path" paths.log`
@@ -283,7 +270,7 @@ EOF
 
 
 	cp source/organizer.sh .
-	cp source/pre-run.sh .
+	cp ${MHCBI_PATH}/pre-run.sh .
 	echo "**** Bear in mind: "
 	echo "To run the work pipeline, type: ./pre-run.sh (option 3) in this path: " ${WORK_PATH}/${WORK_NAME}/
 	echo "*** "
