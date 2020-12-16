@@ -61,14 +61,14 @@ do
     echo "Empty answer, please choose an option - (1), (2) or (3)"
   elif [ $answer == "1" ]; then
     echo "***Using 1BX2 fraction***"
-    PDB_NAME="1bx2-shortx2.pdb"
-    WORK_NAME="1bx2-short_test"
+    PDB_NAME="1bx2-shortened.pdb"
+    WORK_NAME="1bx2-shortened"
     echo " "
     break
   elif [ $answer == "2" ]; then
     echo "***Using 3OXS***"
     PDB_NAME="example-3oxs.pdb"
-    WORK_NAME="3oxs_test"
+    WORK_NAME="3oxs-test"
     break
   else
     echo "Sorry, you need to choose an option (1, 2 or 3)"
