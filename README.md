@@ -54,7 +54,9 @@ Install Dowser: oficial page is no longer working properly ([Hermans Dowser](htt
 ### Installation
 
 The `MHCBI` pipeline is mostly written in Shell script and includes Python and Tcl languages for managing programme operations in graphical interface software, such as Dowser in VMD and Dunbrack’s library in Chimera.
-For installing the `MHCBI` pipeline, follow the next steps:
+For installing and run the `MHCBI` pipeline, follow the steps below:
+
+Follow the appearing instructions while executing every step:
 
 [comment]: <> (Option 1:)
 
@@ -63,25 +65,31 @@ For installing the `MHCBI` pipeline, follow the next steps:
     $ chmod +x init.sh
     $ ./init.sh
 
-2nd step: Configure all pipeline scripts and set paths for external program and work directory
+2nd step: Configure all pipeline scripts and set paths for external program
 
     $ ./setup.sh
     
-3nd step: Complete all steps in order
+  Complete all setup steps in order
+
+    1. Paths for all of the required external programs
+    2. Test the pipeline
+    
+3nd step: Configure a work directory and run the pipeline
+
+    $ ./pre-run.sh
+    
+  Complete all pre-run steps in order
  
-    1. Paths for the `MHCBI` pipeline, work directory and PDB structure directory. 
-    2. Paths for required external programs.
-    3. Configuring pipeline for running.
-    4. Testing pipeline.
+    1. Paths for the work and PDB structure.
+    2. Configure folders and directories for the user proyect.
+    3. Run pipeline over user proyect.
 
-4th step: Follow the instructions for running pipeline in the designated place 
+For further information go to docs/ for reading the documentation
 
-    $ ./run.sh
+[comment]: <> (Optional step: For cleaning pipeline to re-configure or make any git procedure)
 
-Optional step: For cleaning pipeline to re-configure or make any git procedure
-
-    $ cd MHCBI_path (in MHCBI directory)
-    $ ./clean.sh
+[comment]: <> (    $ cd MHCBI_path (in MHCBI directory))
+[comment]: <> (    $ ./clean.sh)
 
 
 [comment]: <> (Option 2:)
@@ -100,6 +108,7 @@ Optional step: For cleaning pipeline to re-configure or make any git procedure
 * Grep 
 * Cut
 * Awk
+* Gawk
 * Sed
 
 ### Requirements
