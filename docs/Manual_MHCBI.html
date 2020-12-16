@@ -1,0 +1,57 @@
+<p>&nbsp;</p>
+<h1 style="color: #5e9ca0;">The <span style="color: #3366ff;">MHC</span> BindingInteraction pipeline <span style="color: #999999;">Manual</span></h1>
+<p><span style="color: #333399;">After performing all steps in the installing instructions you can run the pipeline over a <span style="background-color: #ccffff;"><em>new proyect</em></span>.</span></p>
+<pre><span style="background-color: #ccffcc;"><code>$ ./pre-run.sh</code></span></pre>
+<p><span style="color: #333399;">You have to complete all steps in order. <span style="background-color: #ff6600;"><strong>First step</strong></span> is aimed to set some paths prior to run a <span style="background-color: #ccffff;"><em>new proyect</em></span>:</span></p>
+<hr />
+<p><em><span style="color: #333399;">Notepadding:&nbsp;</span></em><span style="color: #333399;">A <span style="background-color: #ccffff;"><em>new proyect</em></span> is a work performed by MHCBI pipeline passing through the three stages: optimizations, mutations and calculations. All folders, inputs and outputs created during the whole process are the <span style="background-color: #ccffff;"><em>new proyect</em></span>. Each individual PDB structure has one <span style="background-color: #ccffff;"><em>new proyect</em></span>.</span></p>
+<hr />
+<p><span style="color: #333399;"><strong><span style="text-decoration: underline;">PDB structure path</span></strong> is the directory where is placed the <span style="background-color: #ccffff;"><em>new proyect</em></span> PDB structure.</span></p>
+<p><span style="color: #333399;"><span style="text-decoration: underline;"><strong>PDB structure name</strong></span>&nbsp;is the PDB structure (located in the previous path). A PDB format can have several valid formats, however in this MHCBI pipeline, format has the following guideline:</span></p>
+<p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;1.&nbsp; PDB structures having a <span style="background-color: #ccffff;">receptor-ligand MHC-like</span></span></p>
+<p><span style="color: #333399;">Receptor has to be named as <strong>chain A and B</strong> and l</span><span style="color: #333399;">igand as <strong>chain P</strong>. In case of having crystallographic water molecules, all of them must be named as <strong>chain V</strong>.</span></p>
+<p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;2.&nbsp; PDB structures having a <span style="background-color: #ccffff;">12-column features</span></span></p>
+<p><span style="color: #333399;">In <em>test</em> folder there are two examples (shortened 1BX2 and 3OXS) having 12-column features as it should be used for every PDB structure in any proyect. In the PDB structure for a <em><span style="background-color: #ccffff;">new proyect</span></em> remove all information not related with 3D atomic coordinates.</span></p>
+<p><span style="color: #333399;"><span style="text-decoration: underline;"><strong>to-do work path</strong></span> is the directory where you want to place the <span style="background-color: #ccffff;"><em>new proyect</em></span>.</span></p>
+<p><span style="color: #333399;"><span style="text-decoration: underline;"><strong>name of your work</strong></span>&nbsp;is the name of your <em><span style="background-color: #ccffff;">new proyect</span></em>.</span></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">Setup and pre-run scripts create .log files having all required paths. You can modify them without using the pipeline, but you can not change any word related to the format. It is advisable to use the pipeline for setting paths.</span></p>
+<p><span style="color: #333399;">In pre-run script,&nbsp;</span><span style="color: #333399; background-color: #ff6600;">Second step</span><span style="color: #333399;">&nbsp;configures pipeline core in all of the new folders that will be the <span style="background-color: #ccffff;"><em>new proyect</em></span>. If the MHCBI can not detect one of the required paths, configuration step will not be performed.</span></p>
+<p><span style="color: #333399;">After configuring the <span style="background-color: #ccffff;"><em>new proyect</em></span> you can run the pipeline. <span style="background-color: #ff6600;">Third step</span> presents two options for running MHCBI over a PDB structure:</span></p>
+<p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;1.&nbsp; Performing the three-stage methodology in a single step.</span></p>
+<p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;2.&nbsp;&nbsp;Performing the three-stage methodology step by step.</span></p>
+<p>&nbsp;</p>
+<h2 style="color: #2e6c80;">To sum up:</h2>
+<table class="editorDemoTable" style="width: 1000px;" border="1">
+<thead>
+<tr>
+<td style="width: 45px;">Step</td>
+<td style="width: 480px;">Instruction</td>
+<td style="width: 600px;">Command</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 45px;">1</td>
+<td style="width: 480px;">Set work and PDB directories</td>
+<td style="width: 600px;">
+<p>./pre-run.sh (option 1)</p>
+</td>
+</tr>
+<tr>
+<td style="width: 45px;">2</td>
+<td style="width: 480px;">Configure folders and scripts for the <span style="background-color: #99ccff;"><em>new proyect</em></span></td>
+<td style="width: 600px;">
+<p>./pre-run.sh (option 2)</p>
+</td>
+</tr>
+<tr>
+<td style="width: 45px;">3</td>
+<td style="width: 480px;">Run the MHCBI pipeline</td>
+<td style="width: 600px;">
+<p>./pre-run.sh (option 3)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&nbsp;</strong></p>
