@@ -1,0 +1,97 @@
+#######              The MHCBI BindingInteraction               #########
+#######  https://github.com/caraortizmah/BindingInteraction.git #########
+
+*********************************************
+
+About the MHC BindingInteraction pipeline:
+
+The MHC Binding Interaction (MHCBI) is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry. The MHCBI has been used with receptor-ligand complexes, such as major histocompatibility complex (MHC) proteins. It can therefore be extrapolated to other non-covalent interaction systems (i.e. MHC-like structures).
+
+
+Applications related to using MHCBI pipeline can be found in the following work:
+
+Ortiz-Mahecha, Carlos A., Bohórquez, Hugo J., Agudelo, William A., Patarroyo, Manuel A., Patarroyo, Manuel E. and Suárez, Carlos F. "Assessing peptide binding to MHC II: An accurate semi-empirical quantum mechanics-based proposal." Journal of Chemical Information and Modeling, (2019). - DOI: 10.1021/acs.jcim.9b00672
+
+
+Program Documentation
+ 
+
+After typing 
+
+   $  git clone https://github.com/caraortizmah/bindinginteraction.git
+
+you can modify the MHCBI pipeline creating your own version. For installing (in your current location) type
+
+   $  cd BindingInteraction
+
+The MHCBI pipeline has four folders such as BindingInteraction, docs, source, test. 
+
+In BindingInteraction folder there are essential scripts for installing and configuring the pipeline. Installation stage relies on this folder.
+In docs folder there are further information regarding installation and a brief manual for users.
+In source folder there are all scripts involved in the MHCBI performance in every user proyect. This folder is the MHCBI pipeline core.
+In test folder there are two PDB structure examples: short (MHC class II and straight (MHC class I) which user has to use to test the pipeline.
+In this folder short test is a shortened molecule from HLA-DR2 complexed with a peptide from human myelin basic protein (original PDB structure is known as 1BX2 in the protein data bank see more). Straight test is the HLA A*02:07 complexed with hepatitis B virus (HBV) core 18-27 peptide (original PDB structure is known as 3OXS in the protein data bank see more).
+
+After typing
+
+   $  chmod +x init.sh
+   $  ./init.sh
+   
+The MHCBI asks about the location when you are going to install the pipeline. Answering yes, your location will be the same as the git location, otherwise (answering no) you have to provide the new location for installing it.
+
+Before configuring the pipeline you must be aware of installing the following programs previously:
+   
+   Linux text processing tools:
+
+ + Grep
+ + Cut
+ + Awk
+ + Gawk
+ + Sed
+ 
+     Specialized softwares:
+
+ + Open Babel
+ + VMD - Visual Molecular Dynamics
+ + Dowser
+ + MOPAC - Molecular Orbital PACkage (MOPAC2016)
+ + UCSF Chimera
+ + PROPKA 3.1
+ + Python 2.7 or higher
+ 
+    (Optional)
+
+ + GAMESS - General Atomic and Molecular Electronic Structure System
+ + Wine
+ + Facio (FMO software)
+ 
+Once you have installed all requirements and placed in the pre-installed pipeline location and after typing 
+
+   $  ./setup.sh
+   
+You have to complete all steps in order.
+
+In the first step you must provide to the MHCBI the absolute path names for specialized programs (external program paths).
+In the second step you are going to test the MHCBI pipeline, be aware of the proper functioning of every absolute path.
+
+To sum up:
+____________________________________________________________________________________________________________________________
+  Step	           Instruction	                                              Command
+____________________________________________________________________________________________________________________________
+
+    1	      Download repository from GitHub	          git clone https://github.com/caraortizmah/BindingInteraction.git
+
+
+                                                                        cd 'git_MHCBI_path'
+    2	       Initialize the MHCBI pipeline                               chmod +x init.sh
+                                                                            ./init.sh
+
+    3	           Configure the MHCBI 	                              cd 'to-install_MHCBI_path'
+                                                                       ./setup.sh (option 1)
+
+    4	             Test the MHCBI	                                     ./setup.sh (option 2)
+
+____________________________________________________________________________________________________________________________
+
+   Now you can run the MHCBI pipeline!
+
