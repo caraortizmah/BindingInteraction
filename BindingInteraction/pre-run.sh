@@ -33,6 +33,31 @@ do
 		2)
 			echo "***Configuring program directories and folders***"
 			echo " "
+
+      echo "****Warning****"
+      echo "  "
+
+      count=0
+      while [ $count -eq 0 ]
+      do
+        read "Did you complete all of the requirements in the setup.sh first step?"
+        read "Dif you complete the test (setup.sh second step) and set work paths (pre-run.sh first step)?"
+        read -p " If you really fulfil the requirements type (Yes(Y/y), otherwise (No(N/n)): " answer
+        answer=${answer,,}
+
+        if [ $answer == "yes" ] || [ $answer == "y" ]; then
+          echo " *** "
+          echo " "
+          count=1
+        elif [ $answer == "no" ] || [ $answer == "n" ]; then
+          echo "Please make sure that you have successfully tested MHCBI pipeline and properly set your required paths for a new proyect."
+          echo " bye..."
+          exit 1;
+        else
+          echo "Please enter again your answer - yes (y) or no (n)"
+        fi
+
+      done
 			chmod +x conf.sh
 			./conf.sh
 			echo "...going to the menu..."
@@ -42,7 +67,7 @@ do
 			echo " "
 			while :
 			do
-				read -p "Did you previously perform steps 1 and 2 from pre-run.sh? (Yes(Y/y)/No(N/n)) " answer
+				read -p "Did you previously configure your new proyect (steps 1 and 2 from pre-run.sh)? (Yes(Y/y)/No(N/n)) " answer
 				answer=${answer,,}
 
 				if [ -z "${answer}" ]; then
@@ -55,12 +80,12 @@ do
 					break
 				elif [ $answer == "no" ] || [ $answer == "n" ]; then
 					echo " "
-					read -p "Please, first of all complete steps 1 and 2 (in that order) prior to run your work "
+					read -p "Please, first of all complete steps 1 and 2 (in that order) prior to run your new proyect"
 					break
 				else
 					echo "Please enter again your answer - yes (y) or no (n)"
 				fi
-			done			
+			done
 			echo "...going to the menu..."
 			;;
 		4)

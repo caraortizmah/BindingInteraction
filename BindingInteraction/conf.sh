@@ -18,13 +18,14 @@ MHCBI_PATH=$PWD
 #requires
 
 echo "  "
-echo "****Warning****"
+echo "****Note****"
 echo "Make sure that you have already installed the following programs:"
 echo " "
 echo "Linux text processing tools such as:"
 echo "  1. Grep"
 echo "  2. Cut "
 echo "  3. Awk "
+echo "  4. Gawk"
 echo "  4. Sed "
 echo "The chemical softwares and toolboxes such as"
 echo "  5. Open Babel"
