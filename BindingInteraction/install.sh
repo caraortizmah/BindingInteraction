@@ -42,6 +42,8 @@ if [ "$pipeline_path" != "$PWD" ]; then
 	cd $pipeline_path
 	mkdir -p MHCBI
 	cd MHCBI
+  rm -f MHCBI_uninstalled.readme
+  cp $git/README.md .
 	cp $git/BindingInteraction/setup.sh .
   cp $git/BindingInteraction/paths.sh .
 	cp $git/BindingInteraction/pro_paths.sh .
@@ -59,6 +61,7 @@ if [ "$pipeline_path" != "$PWD" ]; then
 else
 
   echo "***No additional operations were needed..."
+  rm -f MHCBI_uninstalled.readme
   cd BindingInteraction/
   mv -f setup.sh ../
   mv -f paths.sh ../

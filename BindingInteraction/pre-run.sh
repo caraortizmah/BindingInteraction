@@ -40,8 +40,8 @@ do
       count=0
       while [ $count -eq 0 ]
       do
-        read "Did you complete all of the requirements in the setup.sh first step?"
-        read "Dif you complete the test (setup.sh second step) and set work paths (pre-run.sh first step)?"
+        echo "Did you complete all of the requirements in the setup.sh first step? and"
+        echo "Did you complete the test (setup.sh second step) and set work paths (pre-run.sh first step)?"
         read -p " If you really fulfil the requirements type (Yes(Y/y), otherwise (No(N/n)): " answer
         answer=${answer,,}
 

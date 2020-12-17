@@ -19,29 +19,13 @@ MHCBI_PATH=$PWD
 
 echo "  "
 echo "****Note****"
-echo "Make sure that you have already installed the following programs:"
-echo " "
-echo "Linux text processing tools such as:"
-echo "  1. Grep"
-echo "  2. Cut "
-echo "  3. Awk "
-echo "  4. Gawk"
-echo "  4. Sed "
-echo "The chemical softwares and toolboxes such as"
-echo "  5. Open Babel"
-echo "  6. VMD - Visual Molecular Dynamics"
-echo "  7. MOPAC - Molecular Orbital PACkage"
-echo "  8. UCSF Chimera"
-echo "  9. PROPKA 3.1"
-echo " 10. GAMESS - General Atomic and Molecular Electronic Structure System"
-echo " 11. python 2.7 or higher"
-echo "****Warning****"
+echo "Make sure that you have already installed all of the required Linux processing tools and specialized programs:"
 echo "  "
 
 count=0
 while [ $count -eq 0 ]
 do
-	read -p "Do you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
+	read -p "Did you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
 	answer=${answer,,}
 
 	if [ $answer == "yes" ] || [ $answer == "y" ]; then
@@ -133,6 +117,7 @@ if [ -f "$FILE" ]; then
 	mkdir -p ${WORK_NAME}
 	cd ${MHCBI_PATH}
 	cp -r source/ ${WORK_PATH}/${WORK_NAME}
+	cp -r paths.sh ${WORK_PATH}/${WORK_NAME}/
 	cd ${WORK_PATH}/${WORK_NAME}/source/
 	chmod +x *.sh #giving permissions
 	chmod +x *.tcl
