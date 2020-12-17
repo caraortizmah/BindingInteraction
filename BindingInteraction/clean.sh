@@ -15,9 +15,10 @@ cd ../BindingInteraction/
 [ -f ../clean.sh ] && mv ../clean.sh .
 [ -f ../conf.sh ] && mv ../conf.sh .
 [ -f ../paths.sh ] && mv ../paths.sh .
-[ -f ../pro_path.sh ] && mv ../pro_paths.sh .
+[ -f ../pro_paths.sh ] && mv ../pro_paths.sh .
 [ -f ../setup.sh ] && mv ../setup.sh .
 [ -f ../install.sh ] && mv ../install.sh .
+[ -f ../pre-run.sh ] && mv ../pre-run.sh .
 chmod -x *.sh
 
 echo "****** MHCBI says: ******"

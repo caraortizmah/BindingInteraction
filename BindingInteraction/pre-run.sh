@@ -65,6 +65,18 @@ do
 		3)
 			echo "***Running work***"
 			echo " "
+
+      FILE=paths.out
+
+      if [ -f "$FILE" ]; then
+        WORK_PATH=$(grep "4 " ${FILE} | cut -d':' -f2)
+        WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
+      else
+        echo "paths.out doesn't exist"
+        echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
+        exit 1
+      fi
+
 			while :
 			do
 				read -p "Did you previously configure your new proyect (steps 1 and 2 from pre-run.sh)? (Yes(Y/y)/No(N/n)) " answer
@@ -74,6 +86,7 @@ do
 					echo "Empty answer, please enter again your answer - yes (y) or no (n)"
 				elif [ $answer == "yes" ] || [ $answer == "y" ]; then
 					echo " "
+          cd ${WORK_PATH}/WORK_NAME/
 					cp source/run.sh .
 			    chmod +x run.sh
 			    ./run.sh
