@@ -138,6 +138,8 @@ if [ -f "$FILE" ]; then
 ***
 EOF
 
+  cp paths.out ${MHCBI_PATH}/
+
   cd ${MHCBI_PATH} #pro_paths.log in this directory
 
 else

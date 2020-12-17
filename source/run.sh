@@ -2,6 +2,17 @@
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
 
+FILE=paths.out
+
+if [ -f "$FILE" ]; then
+  WORK_PATH=$(grep "4 " ${FILE} | cut -d':' -f2)
+  WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
+else
+  echo "paths.out doesn't exist"
+  echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
+  exit 1
+fi
+
 let input=0
 
 while [ $input -ne 3 ]; 2> /dev/null
@@ -18,6 +29,7 @@ do
     1)
       echo "***Running MHCBI in a single step***"
       echo " "
+      cd ${WORK_PATH}/WORK_NAME/
       cp source/run_mhcbi.sh .
       chmod +x run_mhcbi.sh
       ./run_mhcbi.sh
@@ -27,6 +39,7 @@ do
     2)
       echo "***Assigning external program paths***"
       echo " "
+      cd ${WORK_PATH}/WORK_NAME/
       cp source/run_mhcbi_step.sh .
       chmod +x run_mhcbi_step.sh
       ./run_mhcbi_step.sh
