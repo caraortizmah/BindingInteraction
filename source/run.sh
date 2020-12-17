@@ -77,7 +77,7 @@ do
     1)
       echo "***Running MHCBI in a single step***"
       echo " "
-      cd ${WORK_PATH}/WORK_NAME/
+      cd ${WORK_PATH}/${WORK_NAME}/
       cp source/run_mhcbi.sh .
       chmod +x run_mhcbi.sh
       ./run_mhcbi.sh
@@ -87,7 +87,7 @@ do
     2)
       echo "***Assigning external program paths***"
       echo " "
-      cd ${WORK_PATH}/WORK_NAME/
+      cd ${WORK_PATH}/${WORK_NAME}/
       cp source/run_mhcbi_step.sh .
       chmod +x run_mhcbi_step.sh
       ./run_mhcbi_step.sh

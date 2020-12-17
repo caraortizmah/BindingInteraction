@@ -86,7 +86,7 @@ do
 					echo "Empty answer, please enter again your answer - yes (y) or no (n)"
 				elif [ $answer == "yes" ] || [ $answer == "y" ]; then
 					echo " "
-          cd ${WORK_PATH}/WORK_NAME/
+          cd ${WORK_PATH}/${WORK_NAME}/
 					cp source/run.sh .
 			    chmod +x run.sh
 			    ./run.sh
