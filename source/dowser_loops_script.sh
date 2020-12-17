@@ -65,7 +65,7 @@ do
  #${BABEL} -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb
  #babel -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb #manual mode
 
- for i in `ls placed_waters_*`
+ for i in `ls placed_waters_* 2>/dev/null` #suppressing error message if placed_waters is not found at the beginning of dowser operation
  do
    if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ]
    then
@@ -87,7 +87,7 @@ do
  then
    let var_4=0
  else
-   let var_4=$(grep -n "remaining water molecules" output_"$iter".log | tail -1 | awk '{print $4}')
+   var_4=$(grep -n "remaining water molecules" output_"$iter".log | tail -1 | awk '{print $4}')
  fi
 
  if  [ $var_3 -le 2 ]
@@ -97,7 +97,7 @@ do
    echo "Dowser puts $var_3 waters. It'll put more waters later"
  fi
 
- if  [ $var_4 -le 1 ]
+ if  [ "$var_4" -le 1 ]
  then
    echo "Dowserx puts 1 or less waters. It might not put more waters later"
  else

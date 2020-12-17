@@ -32,5 +32,5 @@ awk 'BEGIN{i=1} NF=="12"{if ($5=="W") printf "%s%7d  %-3s %3s %s%4d%12.3f%8.3f%8
 ${BABEL} -h -ipdb aux_step2.pdb -opdb pdbformopac_"$arg" #Call babel to add hidrogens in pdb file
 #babel -h -ipdb aux_step2.pdb -opdb pdbformopac_"$arg" #Call babel to add hidrogens in pdb file - manual mode
 
-rm aux_step.pdb aux_step2.pdb #Delete auxiliar files
+rm -f aux_step.pdb aux_step2.pdb #Delete auxiliar files
 

@@ -78,6 +78,6 @@ do
 
 done
 
-rm aux.pdb aux2.pdb
+rm -f aux.pdb aux2.pdb
 
 echo "fin"

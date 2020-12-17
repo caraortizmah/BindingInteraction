@@ -7,12 +7,12 @@
 arg="$1"
 org="$2"
 
-if [ -z "$arg" ] || [ -z "$org" ]                                                                                  
-then                                                                                              
-  echo "It lacks one or two pdb file to execute the script"                                                  
+if [ -z "$arg" ] || [ -z "$org" ]
+then
+  echo "It lacks one or two pdb file to execute the script"
   echo "For instance: ./script_editingwaters.sh chimera_file.pdb original_cordinates_file.arc"
-  exit 1                                                                                          
-else                                                                                              
+  exit 1
+else
   echo "Executing script_editingwaters over "$arg  "and "$org
 fi
 
@@ -39,10 +39,12 @@ done
 
 # rewriting in two formats
 
-awk 'BEGIN{i=1} NF=="12"{printf "%s%7d%-2s%3s %1s%4s%12.3f%8.3f%8.3f%6.2f%6.2f%12s\n",$1,i++,substr($0,12,6),$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_waters.pdb > 1BX2_for_mutations.pdb
+name="$(echo "$org" | cut -d'.' -f1)"
 
-awk 'BEGIN{i=1} NF=="12"{printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,i++,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_waters.arc > 1BX2_coord_complete.arc
+awk 'BEGIN{i=1} NF=="12"{printf "%s%7d%-2s%3s %1s%4s%12.3f%8.3f%8.3f%6.2f%6.2f%12s\n",$1,i++,substr($0,12,6),$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_waters.pdb > ${name}_for_mutations.pdb
 
-rm aux_waters.pdb aux_waters.arc
+awk 'BEGIN{i=1} NF=="12"{printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,i++,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' aux_waters.arc > ${name}_coord_complete.arc
+
+rm -f aux_waters.pdb aux_waters.arc
 
 echo "fin"
