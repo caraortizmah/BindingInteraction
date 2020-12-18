@@ -110,6 +110,7 @@ For further information go to docs/ for reading the documentation
 * Awk
 * Gawk
 * Sed
+* Vim
 
 ### Requirements
 
