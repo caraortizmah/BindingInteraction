@@ -68,7 +68,8 @@ else
   mv -f pro_paths.sh ../
   mv -f conf.sh ../
   mv -f pre-run.sh ../
-  mv -f clean.sh ../
+  mv -f uninstall.sh ../
+  exit 1
   cd ../
   chmod +x *.sh
   #cp source/pre-run.sh .

@@ -70,3 +70,5 @@ echo "  Stage 3 finished..."
 cd ../
 cp source/tester.sh .
 ./tester.sh
+
+

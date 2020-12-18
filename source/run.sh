@@ -38,6 +38,7 @@ do
       if [ $answer1 == "c" ]; then
         echo " *** "
         echo " "
+        cd ${WORK_PATH}/${WORK_NAME}/
         < /dev/tty vim -o mutations/listm.log
         count1=1
       elif [ $answer1 == "x" ]; then
@@ -63,13 +64,14 @@ done
 
 let input=0
 
-while [ $input -ne 3 ]; 2> /dev/null
+while [ $input -ne 4 ]; 2> /dev/null
 do
   echo "**** The MHCBI Pipeline ****"
   echo "Please select your option"
-  echo "1 Run MHCBI in a single step"
-  echo "2 Run MHCBI step by step"
-  echo "3 End running pipeline"
+  echo "1. Run MHCBI in a single step"
+  echo "2. Run MHCBI step by step"
+  echo "3. End running pipeline"
+  echo "4. Optional running (GAMESS)"
   echo " "
   echo " "
   read input
@@ -98,9 +100,19 @@ do
       echo "  Closing pipeline... bye "
       exit 1
       ;;
+    4)
+      echo "***Running calculation with GAMESS***"
+      echo " "
+      cd ${WORK_PATH}/${WORK_NAME}/
+      cp source/run_fmogamess.sh .
+      chmod +x run_fmogamess.sh
+      ./run_fmogamess.sh
+      echo "...going to the menu..."
+      rm -f run_fmogamess.sh
+      ;;
     *)
       #clear
-      echo "Sorry, you need to choose an option among 1 up to 3"
+      echo "Sorry, you need to choose an option among 1 up to 4"
       ;;
     ''|*[!0-9]*)
       #clear

@@ -304,6 +304,16 @@ else
 fi
 echo "Check yourself that substitutions an charged PDB structures match with the initial ones in tobe_charged folder"
 
+let num_c=$(ls C_*.pdb | wc -l)
+let num_r=$(ls R_*.pdb | wc -l)
+let num_l=$(ls L_*.pdb | wc -l)
+
+echo "Number of molecules found as complexes... "$num_c
+echo "Number of molecules found as receptors... "$num_r
+echo "Number of molecules found as ligands... "$num_l
+
+echo "Check yourself that complexes, receptors and ligands from the all set (see listm.log) are in final_pdbs folder"
+
 cd ../../
 
 echo "****** MHCBI says: ******"

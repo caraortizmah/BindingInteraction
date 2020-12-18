@@ -122,9 +122,11 @@ do
     mkdir -p pep_"$res"
 
     mv comp_final_"$res".* complex_"$res"/
-    cp complex_"$res"/comp_final_"$res".pdb ../final_pdbs/RL_"$res".pdb
+    cp complex_"$res"/comp_final_"$res".pdb ../final_pdbs/C_"$res".pdb
     mv comp-pep_final_"$res".* comp-pep_"$res"/
+    cp comp-pep_"$res"/comp-pep_final_"$res".pdb ../final_pdbs/R_"$res".pdb
     mv pep_final_"$res".* pep_"$res"/
+    cp pep_"$res"/pep_final_"$res".pdb ../final_pdbs/L_"$res".pdb
 
     cd ../tobe_charged/
 

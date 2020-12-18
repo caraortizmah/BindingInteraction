@@ -41,6 +41,7 @@ do
   echo "2. Stage 2: Substitutions"
   echo "3. Stage 3: Calculations"
   echo "4. Brief running check"
+  echo "5. End pipeline "
   echo " "
   echo " "
   read input
