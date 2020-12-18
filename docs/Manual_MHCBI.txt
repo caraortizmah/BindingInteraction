@@ -23,6 +23,10 @@ Receptor has to be named as chain A and B and ligand as chain P. In case of havi
 
 In test folder there are two examples (shortened 1BX2 and 3OXS) having 12-column features as it should be used for every PDB structure in any proyect. In the PDB structure for a new proyect remove all information not related with 3D atomic coordinates.
 
+   3.  PDB structures name
+
+PDB structure names have to be named only with alpha-numeric characters and wihtout any blank space. Remove any special character (#$/!@'´{}}}}), even any kind of hyphen (-_), or punctuation (.,:;) in your PDB structure name.
+
 to-do work path is the directory where you want to place the new proyect.
 
 name of your work is the name of your new proyect.
