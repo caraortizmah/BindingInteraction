@@ -43,11 +43,12 @@ Before configuring the pipeline you must be aware of installing the following pr
    
    Linux text processing tools:
 
- + Grep
- + Cut
- + Awk
- + Gawk
- + Sed
+ + grep
+ + cut
+ + awk
+ + gawk
+ + sed
+ + vim
  
      Specialized softwares:
 

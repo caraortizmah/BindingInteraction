@@ -105,12 +105,12 @@ For further information go to docs/ for reading the documentation
 
 ### Requirements - Linux text processing tool
 
-* Grep 
-* Cut
-* Awk
-* Gawk
-* Sed
-* Vim
+* grep 
+* cut
+* awk
+* gawk
+* sed
+* vim
 
 ### Requirements
 

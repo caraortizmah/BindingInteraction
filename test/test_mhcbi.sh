@@ -47,14 +47,16 @@ do
     echo "Empty answer, please choose an option - (1), (2) or (3)"
   elif [ $answer == "1" ]; then
     echo "***Using 1BX2 fraction***"
-    PDB_NAME="1bx2-shortened.pdb"
-    WORK_NAME="1bx2-shortened"
+    PDB_NAME="1bx2shortened.pdb"
+    WORK_NAME="1bx2shortened"
+    si_short="si_short"
     echo " "
     break
   elif [ $answer == "2" ]; then
     echo "***Using 3OXS***"
-    PDB_NAME="example-3oxs.pdb"
-    WORK_NAME="3oxs-test"
+    PDB_NAME="3oxsstraight.pdb"
+    WORK_NAME="3oxsstraight"
+    si_short="si_straight"
     break
   else
     echo "Sorry, you need to choose an option (1, 2 or 3)"
@@ -97,6 +99,7 @@ cp ../../pro_paths.out .
 mkdir -p optimizations
 mkdir -p mutations
 mkdir -p calculations
+mkdir -p fmo-calculations
 cp ../../paths.out .
 
 cd ${WORK_PATH}/${WORK_NAME}/
@@ -118,3 +121,67 @@ echo "Run the pipeline typing ./pre-run.sh in this path: " ${WORK_PATH}/${WORK_N
 echo "*** "
 echo "    "
 
+echo "For FMO test is not necessary to have installed GUI Facio"
+echo "In test folder there are two aditional folders containing FMO input GAMESS (si_short and si_straight) aiming to facilitate a complete test"
+
+count=0
+while [ $count -eq 0 ]
+do
+  read -p "Do you want to test FMO section? type (Yes(Y/y), otherwise (No(N/n)): " answer
+  answer=${answer,,}
+
+  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+    echo " *** "
+    echo " "
+    count=1
+  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+    echo "Ending test..."
+    exit 1;
+  else
+    echo "Please enter again your answer - yes (y) or no (n)"
+  fi
+
+done
+
+cd fmo-calculations
+cp -r ../calculations/final_pdbs input_pdbs
+
+mkdir -p fmo_molecules
+
+cd ${WORK_PATH}/${WORK_NAME}/
+cp source/org_fmocalc.sh .
+chmod +x org_fmocalc.sh
+./org_fmocalc.sh
+rm -f org_fmocalc.sh
+
+cd ${WORK_PATH}/${WORK_NAME}/
+
+if [ -f "pro_paths.out" ]; then
+  GAMESS_PATH=$(grep "4 " pro_paths.out | cut -d':' -f2)
+else
+  echo "There is no absolute path for GAMESS"
+fi
+
+cat << EOF > exec_fmo.sh
+#!/bin/bash
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
+
+EOF
+printf "RUNGMS=\"$GAMESS_PATH\"\n\n" >> exec_fmo.sh
+printf "for i in \`ls *.inp\`\n" >> exec_fmo.sh
+printf "do\n" >> exec_fmo.sh
+printf "  j=\"\$(echo \"\$i\" | cut -d'.' -f1)\".log\n" >> exec_fmo.sh
+printf "  \$RUNGMS \$i 00 4 > \$j\n" >> exec_fmo.sh
+printf "done" >> exec_fmo.sh
+
+cp source/run_mhcbifmo.sh .
+mv exec_fmo.sh fmo-calculations/fmo_molecules/
+chmod +x run_mhcbifmo.sh
+./run_mhcbifmo.sh
+rm -f run_mhcbifmo.sh
+
+echo "**** Bear in mind: "
+echo "Run the pipeline typing ./pre-run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
+echo "*** "
+echo "    "
