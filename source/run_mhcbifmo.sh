@@ -55,7 +55,7 @@ do
         echo " "
         chmod +x script_dftb_inp.sh
         chmod +x exec_fmo.sh
-        for i in `ls *.pdb`
+        for i in `ls *.inp`
         do
           ./script_dftb_inp.sh $i
         done

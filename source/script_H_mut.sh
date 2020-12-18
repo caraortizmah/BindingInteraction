@@ -64,6 +64,7 @@ do
     #fin2=$(grep -n "$chain  $rnum" $dir | tail -1 | cut -d ":" -f1) # line number to the main residue to be changed
 
     awk 'NR == x,NR == y {print $0}' x="$ini1" y="$fin2" "$dir" >> aux.pdb #printing all atoms of the main residue
+
     awk 'NR == x,NR == y {print $0}' x="$ini1" y="$fin2" "$dir" >> res_charges.pdb #putting all mutations in the residues to be charged pdb
 
     awk 'NR == x,NR == y {print $0}' x="$fin" y="$num" "$tag"_"$name".pdb >> aux.pdb ##printing all atoms after the main residue
