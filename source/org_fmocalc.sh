@@ -30,7 +30,7 @@ else
   exit 1
 fi
 
-cd ${WORK_PATH}/{WORK_NAME}
+cd ${WORK_PATH}/${WORK_NAME}
 
 #Optional stage
 mkdir -p fmo-calculations
@@ -52,14 +52,14 @@ else
   echo "Something went wrong, at this point third stage should be completed first. calculations folder was not found."
 fi
 
-cd fmo-calculations
+cd ../fmo-calculations
 mv final_pdbs input_pdbs
 
 mkdir -p fmo_molecules
 
 echo "***MHCBI says***"
 echo "  "
-echo "All input GAMESS that you create using Facio must be placed in " ${WORK_PATH}/{WORK_NAME}"fmo-calculations/fmo_molecules/"
+echo "All input GAMESS that you create using Facio must be placed in " ${WORK_PATH}/${WORK_NAME}"/fmo-calculations/fmo_molecules/"
 echo "  "
 echo " "
 echo "  All folders were organized"

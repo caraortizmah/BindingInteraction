@@ -73,13 +73,13 @@ do
           echo "options depends on your GAMESS customization level (read your own GAMESS installation), a standard options could be:"
           echo "00 48: 00 is the version number and 48 the cpu cores number"
           echo " "
-          read -p "Enter options for your GAMESS running" gamess_opt
+          read -p "Enter options for your GAMESS running: " gamess_opt
           count=1
         elif [ $answer == "no" ] || [ $answer == "n" ]; then
           gamess_opt=""
           echo " "
           echo "GAMESS will run by default options"
-          exit 1;
+          count=1
         else
           echo "Please enter again your answer - yes (y) or no (n)"
         fi
@@ -91,12 +91,12 @@ do
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
 
-
 EOF
+      printf "RUNGMS=\"$GAMESS_PATH\"\n\n" >> exec_fmo.sh
       printf "for i in \`ls *.inp\`\n" >> exec_fmo.sh
       printf "do\n" >> exec_fmo.sh
-      printf "  j=\"$(echo \"$i\" | cut -d\'.\' -f1)\".log\n" >> exec_fmo.sh
-      printf "  $GAMESS_PATH $i $gamess_opt > $j" >> exec_fmo.sh
+      printf "  j=\"\$(echo \"\$i\" | cut -d'.' -f1)\".log\n" >> exec_fmo.sh
+      printf "  \$RUNGMS \$i $gamess_opt > \$j\n" >> exec_fmo.sh
       printf "done" >> exec_fmo.sh
 
       echo " "
@@ -130,31 +130,7 @@ EOF
   esac
 done
 
-cd ${WORK_PATH}/{WORK_NAME}
-
-#Optional stage
-mkdir -p FMO-calculations
-
-if [ -d "calculations" ]; then
-  cd calculations
-  if [ -d "final_pdbs" ]; then
-    cp -r final_pdbs/ ../FMO-calculations/
-    echo " "
-    echo "****Note***"
-    echo "All results are in PDB format at FMO-calculations folder"
-    echo "Use GUI Facio for creating GAMESS inputs under Fragment Molecular Orbital (FMO) method"
-  else
-    echo "***Warning***"
-    echo "final_pdbs folder was not found in the methodology 3rd stage"
-  fi
-else
-  echo "****Note***"
-  echo "Something went wrong, at this point third stage should be completed first"
-fi
-
-cd FMO-calculations
-
-
+cd ${WORK_PATH}/${WORK_NAME}
 
 echo "****** MHCBI says: ******"
 echo "  All folders and scripts were organized"

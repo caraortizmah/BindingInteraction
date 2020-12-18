@@ -30,7 +30,7 @@ else
   exit 1
 fi
 
-cd ${WORK_PATH}/{WORK_NAME}/fmo-calculations/fmo_molecules/
+cd ${WORK_PATH}/${WORK_NAME}/fmo-calculations/fmo_molecules/
 
 count=0
 while [ $count -eq 0 ]
@@ -42,6 +42,7 @@ do
     echo " *** "
     echo " "
     cp ../../source/dftb_input.info .
+    cp ../../source/script_dftb_inp.sh .
 
     count1=0
     while [ $count1 -eq 0 ]
@@ -52,6 +53,12 @@ do
       if [ $answer1 == "yes" ] || [ $answer1 == "y" ]; then
         echo " *** "
         echo " "
+        chmod +x script_dftb_inp.sh
+        chmod +x exec_fmo.sh
+        for i in `ls *.pdb`
+        do
+          ./script_dftb_inp.sh $i
+        done
         ./exec_fmo.sh
         count1=1
       elif [ $answer1 == "no" ] || [ $answer1 == "n" ]; then
