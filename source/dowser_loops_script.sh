@@ -65,24 +65,35 @@ do
   #${BABEL} -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb
   #babel -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb #manual mode
 
-  for i in `ls placed_waters_* 2>/dev/null` #suppressing error message if placed_waters is not found at the beginning of dowser operation
-  do
-    if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ]
-    then
-      k=$k" -ipdb "$i
-    fi
-  done
+  version_babel=$(${BABEL} -V)
+  ver_babel=$(echo "$version_babel" | awk '{print $3}' | cut -d'.' -f1)
 
-  ${BABEL} -j ${k} -opdb temporary_wat.pdb
 
-  if [ ! -s "temporary_wat.pdb" ]; then #if it is empty...
-    cp processed-for-dowser.pdb step_"$iter".pdb
+  if [ "$ver_babel" -ge "3" ]; then #if babel version is greater or equal to 3...
+
+    for i in `ls placed_waters_* 2>/dev/null` #suppressing error message if placed_waters is not found at the beginning of dowser operation
+    do
+      if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ] #if file is not empty it has more than 1 line
+      then
+        k=$k" "$i
+      fi
+    done
+
+    ${BABEL} processed-for-dowser.pdb ${k} -O step_"$iter".pdb -j
+    #babel -processed-for-dowser.pdb $k -opdb step_"$iter".pdb #manual mode
+
   else
+
+    for i in `ls placed_waters_* 2>/dev/null`
+    do
+      if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ]
+      then
+        k=$k" -ipdb "$i
+      fi
+    done
+
     ${BABEL} -j -ipdb processed-for-dowser.pdb ${k} -opdb step_"$iter".pdb
     #babel -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb #manual mode
-
-    #IN THE FUTURE:
-    #obabel processed-for-dowser.pdb placed_waters_1.pdb placed_waters_2.pdb placed_waters_3.pdb -O step_"$iter".pdb -j
 
   fi
 
