@@ -1,6 +1,6 @@
 #!/bin/bash
-
-
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
 
 arg="$1"
 VMD="$2"
@@ -73,12 +73,12 @@ do
     fi
   done
 
-  ${BABEL} -j $k -opdb temporary_wat.pdb
+  ${BABEL} -j ${k} -opdb temporary_wat.pdb
 
-  if [ ! -s "$_file" ]; then
+  if [ ! -s "temporary_wat.pdb" ]; then #if it is empty...
     cp processed-for-dowser.pdb step_"$iter".pdb
   else
-    ${BABEL} -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb
+    ${BABEL} -j -ipdb processed-for-dowser.pdb ${k} -opdb step_"$iter".pdb
     #babel -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb #manual mode
 
     #IN THE FUTURE:
