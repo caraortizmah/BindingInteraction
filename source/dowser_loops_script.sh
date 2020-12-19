@@ -27,95 +27,105 @@ fi
 while $clause
 do
 
- k=""
+  k=""
 
- mkdir "$iter"_iter
- if [ $iter -eq 1 ]
- then
-   cp "$arg" molecule.pdb
- else
-   cp $((iter-1))_iter/step_$((iter-1)).pdb molecule.pdb
- fi
+  mkdir "$iter"_iter
+  if [ $iter -eq 1 ]
+  then
+    cp "$arg" molecule.pdb
+  else
+    cp $((iter-1))_iter/step_$((iter-1)).pdb molecule.pdb
+  fi
 
- mv molecule.pdb "$iter"_iter/
- cp folder_1/* "$iter"_iter/
- cd "$iter"_iter/
+  mv molecule.pdb "$iter"_iter/
+  cp folder_1/* "$iter"_iter/
+  cd "$iter"_iter/
 
- if [ $iter -eq 1 ]
- then
-   ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
-   # vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
- else
-   ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
-   #vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
- fi
+  if [ $iter -eq 1 ]
+  then
+    ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
+    # vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
+  else
+    ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
+    #vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
+  fi
 
- #if [ $iter -eq 1 ]
- #then
- #  ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
- #  vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
- #else
- #  ${VMD} -dispdev text -e prepare_st1.tcl > output_"$iter".log
- #  vmd -dispdev text -e prepare_st1.tcl > output_"$iter".log #manual mode
- #fi
+  #if [ $iter -eq 1 ]
+  #then
+  #  ${VMD} -dispdev text -e prepare_st2.tcl > output_"$iter".log
+  #  vmd -dispdev text -e prepare_st2.tcl > output_"$iter".log #manual mode
+  #else
+  #  ${VMD} -dispdev text -e prepare_st1.tcl > output_"$iter".log
+  #  vmd -dispdev text -e prepare_st1.tcl > output_"$iter".log #manual mode
+  #fi
 
- #${VMD} -dispdev text -e prepare_st.tcl > output_"$iter".log
- #vmd -dispdev text -e prepare_st.tcl > output_"$iter".log #manual mode
+  #${VMD} -dispdev text -e prepare_st.tcl > output_"$iter".log
+  #vmd -dispdev text -e prepare_st.tcl > output_"$iter".log #manual mode
 
- #${BABEL} -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb
- #babel -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb #manual mode
+  #${BABEL} -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb
+  #babel -j -ipdb processed-for-dowser.pdb -ipdb placed_waters_1.pdb ... -ipdb placed_waters_n.pdb -opdb step"$iter".pdb #manual mode
 
- for i in `ls placed_waters_* 2>/dev/null` #suppressing error message if placed_waters is not found at the beginning of dowser operation
- do
-   if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ]
-   then
-     k=$k" -ipdb "$i
-   fi
- done
+  for i in `ls placed_waters_* 2>/dev/null` #suppressing error message if placed_waters is not found at the beginning of dowser operation
+  do
+    if [ $(wc -l "$i" | awk '{print $1}') -gt 1 ]
+    then
+      k=$k" -ipdb "$i
+    fi
+  done
 
- ${BABEL} -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb
- #babel -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb #manual mode
+  ${BABEL} -j $k -opdb temporary_wat.pdb
 
- for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1 | tail -2)
- do
-   let var_1=$var_1+2
-   let var_2=$(sed -n "$var_1"p output_"$iter".log | awk '{print $4}')
-   let var_3=$var_2+$var_3
- done
+  if [ ! -s "$_file" ]; then
+    cp processed-for-dowser.pdb step_"$iter".pdb
+  else
+    ${BABEL} -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb
+    #babel -j -ipdb processed-for-dowser.pdb $k -opdb step_"$iter".pdb #manual mode
 
- if grep -q "No water molecules in the input of " output_"$iter".log
- then
-   let var_4=0
- else
-   var_4=$(grep -n "remaining water molecules" output_"$iter".log | tail -1 | awk '{print $4}')
- fi
+    #IN THE FUTURE:
+    #obabel processed-for-dowser.pdb placed_waters_1.pdb placed_waters_2.pdb placed_waters_3.pdb -O step_"$iter".pdb -j
 
- if  [ $var_3 -le 2 ]
- then
-   echo "Dowser puts 2 or less waters. It might not put more waters later"
- else
-   echo "Dowser puts $var_3 waters. It'll put more waters later"
- fi
+  fi
 
- if  [ "$var_4" -le 1 ]
- then
-   echo "Dowserx puts 1 or less waters. It might not put more waters later"
- else
-   echo "Dowserx puts $var_4 waters. It'll put more waters later"
- fi
+  for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1 | tail -2)
+  do
+    let var_1=$var_1+2
+    let var_2=$(sed -n "$var_1"p output_"$iter".log | awk '{print $4}')
+    let var_3=$var_2+$var_3
+  done
 
- if [ $var_3 -lt 3 ] #&& [ $var_4 -lt 2 ]
- then
-   clause=false
- else
-   clause=true
- fi
+  if grep -q "No water molecules in the input of " output_"$iter".log
+  then
+    let var_4=0
+  else
+    var_4=$(grep -n "remaining water molecules" output_"$iter".log | tail -1 | awk '{print $4}')
+  fi
 
- #let clause=$clause+3
- let iter=$iter+1
- let var_3=0
+  if  [ $var_3 -le 2 ]
+  then
+    echo "Dowser puts 2 or less waters. It might not put more waters later"
+  else
+    echo "Dowser puts $var_3 waters. It'll put more waters later"
+  fi
 
- cd ..
+  if  [ "$var_4" -le 1 ]
+  then
+    echo "Dowserx puts 1 or less waters. It might not put more waters later"
+  else
+    echo "Dowserx puts $var_4 waters. It'll put more waters later"
+  fi
+
+  if [ $var_3 -lt 3 ] #&& [ $var_4 -lt 2 ]
+  then
+    clause=false
+  else
+    clause=true
+  fi
+
+  #let clause=$clause+3
+  let iter=$iter+1
+  let var_3=0
+
+  cd ..
 
 done
 
