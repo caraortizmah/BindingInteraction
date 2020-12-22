@@ -11,11 +11,11 @@ do
   read -p "Did you complete all of the requirements in the setup.sh first step? If you really fulfil the requirements type (Yes(Y/y), otherwise (No(N/n)): " answer
   answer=${answer,,}
 
-  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+  if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
     count=1
-  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+  elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
     echo "Please make sure that you have installed all of required programs prior to run the test"
     echo " bye..."
     exit 1;
@@ -116,9 +116,6 @@ echo "****Checking test..."
 echo " "
 ./tester.sh
 
-echo "**** Bear in mind: "
-echo "Run the pipeline typing ./pre-run.sh in this path: " ${WORK_PATH}/${WORK_NAME}/
-echo "*** "
 echo "    "
 
 echo "For FMO test is not necessary to have installed GUI Facio"
