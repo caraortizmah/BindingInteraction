@@ -130,11 +130,11 @@ do
   read -p "Do you want to test FMO section? type (Yes(Y/y), otherwise (No(N/n)): " answer
   answer=${answer,,}
 
-  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+  if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
     count=1
-  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+  elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
     echo "Ending test..."
     exit 1;
   else

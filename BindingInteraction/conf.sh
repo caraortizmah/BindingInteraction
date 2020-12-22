@@ -28,11 +28,11 @@ do
 	read -p "Did you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
 	answer=${answer,,}
 
-	if [ $answer == "yes" ] || [ $answer == "y" ]; then
+	if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
 		echo " *** "
 		echo " "
     count=1
-	elif [ $answer == "no" ] || [ $answer == "n" ]; then
+	elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
 		echo "Please make sure that you have installed all of required programs prior to run MHCBI pipeline"
 		echo " bye..."
 		exit 1;

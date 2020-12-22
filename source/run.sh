@@ -19,11 +19,11 @@ do
   read -p "Did you already set the mutations list? (Yes(Y/y)/No(N/n)): " answer
   answer=${answer,,}
 
-  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+  if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
     count=1
-  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+  elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
     echo "The MHCBI will open vim editor for writing the mutation list from the new proyect."
     echo "Exit the pipelie if you want to write the mutation list with an editor of your preference"
     echo " "
@@ -35,13 +35,13 @@ do
       read -p "If you want to use vim editor ---type c to continue--- otherwise ---type x to exit pipeline--- : " answer1
       answer1=${answer1,,}
 
-      if [ $answer1 == "c" ]; then
+      if [ "$answer1" == "c" ]; then
         echo " *** "
         echo " "
         cd ${WORK_PATH}/${WORK_NAME}/
         < /dev/tty vim -o mutations/listm.log #open file using vim without returning errors if execution goes wrong
         count1=1
-      elif [ $answer1 == "x" ]; then
+      elif [ "$answer1" == "x" ]; then
         echo " "
         echo " "
         echo "Go to mutations folder in this directory and modify listm.log file following instructions inside"
@@ -64,7 +64,7 @@ done
 
 let input=0
 
-while [ $input -ne 4 ]; 2> /dev/null
+while [ "$input" -ne 4 ]; 2> /dev/null
 do
   echo "**** The MHCBI Pipeline ****"
   echo "Please select your option"

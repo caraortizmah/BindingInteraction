@@ -72,7 +72,7 @@ do
       echo " "
       cd ${WORK_PATH}/${WORK_NAME}/
       cp source/run_mhcbifmo.sh .
-      mv exec_fmo.sh fmo-calculations/fmo_molecules/
+      mv -f exec_fmo.sh fmo-calculations/fmo_molecules/
       chmod +x run_mhcbifmo.sh
       ./run_mhcbifmo.sh
       echo " "

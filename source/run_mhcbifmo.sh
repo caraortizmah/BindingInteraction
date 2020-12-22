@@ -38,7 +38,7 @@ do
   read -p "Did you complete all three running stages? If you really finished all stages type (Yes(Y/y), otherwise (No(N/n)): " answer
   answer=${answer,,}
 
-  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+  if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
     cp ../../source/dftb_input.info .
@@ -50,7 +50,7 @@ do
       read -p "Did you perform GAMESS inputs using GUI Facio? type (Yes(Y/y) or (No(N/n)): " answer1
       answer1=${answer1,,}
 
-      if [ $answer1 == "yes" ] || [ $answer1 == "y" ]; then
+      if [ "$answer1" == "yes" ] || [ "$answer1" == "y" ]; then
         echo " *** "
         echo " "
         chmod +x script_dftb_inp.sh
@@ -61,7 +61,7 @@ do
         done
         ./exec_fmo.sh
         count1=1
-      elif [ $answer1 == "no" ] || [ $answer1 == "n" ]; then
+      elif [ "$answer1" == "no" ] || [ "$answer1" == "n" ]; then
         echo "Go to fmo-calculations/input_pdbs/ path, in that directory there are all complex, receptor and ligand PDB structures from substitutions set. Use GUI Facio to convert them into FMO GAMESS inputs. Please make sure that you have installed all of required programs prior to run the test"
         echo " "
         echo "Once you complete this step type ./run.sh in" ${WORK_PATH}/${WORK_NAME}
@@ -74,7 +74,7 @@ do
     done
 
     count=1
-  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+  elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
     echo "Please make sure that you have finished all of running stages prior to run pipeline using FMO method in GAMESS"
     echo " bye..."
     exit 1;

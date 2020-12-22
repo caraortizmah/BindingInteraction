@@ -23,7 +23,7 @@ do
   read -p "Do you want to declare some options for GAMESS execution? type (Yes(Y/y), otherwise (No(N/n)): " answer
   answer=${answer,,}
 
-  if [ $answer == "yes" ] || [ $answer == "y" ]; then
+  if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
     echo "Options depends on your GAMESS customization level (read that in your own GAMESS installation). A standard option could be: 00 8"
@@ -31,7 +31,7 @@ do
     echo " "
     read -p "Enter options for your GAMESS running: " options
     count=1
-  elif [ $answer == "no" ] || [ $answer == "n" ]; then
+  elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
     options=""
     echo " "
     echo "GAMESS will run without user options (it will use default options according its rungms)"

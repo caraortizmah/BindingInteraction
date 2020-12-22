@@ -45,11 +45,11 @@ do
         read -p " If you really fulfil the requirements type (Yes(Y/y), otherwise (No(N/n)): " answer
         answer=${answer,,}
 
-        if [ $answer == "yes" ] || [ $answer == "y" ]; then
+        if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
           echo " *** "
           echo " "
           count=1
-        elif [ $answer == "no" ] || [ $answer == "n" ]; then
+        elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
           echo "Please make sure that you have successfully tested MHCBI pipeline and properly set your required paths for a new proyect."
           echo " bye..."
           exit 1;
