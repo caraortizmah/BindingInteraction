@@ -110,13 +110,13 @@ For further information go to docs/ for reading the documentation
 
 ### Requirements
 
-* [Open Babel 2.3.2](http://openbabel.org/wiki/Main_Page) - Open Babel page
+* [Open Babel 2.3.2 or higher](http://openbabel.org/wiki/Main_Page) - Open Babel page
 
 * [Python 2.7 or higher](https://www.python.org/downloads/) - Python page
 
 * [VMD version 1.9.1 (February 1, 2012) or higher](https://www.ks.uiuc.edu/Research/vmd/) - VMD page
 
-* [Dowser plugin](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Dowser in VMD
+* [VMD Dowser plugin](http://www.ks.uiuc.edu/Research/vmd/plugins/dowser/) - Version 1.1
 
 * [Dowser](https://github.com/caraortizmah/dowser) - non-Official GitHub repository.
 
