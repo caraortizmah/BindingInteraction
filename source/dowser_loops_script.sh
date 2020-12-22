@@ -97,7 +97,7 @@ do
 
   fi
 
-  for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1 | tail -2)
+  for var_1 in $(grep -n "DRAIN AWAY EXTERNAL DOWSER WATERS" output_"$iter".log | cut -d ":" -f1 | tail -2 2>/dev/null) #suppressing error message if there is not a match in output#.log
   do
     let var_1=$var_1+2
     let var_2=$(sed -n "$var_1"p output_"$iter".log | awk '{print $4}')
