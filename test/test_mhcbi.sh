@@ -148,11 +148,9 @@ cp -r ../calculations/final_pdbs input_pdbs
 
 mkdir -p fmo_molecules
 
-cd ${WORK_PATH}/${WORK_NAME}/
-cp source/org_fmocalc.sh .
-chmod +x org_fmocalc.sh
-./org_fmocalc.sh
-rm -f org_fmocalc.sh
+#***only for test
+cp ../../../${si_short}/*.inp fmo_molecules/
+#***
 
 cd ${WORK_PATH}/${WORK_NAME}/
 
@@ -162,19 +160,13 @@ else
   echo "There is no absolute path for GAMESS"
 fi
 
-cat << EOF > exec_fmo.sh
-#!/bin/bash
-#Author: Carlos Andres Ortiz Mahecha
-#caraortizmah@gmail.com
+cp source/fmoexemaker.sh .
+chmod +x fmoexemaker.sh
 
-EOF
-printf "RUNGMS=\"$GAMESS_PATH\"\n\n" >> exec_fmo.sh
-printf "for i in \`ls *.inp\`\n" >> exec_fmo.sh
-printf "do\n" >> exec_fmo.sh
-printf "  j=\"\$(echo \"\$i\" | cut -d'.' -f1)\".log\n" >> exec_fmo.sh
-printf "  \$RUNGMS \$i 00 4 > \$j\n" >> exec_fmo.sh
-printf "done" >> exec_fmo.sh
+./fmoexemaker.sh "${GAMESS_PATH}"
+rm -f fmoexemaker.sh
 
+cd ${WORK_PATH}/${WORK_NAME}/
 cp source/run_mhcbifmo.sh .
 mv exec_fmo.sh fmo-calculations/fmo_molecules/
 chmod +x run_mhcbifmo.sh

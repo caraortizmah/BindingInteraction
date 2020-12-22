@@ -39,7 +39,7 @@ do
         echo " *** "
         echo " "
         cd ${WORK_PATH}/${WORK_NAME}/
-        < /dev/tty vim -o mutations/listm.log
+        < /dev/tty vim -o mutations/listm.log #open file using vim without returning errors if execution goes wrong
         count1=1
       elif [ $answer1 == "x" ]; then
         echo " "

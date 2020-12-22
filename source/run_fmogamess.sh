@@ -37,7 +37,7 @@ do
   echo "**** The MHCBI Pipeline FMO calculations****"
   echo "Please select your option"
   echo "1. Configure FMO folders"
-  echo "2. Select running GAMESS options"
+  echo "2. Prepare running GAMESS execution command"
   echo "3. Run MHCBI FMO"
   echo "4. End running pipeline"
   echo " "
@@ -55,49 +55,14 @@ do
       rm -f org_fmocalc.sh
       ;;
     2)
-      echo "***Selecting GAMESS execution options***"
+      echo "***Preparing GAMESS execution command***"
       echo " "
       cd ${WORK_PATH}/${WORK_NAME}/
+      cp source/fmoexemaker.sh .
+      chmod +x fmoexemaker.sh
 
-      echo "The absolute GAMESS path name is " $GAMESS_PATH
-
-      count=0
-      while [ $count -eq 0 ]
-      do
-        read -p "Do you want to declare some options for GAMESS execution? type (Yes(Y/y), otherwise (No(N/n)): " answer
-        answer=${answer,,}
-
-        if [ $answer == "yes" ] || [ $answer == "y" ]; then
-          echo " *** "
-          echo " "
-          echo "options depends on your GAMESS customization level (read your own GAMESS installation), a standard options could be:"
-          echo "00 48: 00 is the version number and 48 the cpu cores number"
-          echo " "
-          read -p "Enter options for your GAMESS running: " gamess_opt
-          count=1
-        elif [ $answer == "no" ] || [ $answer == "n" ]; then
-          gamess_opt=""
-          echo " "
-          echo "GAMESS will run by default options"
-          count=1
-        else
-          echo "Please enter again your answer - yes (y) or no (n)"
-        fi
-
-      done
-
-      cat << EOF > exec_fmo.sh
-#!/bin/bash
-#Author: Carlos Andres Ortiz Mahecha
-#caraortizmah@gmail.com
-
-EOF
-      printf "RUNGMS=\"$GAMESS_PATH\"\n\n" >> exec_fmo.sh
-      printf "for i in \`ls *.inp\`\n" >> exec_fmo.sh
-      printf "do\n" >> exec_fmo.sh
-      printf "  j=\"\$(echo \"\$i\" | cut -d'.' -f1)\".log\n" >> exec_fmo.sh
-      printf "  \$RUNGMS \$i $gamess_opt > \$j\n" >> exec_fmo.sh
-      printf "done" >> exec_fmo.sh
+      ./fmoexemaker.sh "${GAMESS_PATH}"
+      rm -f fmoexemaker.sh
 
       echo " "
       echo "...going to the menu..."

@@ -62,9 +62,9 @@ do
         ./exec_fmo.sh
         count1=1
       elif [ $answer1 == "no" ] || [ $answer1 == "n" ]; then
-        echo "Go to FMO-calculations folder, there are all complex, receptor and ligand PDB structures from substitutions set at input_pdbs folder. Use GUI Facio to convert them into FMO GAMESS inputs. Please make sure that you have installed all of required programs prior to run the test"
+        echo "Go to fmo-calculations/input_pdbs/ path, in that directory there are all complex, receptor and ligand PDB structures from substitutions set. Use GUI Facio to convert them into FMO GAMESS inputs. Please make sure that you have installed all of required programs prior to run the test"
         echo " "
-        echo "Once you complete this step type ./run_fmogamess.sh in" ${WORK_PATH}/${WORK_NAME}
+        echo "Once you complete this step type ./run.sh in" ${WORK_PATH}/${WORK_NAME}
         echo " bye..."
         exit 1;
       else
