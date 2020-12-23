@@ -52,6 +52,7 @@ if [ "$pipeline_path" != "$PWD" ]; then
 	cp $git/BindingInteraction/uninstall.sh .
 	chmod +x *.sh
 	cp -r $git/source .
+  cp -r $git/misc .
 	cp -r $git/test .
 	#cp source/pre-run.sh .
 	#cp source/organizer.sh .
