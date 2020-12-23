@@ -59,3 +59,37 @@ ________________________________________________________________________________
 
  
 Now you can analyse your results!
+
+
+Warnnings!
+
+Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.
+
+When Dowser puts waters, some conversions by OpenBabel generates some warnings that look like:
+
+=============================
+*** Open Babel Warning in parseAtomRecord
+WARNING: Problems reading a PDB file
+Problems reading a HETATM or ATOM record.
+According to the PDB specification,
+columns 77-78 should contain the element symbol of an atom.
+but OpenBabel found ' ' (atom 3)
+==============================
+
+
+In case of not finding waters by Dowser, messages like this could appear:
+
+PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_1.pdb' contains no atoms.
+PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_2.pdb' contains no atoms.
+PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_3.pdb' contains no atoms.
+1 molecule converted
+
+
+The following message could appear due to a non-existent binary path related to another process in vmd:
+
+rlwrap: Command not found.
+
+
+That message do not affect the MHCBI performance.
+
+
