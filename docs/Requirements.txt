@@ -17,8 +17,9 @@ ____________________________
 *For Dowser installation:
 
 You have to install csh prior to do Dowser.
-Go to https://github.com/caraortizmah/dowser/blob/master/README.md for further information
+Go to https://github.com/caraortizmah/dowser/blob/master/README.md for further information.
 
+____________________________
 *For OpenBabel:
 Go to http://openbabel.org/wiki/Main_Page for installing it. 
 Further information about releases https://github.com/openbabel/openbabel/releases
@@ -34,7 +35,7 @@ ____________________________
 For Propka 3.1
 
 For this program you need python 3.6 or higher and pip (python package installer) for installing propka 3.1.
-Go to https://github.com/jensengroup/propka for further information
+Go to https://github.com/jensengroup/propka for further information.
 
 ____________________________
 *For MOPAC:
@@ -67,3 +68,4 @@ You need to install wine for executing Facio. Due to Facio is not opensource onl
 You can use the following page for wine:
 1. https://vitux.com/how-to-install-wine-on-ubuntu/
 
+Go to docs/Install_documentation.html for configuring and running the MHCBI pipeline.
