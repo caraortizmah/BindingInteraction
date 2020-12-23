@@ -117,6 +117,7 @@ if [ -f "$FILE" ]; then
 	mkdir -p ${WORK_NAME}
 	cd ${MHCBI_PATH}
 	cp -r source/ ${WORK_PATH}/${WORK_NAME}
+	cp -r misc/ ${WORK_PATH}/${WORK_NAME}
 	cp -r paths.sh ${WORK_PATH}/${WORK_NAME}/
 	cd ${WORK_PATH}/${WORK_NAME}/source/
 	chmod +x *.sh #giving permissions

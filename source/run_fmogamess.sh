@@ -71,6 +71,7 @@ do
       echo "***Running input GAMESS***"
       echo " "
       cd ${WORK_PATH}/${WORK_NAME}/
+      cp -r misc/param_DFTB3 fmo-calculations/
       cp source/run_mhcbifmo.sh .
       mv -f exec_fmo.sh fmo-calculations/fmo_molecules/
       chmod +x run_mhcbifmo.sh

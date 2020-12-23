@@ -26,7 +26,9 @@ do
         do
 
           cp ../../script_dftb_inp.sh . # copying DFTB script
-          cp ../../dftb_input.info . # copying information about DFTB input keywords
+          #cp ../../dftb_input.info . # copying information about DFTB input keywords
+          cp ../../dftb_infomaker.sh .
+          ./dftb_infomaker.sh
           # output="$(echo "$input" | cut -d'.' -f1)"
           ./script_dftb_inp.sh "$input" # executing script to edits .inp file to calculate single points using FMO-DFTB3
           echo "$input converted to FMO-DFTB3 input for GAMESS"

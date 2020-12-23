@@ -89,6 +89,7 @@ chmod +x get_propaths.sh
 cd ${WORK_PATH}
 mkdir -p ${WORK_NAME}
 cp -r ../../source/ ${WORK_PATH}/${WORK_NAME}
+cp -r ../../misc/ ${WORK_PATH}/${WORK_NAME}
 cd ${WORK_PATH}/${WORK_NAME}/source/
 chmod +x *.sh #giving permissions
 chmod +x *.tcl

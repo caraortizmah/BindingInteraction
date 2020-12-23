@@ -41,7 +41,8 @@ do
   if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
     echo " *** "
     echo " "
-    cp ../../source/dftb_input.info .
+    #cp ../../source/dftb_input.info .
+    cp ../../source/dftb_infomaker.sh .
     cp ../../source/script_dftb_inp.sh .
 
     count1=0
@@ -53,8 +54,10 @@ do
       if [ "$answer1" == "yes" ] || [ "$answer1" == "y" ]; then
         echo " *** "
         echo " "
+        chmod +x dftb_infomaker.sh
         chmod +x script_dftb_inp.sh
         chmod +x exec_fmo.sh
+        ./dftb_infomaker.sh ${WORK_PATH}/${WORK_NAME}/fmo-calculations/
         for i in `ls *.inp`
         do
           ./script_dftb_inp.sh $i
