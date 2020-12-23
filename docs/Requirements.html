@@ -1,0 +1,30 @@
+<p><span style="background-color: #99ccff;">REQUIREMENTS</span></p>
+<p>&nbsp;</p>
+<p>The <span style="background-color: #99ccff;">MHCBI</span> pipeline only needs gfortran and some linux test processing tools (cut, grep, awk, gawk, sed and vim). <br />However the MHCBI uses several specialized softwares that rely on another kind of requirements.</p>
+<p><br />Before starting any procedure regarding the MHCBI pipeline, first of all type:</p>
+<p>&nbsp; &nbsp; <code>$ sudo apt update</code><br /><code>&nbsp; $ sudo apt install build-essential</code><br /><code>&nbsp; $ sudo apt install gfortran</code><br /><code>&nbsp; $ sudo apt install git</code></p>
+<hr />
+<h4><br />For Dowser:</h4>
+<p>You have to install csh prior to do Dowser.<br />Go to <a href="https://github.com/caraortizmah/dowser">Dowser GitHub repository</a> for further information.</p>
+<h4>For OpenBabel:</h4>
+<p>Go to <a href="http://openbabel.org/wiki/Main_Page">Open Babel wiki</a> for installing it. <br />Further information about releases availables at <a href="https://github.com/openbabel/openbabel/releases">OpenBabel GitHub</a></p>
+<h4><br />For VMD:</h4>
+<p>Go to the <a href="https://www.ks.uiuc.edu/Research/vmd/current/ig/ig.html">following page</a> for further information.<br />A helpful page for installing could be:</p>
+<p>1. <a href="https://www.biostars.org/p/196147/">https://www.biostars.org/p/196147/</a></p>
+<h4><br />For Propka 3.1:</h4>
+<p>For this program you need python 3.6 or higher and pip (python package installer) for installing propka 3.1.<br />Go to propka 3.1 <a href="https://github.com/jensengroup/propka">GitHub repository</a> for further information.</p>
+<h4><br />For MOPAC:</h4>
+<p>Due to installing MOPAC is a straightforward process (locating properly the MOPAC executable provided at <a href="http://openmopac.net/downloads.html">http://openmopac.net/downloads.html</a>), you only need to configure your .bashrc or .bash_profile typing:</p>
+<p>$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mopac/mopac_cuda_5.5_libs/</p>
+<p>In this path the following files must be there:<br />libcublas.so.5.5 libcudart.so.5.5 libiomp5.so</p>
+<p>Further information in the <a href="http://openmopac.net/Manual/Requirements_for_GPU_MOPAC.html">MOPAC page requirements</a>.</p>
+<p>&nbsp;</p>
+<h4>For GAMESS:</h4>
+<p>This is a general ab initio quantum chemistry package. It is not easy to install at all.<br />Go to <a href="https://www.msg.chem.iastate.edu/gamess/download.html">Gordon's group page</a> for downloading the sourcecode.<br />For installing GAMESS there are several pages that could be useful. You can clear up any doubts reading several of those pages below:</p>
+<p>1. <a href="https://www.webmo.net/support/gamess_linux.html">https://www.webmo.net/support/gamess_linux.html</a></p>
+<p>2. <a href="https://sites.google.com/site/rangsiman1993/comp-chem/program-install/install-gamess">https://sites.google.com/site/rangsiman1993/comp-chem/program-install/install-gamess</a></p>
+<p>3. <a href="http://drphilipcarlson.weebly.com/installing-gamess.html">http://drphilipcarlson.weebly.com/installing-gamess.html</a></p>
+<p>4. <a href="http://katter-world.blogspot.com/2012/04/installing-gamess-on-ubuntu-64-bit-zz.html">http://katter-world.blogspot.com/2012/04/installing-gamess-on-ubuntu-64-bit-zz.html</a></p>
+<h4><br />For GUI Facio:</h4>
+<p>You need to install wine for executing Facio. Due to Facio is not opensource only you have to launch Facio through wine.<br />You can use the following page for wine:<br />1. <a href="https://vitux.com/how-to-install-wine-on-ubuntu/">https://vitux.com/how-to-install-wine-on-ubuntu/</a></p>
+<p>Go to docs/Install_documentation.html for configuring and running the <span style="background-color: #99ccff;">MHCBI</span> pipeline.</p>
