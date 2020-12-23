@@ -17,25 +17,25 @@ fi
 
 
 cat << EOF > dftb_input.info
- $CONTRL RUNTYP=ENERGY NPRINT=-5 ISPHER=-1 MAXIT=50 $END
- $GDDI   NGROUP=1 PAROUT=.T. BALTYP=NXTVAL $END
- $SYSTEM MWORDS=700 $END
- $BASIS  GBASIS=DFTB $END
- $PCM    SOLVNT=WATER IEF=-10 ICOMP=0
-         ICAV=1 IDISP=1 IFMO=-1 $END
- $PCMCAV RADII=SUAHF $END
- $TESCAV NTSALL=60 $END
- $DFTB
+ \$CONTRL RUNTYP=ENERGY NPRINT=-5 ISPHER=-1 MAXIT=50 \$END
+ \$GDDI   NGROUP=1 PAROUT=.T. BALTYP=NXTVAL \$END
+ \$SYSTEM MWORDS=700 \$END
+ \$BASIS  GBASIS=DFTB \$END
+ \$PCM    SOLVNT=WATER IEF=-10 ICOMP=0
+         ICAV=1 IDISP=1 IFMO=-1 \$END
+ \$PCMCAV RADII=SUAHF \$END
+ \$TESCAV NTSALL=60 \$END
+ \$DFTB
    SCC=.TRUE.
    DAMPXH=.TRUE.
    DAMPEX=4.00
    DFTB3=.TRUE.
    DISP=UFF
- $END
- $FMOPRP
+ \$END
+ \$FMOPRP
     NPRINT=138
- $END
- $DFTBSK
+ \$END
+ \$DFTBSK
    C C "${dir}/param_DFTB3/3ob-3-1/C-C.skf"
    C H "${dir}/param_DFTB3/3ob-3-1/C-H.skf"
    C O "${dir}/param_DFTB3/3ob-3-1/C-O.skf"
@@ -61,8 +61,8 @@ cat << EOF > dftb_input.info
    H S "${dir}/param_DFTB3/3ob-3-1/H-S.skf"
    O S "${dir}/param_DFTB3/3ob-3-1/O-S.skf"
    N S "${dir}/param_DFTB3/3ob-3-1/N-S.skf"
- $END
- $FMO
+ \$END
+ \$FMO
       MODMUL=0
       NLAYER=1
 --
