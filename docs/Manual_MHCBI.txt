@@ -4,14 +4,14 @@
 *********************************************
 
 The MHC BindingInteraction pipeline Manual
-After performing all steps in the installing instructions you can run the pipeline over a new proyect.
+After performing all steps in the installing instructions you can run the pipeline over a new project.
 
 $ ./pre-run.sh
-You have to complete all steps in order. First step is aimed to set some paths prior to run a new proyect:
+You have to complete all steps in order. First step is aimed to set some paths prior to run a new project:
 
-Notepadding: A new proyect is a work performed by MHCBI pipeline passing through the three stages: optimizations, mutations and calculations. All folders, inputs and outputs created during the whole process are the new proyect. Each individual PDB structure has one new proyect.
+Notepadding: A new project is a work performed by MHCBI pipeline passing through the three stages: optimizations, mutations and calculations. All folders, inputs and outputs created during the whole process are the new project. Each individual PDB structure has one new project.
 
-PDB structure path is the directory where is placed the new proyect PDB structure.
+PDB structure path is the directory where is placed the new project PDB structure.
 
 PDB structure name is the PDB structure (located in the previous path). A PDB format can have several valid formats, however in this MHCBI pipeline, format has the following guideline:
 
@@ -21,23 +21,23 @@ Receptor has to be named as chain A and B and ligand as chain P. In case of havi
 
    2.  PDB structures having a 12-column features
 
-In test folder there are two examples (shortened 1BX2 and 3OXS) having 12-column features as it should be used for every PDB structure in any proyect. In the PDB structure for a new proyect remove all information not related with 3D atomic coordinates.
+In test folder there are two examples (shortened 1BX2 and 3OXS) having 12-column features as it should be used for every PDB structure in any project. In the PDB structure for a new project remove all information not related with 3D atomic coordinates.
 
    3.  PDB structures name
 
-PDB structure names have to be named only with alpha-numeric characters and wihtout any blank space. Remove any special character (#$/!@'´{}}}}), even any kind of hyphen (-_), or punctuation (.,:;) in your PDB structure name.
+PDB structure names have to be named only with alpha-numeric characters and without any blank space. Remove any special character (#$/!@'´{}}}}), even any kind of hyphen (-_), or punctuation (.,:;) in your PDB structure name.
 
-to-do work path is the directory where you want to place the new proyect.
+to-do work path is the directory where you want to place the new project.
 
-name of your work is the name of your new proyect.
+name of your work is the name of your new project.
 
  
 
 Setup and pre-run scripts create .log files having all required paths. You can modify them without using the pipeline, but you can not change any word related to the format. It is advisable to use the pipeline for setting paths.
 
-In pre-run script, Second step configures pipeline core in all of the new folders that will be the new proyect. If the MHCBI can not detect one of the required paths, configuration step will not be performed.
+In pre-run script, Second step configures pipeline core in all of the new folders that will be the new project. If the MHCBI can not detect one of the required paths, configuration step will not be performed.
 
-After configuring the new proyect you can run the pipeline. Third step presents two options for running MHCBI over a PDB structure:
+After configuring the new project you can run the pipeline. Third step presents two options for running MHCBI over a PDB structure:
 
    1.  Performing the three-stage methodology in a single step.
 
@@ -52,7 +52,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________ 
    1	            Set work and PDB directories               	    ./pre-run.sh (option 1)
 
-   2	     Configure folders and scripts for the new proyect	    ./pre-run.sh (option 2)
+   2	     Configure folders and scripts for the new project	    ./pre-run.sh (option 2)
 
    3	                Run the MHCBI pipeline	                    ./pre-run.sh (option 3)
 ____________________________________________________________________________________________ 
@@ -61,7 +61,7 @@ ________________________________________________________________________________
 Now you can analyse your results!
 
 
-Warnnings!
+Warnings!
 
 Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.
 
