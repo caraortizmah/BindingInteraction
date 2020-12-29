@@ -53,7 +53,7 @@ ____________________________
 *For GAMESS:
 
 This is a general ab initio quantum chemistry package. It is not easy to install at all.
-Go to https://www.msg.chem.iastate.edu/gamess/download.html for downloading the sourcecode.
+Go to https://www.msg.chem.iastate.edu/gamess/download.html for downloading the source code.
 For installing GAMESS there are several pages that could be useful. You can clear up any doubts reading several of those pages below:
 
 1. https://www.webmo.net/support/gamess_linux.html
@@ -64,7 +64,7 @@ For installing GAMESS there are several pages that could be useful. You can clea
 ____________________________
 *For GUI Facio:
 
-You need to install wine for executing Facio. Due to Facio is not opensource only you have to launch Facio through wine.
+You need to install wine for executing Facio. Due to Facio is not open source only you have to launch Facio through wine.
 You can use the following page for wine:
 1. https://vitux.com/how-to-install-wine-on-ubuntu/
 
