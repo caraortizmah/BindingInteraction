@@ -77,8 +77,8 @@ Follow the appearing instructions while executing every step:
   Complete all pre-run steps in order
 
     1. Paths for the work and PDB structure.
-    2. Configure folders and directories for the user proyect.
-    3. Run pipeline over user proyect.
+    2. Configure folders and directories for the user project.
+    3. Run pipeline over user project.
 
 For further information go to docs/ for reading the documentation
 
