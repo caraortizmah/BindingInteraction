@@ -20,6 +20,7 @@ fi
 
 
 mkdir -p final_pdbs
+mkdir -p be_outputs
 cd tobe_charged/
 
 #fold="1kpv41_A19_6A/: 1kpv41_A19_8A/:" in case that you need to specify folders
@@ -123,10 +124,13 @@ do
 
     mv comp_final_"$res".* complex_"$res"/
     cp complex_"$res"/comp_final_"$res".pdb ../final_pdbs/C_"$res".pdb
+    cp complex_"$res"/comp_final_"$res".arc ../be_outputs/C_"$res".arc
     mv comp-pep_final_"$res".* comp-pep_"$res"/
     cp comp-pep_"$res"/comp-pep_final_"$res".pdb ../final_pdbs/R_"$res".pdb
+    cp comp-pep_"$res"/comp-pep_final_"$res".arc ../be_outputs/R_"$res".arc
     mv pep_final_"$res".* pep_"$res"/
     cp pep_"$res"/pep_final_"$res".pdb ../final_pdbs/L_"$res".pdb
+    cp pep_"$res"/pep_final_"$res".arc ../be_outputs/L_"$res".arc
 
     cd ../tobe_charged/
 

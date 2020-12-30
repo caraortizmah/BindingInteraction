@@ -57,7 +57,7 @@ do
         chmod +x dftb_infomaker.sh
         chmod +x script_dftb_inp.sh
         chmod +x exec_fmo.sh
-        ./dftb_infomaker.sh ${WORK_PATH}/${WORK_NAME}/misc/
+        ./dftb_infomaker.sh ${WORK_PATH}/${WORK_NAME}/misc
         for i in `ls *.inp`
         do
           ./script_dftb_inp.sh $i
