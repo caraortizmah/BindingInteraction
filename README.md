@@ -110,7 +110,7 @@ For further information go to docs/ for reading the documentation
 
 ### Requirements
 
-* [Open Babel 2.3.2 or higher](http://openbabel.org/wiki/Main_Page) - Open Babel page
+* [Open Babel 2.3.1](https://openbabel.org/docs/dev/Installation/install.html) or [2.4.0](https://sourceforge.net/projects/openbabel/files/openbabel/2.4.0/) - Open Babel
 
 * [Python 2.7 or higher](https://www.python.org/downloads/) - Python page
 
