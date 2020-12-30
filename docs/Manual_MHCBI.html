@@ -1,5 +1,21 @@
 <p>&nbsp;</p>
 <h1 style="color: #5e9ca0;">The <span style="color: #3366ff;">MHC</span> BindingInteraction pipeline <span style="color: #999999;">Manual</span></h1>
+<h2><span style="color: #008080;">Overall</span></h2>
+<p><span style="color: #008080;"><span style="color: #333399;">The MHCBI pipeline has four stages (last stage is optional) in which each stage has its own algorithm. Named here as steps, each one has a main work:</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;"><span style="background-color: #ff6600;"><strong>First step</strong></span> modifies PDB structure (input) adding waters through Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong>.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> uses <span style="background-color: #ff6600;"><strong>First step </strong></span>output and listm.log for building new structures according to the written orders in listm.log, those new structures are named here as mutations.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> creates new similar protein geometries from the initial PDB structure in the <span style="background-color: #ff6600;"><strong>First step</strong></span>.&nbsp; </span></span><span style="color: #008080;"><span style="color: #333399;">After creating new geometries, <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> performs partial optimizations.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">listm.log file has the using instructions for creating new PDB structures. Read completely listm.log file before writing your mutation list. There are two examples of writing mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between</span></span></p>
+<p><code>*** Begin</code></p>
+<p><span style="color: #008080;"><span style="color: #333399;">and (Changes must be here)</span></span></p>
+<p><code>*** End</code></p>
+<p><span style="color: #333399;">In this frame there is an example that you can use or remove according your necessities, in the example there are ten mono-substitutions named as P01, P02, until P10. Amino acid that will be used in this example is Lysine for the ten cases for positions 1 up to 10 in the chain P from PDB structure.</span></p>
+<p><span style="color: #333399;">At the end of the <span style="color: #008080;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong></span> performance the output is created as <span style="background-color: #ccffff;">tobe_charged</span> folder. Inside that folder there are all new PDB structures partially optimized, the initial PDB structure and the list of 8-angstrom-distance residues from the ligand (main part of protein binding region) that could be protonated or deprotonated.</span></p>
+<p><span style="color: #333399;"><strong><span style="color: #333399; background-color: #ff6600;">Third step</span></strong> uses <span style="background-color: #ccffff;">tobe_charged</span> folder (<span style="color: #008080;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong></span> output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as <span style="background-color: #ccffff;">final_pdbs</span> and <span style="background-color: #ccffff;">be_outputs</span> folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy (HEAT OF FORMATION - Kcal/mol) that user will use for computing binding energies.</span></p>
+<p><span style="color: #333399;">Optional <strong><span style="color: #333399; background-color: #ff6600;">Fourth step</span></strong> uses <span style="background-color: #ccffff;">final_pdbs</span> folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place.</span></p>
+<p><span style="color: #333399;">All hierarchy of each step is explained below (go to hierarchy).</span></p>
+
+<h2><span style="color: #008080;">Take into account</span></h2>
 <p><span style="color: #333399;">After performing all steps in the installing instructions you can run the pipeline over a <span style="background-color: #ccffff;"><em>new proyect</em></span>.</span></p>
 <pre><span style="background-color: #ccffcc;"><code>$ ./pre-run.sh</code></span></pre>
 <p><span style="color: #333399;">You have to complete all steps in order. <span style="background-color: #ff6600;"><strong>First step</strong></span> is aimed to set some paths prior to run a <span style="background-color: #ccffff;"><em>new proyect</em></span>:</span></p>
@@ -23,7 +39,7 @@
 <p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;1.&nbsp; Performing the three-stage methodology in a single step.</span></p>
 <p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;2.&nbsp;&nbsp;Performing the three-stage methodology step by step.</span></p>
 <p>&nbsp;</p>
-<h2 style="color: #2e6c80;">To sum up:</h2>
+<h2><span style="color: #008080;">To sum up</span></h2>
 <table class="editorDemoTable" style="width: 1000px;" border="1">
 <thead>
 <tr>

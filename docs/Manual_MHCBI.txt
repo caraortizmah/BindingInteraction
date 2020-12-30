@@ -4,6 +4,39 @@
 *********************************************
 
 The MHC BindingInteraction pipeline Manual
+
+____________________________________________________________
+Overall
+
+The MHCBI pipeline has four stages (last stage is optional) in which each stage has its own algorithm. Named here as steps, each one has a main work:
+
+First step modifies PDB structure (input) adding waters through Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the Second step.
+
+Second step uses First step output and listm.log for building new structures according to the written orders in listm.log, those new structures are named here as mutations.
+
+Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, Second step creates new similar protein geometries from the initial PDB structure in the First step.  After creating new geometries, Second step performs partial optimizations.
+
+listm.log file has the using instructions for creating new PDB structures. Read completely listm.log file before writing your mutation list. There are two examples of writing mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between
+
+*** Begin
+
+and (Changes must be here)
+
+*** End
+
+In this frame there is an example that you can use or remove according your necessities, in the example there are ten mono-substitutions named as P01, P02, until P10. Amino acid that will be used in this example is Lysine for the ten cases for positions 1 up to 10 in the chain P from PDB structure.
+
+At the end of the Second step performance the output is created as tobe_charged folder. Inside that folder there are all new PDB structures partially optimized, the initial PDB structure and the list of 8-angstrom-distance residues from the ligand (main part of protein binding region) that could be protonated or deprotonated.
+
+Third step uses tobe_charged folder (Second step output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as final_pdbs and be_outputs folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy (HEAT OF FORMATION - Kcal/mol) that user will use for computing binding energies.
+
+Optional Fourth step uses final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place.
+
+All hierarchy of each step is explained below (go to hierarchy).
+
+____________________________________________________________
+Take into account
+
 After performing all steps in the installing instructions you can run the pipeline over a new project.
 
 $ ./pre-run.sh
@@ -44,18 +77,18 @@ After configuring the new project you can run the pipeline. Third step presents 
    2.  Performing the three-stage methodology step by step.
 
  
-
-To sum up:
+____________________________________________________________
+To sum up
 
 ____________________________________________________________________________________________
   Step	                 Instruction	                                 Command
-____________________________________________________________________________________________ 
+____________________________________________________________________________________________
    1	            Set work and PDB directories               	    ./pre-run.sh (option 1)
 
    2	     Configure folders and scripts for the new project	    ./pre-run.sh (option 2)
 
    3	                Run the MHCBI pipeline	                    ./pre-run.sh (option 3)
-____________________________________________________________________________________________ 
+____________________________________________________________________________________________
 
  
 Now you can analyse your results!
