@@ -93,6 +93,107 @@ ________________________________________________________________________________
  
 Now you can analyse your results!
 
+____________________________________________________________
+Hierarchy
+
+The MHCBI pipeline has several paths. First path is the directory where you download and open the MHCBI pipeline (by your own or using git clone) this directory is named as the git path. You can configure and install the pipeline in the git path or in another path. If you are going to modify some scripts according to your necessities, it is advisable to configure and install the pipeline in other location.
+
+If you use other location for configuring and installing the pipeline, the second path will be officially the MHCBI path, otherwise git and MHCBI path will be the same. In MHCBI path you can test the pipeline and configure your own projects.
+
+Pipeline test will remain in the MHCBI path and all configuration programs and setting works will be in this directory (MHCBI path).
+
+When you are configuring paths for a new project you have to use another directory for placing your new project. This new directory is named as workdir path.
+
+git path
+
+This directory contains the MHCBI pipeline as appearing in GitHub repository. In this directory you can modify, add and remove any lines of code that you consider appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, do a pull request explaining your upgradings. Every time that you change your code you have to repeat the installation and configuration process doing ./clean.sh in git path first of all.
+
+
+
+
+MHCBI path
+
+In this directory, the pipeline is going to work. Do not change any line of code in this directory (read git path). In this directory test folder is going to change, adding a new folder that cointains the test performance.
+
+
+
+
+workdir path
+
+In this directory your new project will be placed. Test in MHCBI path and workdir path have the same folder hierarchy.
+
+In this directory there are the following folders:
+
+  1. optimizations
+
+  2. mutations
+
+  3. calculations
+
+  4. fmo-calculations
+
+  5. misc
+
+  6. source
+
+When finishing the pipeline execution you can explore the followings folders:
+
+1. optimizations
+
+This folder corresponds to the all First step and you can explore step by step of the methodology into the folder that receives the name of your new project. Output folder in this step contains the result that Second step will use. Into the folder (named as your new project by the pipeline) there are six steps:
+
+1. Dowser (putting waters)
+
+2. Conversion to PDB structure for MOPAC
+
+3. Assigning hydrogens
+
+4. Optimizing hydrogens
+
+5. Optimizing all PDB structure
+
+6. Removing all waters
+
+
+
+
+2. mutations
+
+This folder corresponds to the all Second step and you can explore it by looking for each mutation folder. In this location there are two folder per each mutation (previously written in listm.log). Each pair of folders are named like this:
+
+name_of_substitution folder and mutation_name_of_substitution folder.
+
+For instance: if the substitution name is P02 the name of its pair of folder will be: P02 and mutation_P02.
+
+In the first folder you will find all substitution process and assignation of new hydrogens. In the second folder you will find the partial optimization process for this substitution. At the end if you set ten mutations you will find twenty folder (two per substitution).
+
+Additionally, there is a folder named as tobe_charged. This folder is the Second step output.
+
+
+
+
+3. calculations
+
+This folder corresponds to the all Third step and you can explore it by looking for each mutation folder. In this location there is one folder per each pdb file located in the tobe_charged folder (that in this location is the input).
+
+Additionally, there are another two folders (final_pdbs and be_outputs) that are the Third step output.
+
+
+
+
+
+4. fmo-calculations
+
+This folder corresponds to the all optional Fourth step and contains two folders. First folder named as input_pdbs that is a part of the Third step output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results. You can extract the energies by looking for (at the end of the .log file):
+
+The first energy printed below is the best in FMO/PCM
+
+Free unco+D energy in solvent= (energy in hartree)
+
+For understanding in detail each file in each folder it is necessary to study all scripts in the source code.
+
+
+
 
 Warnings!
 

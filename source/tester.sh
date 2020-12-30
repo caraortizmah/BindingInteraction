@@ -240,22 +240,24 @@ fi
 
 cd tobe_charged
 
+let num=1
 let num=$(ls *.pdb | wc -l)
 
-if [ ${num} = "1" ]; then
+if [ "${num}" -eq "1" ]; then
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;33m incomplete \e[0m"
-elif [ ${num} = "0" ]; then
+elif [ "${num}" -eq "0" ]; then
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 2: Substituted PDB structures found...           \e[1;32m passed \e[0m"
 fi
 echo "Check yourself that substitutions amount (listm.log) matches with PDB structures number (inside tobe_charged folder)"
 
+let num=1
 let num=$(ls *.arc | wc -l)
 
-if [ ${num} = "1" ]; then
+if [ "${num}" -eq "1" ]; then
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
-elif [ ${num} = "0" ]; then
+elif [ "${num}" -eq "0" ]; then
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
@@ -274,9 +276,9 @@ cd tobe_charged
 
 let num=$(ls *.arc | wc -l)
 
-if [ ${num} = "1" ]; then
+if [ "${num}" -eq "1" ]; then
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
-elif [ ${num} = "0" ]; then
+elif [ "${num}" -eq "0" ]; then
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
@@ -295,9 +297,9 @@ cd final_pdbs
 
 let num2=$(ls *.pdb | wc -l)
 
-if [ ${num} = ${num2} ]; then
+if [ "${num}" -eq "${num2}" ]; then
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;32m passed \e[0m"
-elif [ ${num2} = "0" ]; then
+elif [ "${num2}" -eq "0" ]; then
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;31m failed \e[0m"
 else
   echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;33m incomplete \e[0m"

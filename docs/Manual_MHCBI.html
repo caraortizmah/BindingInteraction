@@ -74,6 +74,57 @@
 </table>
 <p><strong>&nbsp;</strong></p>
 <p><span style="color: #0000ff;"><strong>Now you can analyse your results!</strong></span></p>
+<h2><span style="color: #008080;">Hierarchy</span></h2>
+<p><span style="color: #008080;"><span style="color: #333399;">The <span style="background-color: #ccffff;">MHCBI</span> pipeline has several paths. First path is the directory where you download and open the <span style="background-color: #ccffff;">MHCBI</span> pipeline (by your own or using git clone) this directory is named as the git path. You can configure and install the pipeline in the <em><strong>git path</strong></em> or in another path. If you are going to modify some scripts according to your necessities, it is advisable to configure and install the pipeline in other location.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">If you use other location for configuring and installing the pipeline, the second path will be officially the <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em>, otherwise <em><strong>git</strong></em> and <strong><em><span style="background-color: #ccffff;">MHCBI</span> path</em></strong> will be the same. In <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em> you can test the pipeline and configure your own <em><span style="background-color: #ccffff;">projects</span></em>.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">Pipeline test will remain in the <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em> and all configuration programs and setting works will be in this directory (<em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em>).</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">When you are configuring paths for a <span style="background-color: #ccffff;">new project</span> you have to use another directory for placing your <span style="background-color: #ccffff;">new project</span>. This new directory is named as <strong><em>workdir path</em></strong>.</span></span></p>
+<hr />
+<h4><span style="color: #008080;"><span style="color: #333399;"><em><strong>git path</strong></em></span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This directory contains the MHCBI pipeline as appearing in GitHub repository. In this directory you can modify, add and remove any lines of code that you consider appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, do a pull request explaining your upgradings. Every time that you change your code you have to repeat the installation and configuration process doing ./clean.sh in <em><strong>git path</strong></em> first of all.</span></span></p>
+<p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;"><em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em></span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">In this directory, the pipeline is going to work. Do not change any line of code in this directory (read <em><strong>git path</strong></em>). In this directory test folder is going to change, adding a new folder that cointains the test performance.</span></span></p>
+<p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;"><em><strong>workdir path</strong></em></span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">In this directory your <span style="background-color: #ccffff;">new project</span> will be placed. Test in <span style="background-color: #ccffff;"><em><strong>MHCBI</strong></em></span> <em><strong>path</strong></em> and <em><strong>workdir path</strong></em> have the same folder hierarchy.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">In this directory there are the following folders:</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 1. optimizations</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 2. mutations</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 3. calculations</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 4. fmo-calculations</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 5. misc</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 6. source</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">When finishing the pipeline execution you can explore the followings folders:</span></span></p>
+<h4><span style="color: #008080;"><span style="color: #333399;">1. optimizations </span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all</span></span><span style="color: #333399;">&nbsp;<span style="background-color: #ff6600;"><strong>First step</strong></span></span><span style="color: #333399;"> and you can explore step by step of the methodology into the folder that receives the name of your <span style="background-color: #ccffff;">new project</span>. Output folder in this step contains the result that <span style="background-color: #ff6600;"><strong>Second step</strong></span> will use. Into the folder (named as your <span style="background-color: #ccffff;">new project</span> by the pipeline) there are six steps:</span></p>
+<p><span style="color: #333399;">1. Dowser (putting waters)</span></p>
+<p><span style="color: #333399;">2. Conversion to PDB structure for MOPAC</span></p>
+<p><span style="color: #333399;">3. Assigning hydrogens</span></p>
+<p><span style="color: #333399;">4. Optimizing hydrogens</span></p>
+<p><span style="color: #333399;">5. Optimizing all PDB structure</span></p>
+<p><span style="color: #333399;">6. Removing all waters</span></p>
+<p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;">2. mutations</span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all</span></span><span style="color: #333399;"> <span style="background-color: #ff6600;"><strong>Second step</strong></span></span><span style="color: #333399;"> and you can explore it by looking for each mutation folder. In this location there are two folder per each mutation (previously written in listm.log). Each pair of folders are named like this:</span></p>
+<p><span style="color: #333399;">name_of_substitution folder and mutation_name_of_substitution folder.</span></p>
+<p><span style="color: #333399;">For instance: if the substitution name is P02 the name of its pair of folder will be: P02 and mutation_P02.</span></p>
+<p><span style="color: #333399;">In the first folder you will find all substitution process and assignation of new hydrogens. In the second folder you will find the partial optimization process for this substitution. At the end if you set ten mutations you will find twenty folder (two per substitution).</span></p>
+<p><span style="color: #333399;">Additionally, there is a folder named as tobe_charged. This folder is the <span style="background-color: #ff6600;"><strong>Second step</strong></span> output. </span></p>
+<p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;">3. calculations</span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all</span></span><span style="color: #333399;"> <span style="background-color: #ff6600;"><strong>Third step</strong></span></span><span style="color: #333399;"> and you can explore it by looking for each mutation folder. In this location there is one folder per each pdb file located in the tobe_charged folder (that in this location is the input).</span></p>
+<p><span style="color: #333399;">Additionally, there are another two folders (final_pdbs and be_outputs) that are the <span style="background-color: #ff6600;"><strong>Third step</strong></span> output.</span></p>
+<p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;">4. fmo-calculations</span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all optional</span></span><span style="color: #333399;"> <span style="background-color: #ff6600;"><strong>Fourth step</strong></span></span><span style="color: #333399;"> and contains two folders. First folder named as input_pdbs that is a part of the <span style="background-color: #ff6600;"><strong>Third step</strong></span> output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results. You can extract the energies by looking for (at the end of the .log file):</span></p>
+<p><code> </code></p>
+<p><code>The first energy printed below is the best in FMO/PCM</code></p>
+<p><code>Free unco+D energy in solvent= (energy in hartree)</code></p>
+<p><span style="color: #333399;">For understanding in detail each file in each folder it is necessary to study all scripts in the source code.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
 <p><strong>&nbsp;</strong></p>
 <p><span style="color: #0000ff;"><strong>Warnnings!</strong></span></p>
 <p>Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.</p>
