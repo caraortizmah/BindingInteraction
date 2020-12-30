@@ -118,7 +118,7 @@ do
     echo "Dowser puts $var_3 waters. It'll put more waters later"
   fi
 
-  if  [ "$var_4" -le 1 ]
+  if  [ $var_4 -le 1 ]
   then
     echo "Dowserx puts 1 or less waters. It might not put more waters later"
   else
