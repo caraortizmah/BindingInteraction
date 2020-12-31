@@ -23,5 +23,6 @@ Each folder contains the expected PDB structures (as `MOPAC outputs`) obtained a
 
 Additionally, these folders have FMO GAMESS inputs obtained using GUI Facio in default conditions for fragmenting PDB structures (`MOPAC outputs`).
 Only for testing the `MHCBI pipeline` those GAMESS input files are explicitly inside `test` folder for calculating binding energies using FMO in GAMESS.
+
 PDB structures number in those folders are equal to the GAMESS input files number that are ready for calculating binding energy using DFTB3 under FMO.
 For running your own `projects` you need GUI Facio for converting a PDB structure into a FMO GAMESS input file.
