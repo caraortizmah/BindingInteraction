@@ -136,7 +136,7 @@ This path contains the following folders:
 
 Where in the first folder there are manager scripts that control all scripts placed in the fourth folder. Detailed documentation about the MHCBI pipeline are placed in the second folder. Pipeline test are in the fifth folder and DFTB3 parameters are in the third one.
 
-For further information go to each folder and read the README file.
+For further information go to each folder and read their README files
 
 
 MHCBI path
