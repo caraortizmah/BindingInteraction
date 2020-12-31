@@ -2,6 +2,10 @@
 
 `MHCBI test` is aimed to prove that pipeline uses all specialized programs and was configured correctly.
 
+## Notepadding
+
+First of all, read all documentation available in `docs` folder prior to keep reading this specific information.
+
 ## Test core
 
 The `MHCBI pipeline` has two version tests: shortened 1BX2 and 3OXS PDB structures.
