@@ -6,12 +6,10 @@
 
 ```
 [comment]: <> (****)
-
 [comment]: <> (Modification: 12/02/20)
 [comment]: <> (comment:)
 [comment]: <> (12/02/20 - Substantial changes in the installation and new kind of test based on MHC I results)
 [comment]: <> (Old install version were removed while is fixed)
-
 [comment]: <> (****)
 
 `MHC Binding Interaction (MHCBI)` is a pipeline software that manages and uses other programmes to perform some tasks related to calculating protein peptide receptor-ligand binding energy in the field of computational chemistry.
@@ -21,7 +19,8 @@ It can therefore be extrapolated to other non-covalent interaction systems (i.e.
 The `MHCBI` uses some programmes and does several tasks as detailed below:
 
      1. Dowser and DowserX software for putting water molecules into a protein structure.
-     2. MOPAC software for several kinds of calculation using semi-empirical quantum methods (SQM), such as optimisation geometries and single point energies, as in this methodology.
+     2. MOPAC software for several kinds of calculation using semi-empirical quantum methods (SQM), 
+        such as optimisation geometries and single point energies, as in this methodology.
      3. Dunbrack library on graphical interface Chimera software for substituting residues for others selected by the user.
      4. Propka 3.1 for assigning charge to a protein structure.
      5. GAMESS software for calculating binding energies using the Fragment Molecular Orbital method (FMO) at SQM DFTB3.
@@ -40,13 +39,6 @@ To get the git version type
 
     $ git clone https://github.com/caraortizmah/bindinginteraction.git
 
-
-[comment]: <> (### Documentation and usage)
-
-[comment]: <> (All information for installing the pipeline can be obtained by typing:)
-
-[comment]: <> (    $ make howto)
-
 ### Installation
 
 The `MHCBI` pipeline is mostly written in Shell script and includes Python and Tcl languages for managing programme operations in graphical interface software, such as Dowser in VMD and Dunbrack’s library in Chimera.
@@ -54,7 +46,6 @@ For installing and run the `MHCBI` pipeline, follow the steps below:
 
 Follow the appearing instructions while executing every step:
 
-[comment]: <> (Option 1:)
 
 1st step: Initialize the `MHCBI` pipeline
 
@@ -70,7 +61,7 @@ Follow the appearing instructions while executing every step:
     1. Paths for all of the required external programs
     2. Test the pipeline
 
-3nd step: Configure a work directory and run the pipeline
+3rd step: Configure a work directory and run the pipeline
 
     $ ./pre-run.sh
 
@@ -80,22 +71,13 @@ Follow the appearing instructions while executing every step:
     2. Configure folders and directories for the user project.
     3. Run pipeline over user project.
 
-For further information go to docs/ for reading the documentation
+## Notepadding
 
-[comment]: <> (Optional step: For cleaning pipeline to re-configure or make any git procedure)
+For further information read all documentation available in `docs` folder.
 
-[comment]: <> (     cd MHCBI_path in MHCBI directory)
-[comment]: <> (     ./clean.sh)
-
-
-[comment]: <> (Option 2:)
-
-[comment]: <> (1st step: Install python requirements if necessary it could take several minutes $ make require)
 
 [comment]: <> (2nd step: Configure the installation program and scratch path $ ./configure -p 'program_path' -s 'scratch_path')
-
 [comment]: <> (3rd step: Prepare folders and other bash programs before installing the `MHCBI` $ make init)
-
 [comment]: <> (4th step: Install BindingInteraction    $ sudo python setup.py install)
 
 
@@ -133,7 +115,7 @@ For further information go to docs/ for reading the documentation
 * [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Facio page
 
 
-### Reference and Citation
+## Reference and Citation
 
 Please cite the following reference in publications:
 
