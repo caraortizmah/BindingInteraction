@@ -14,7 +14,7 @@ First step modifies PDB structure (input) adding waters through Dowser program a
 
 Second step uses First step output and listm.log for building new structures according to the written orders in listm.log, those new structures are named here as mutations.
 
-Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, Second step creates new similar protein geometries from the initial PDB structure in the First step.  After creating new geometries, Second step performs partial optimizations.
+Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, Second step creates new similar protein geometries from the initial PDB structure in the First step.  After creating new geometries, Second step performs partial optimizations.
 
 listm.log file has the using instructions for creating new PDB structures. Read completely listm.log file before writing your mutation list. There are two examples of writing mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between
 
@@ -28,10 +28,23 @@ In this frame there is an example that you can use or remove according your nece
 
 At the end of the Second step performance the output is created as tobe_charged folder. Inside that folder there are all new PDB structures partially optimized, the initial PDB structure and the list of 8-angstrom-distance residues from the ligand (main part of protein binding region) that could be protonated or deprotonated.
 
-Third step uses tobe_charged folder (Second step output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as final_pdbs and be_outputs folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy (HEAT OF FORMATION - Kcal/mol) that user will use for computing binding energies.
+Third step uses tobe_charged folder (Second step output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as final_pdbs and be_outputs folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy as:
 
-Optional Fourth step uses final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place.
 
+HEAT OF FORMATION = (energy value in Kcal/mol)
+
+
+Those energies will be used by the user for computing binding energies.
+
+Optional Fourth step uses final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place. After GAMESS execution You can extract the energies from output file (.log file) by looking for (at the end of the file):
+
+
+The first energy printed below is the best in FMO/PCM
+
+Free unco+D energy in solvent= (energy value in hartree)
+
+
+Those energies will be used by the user for computing binding energies.
 All hierarchy of each step is explained below (go to hierarchy).
 
 ____________________________________________________________
@@ -104,37 +117,58 @@ Pipeline test will remain in the MHCBI path and all configuration programs and s
 
 When you are configuring paths for a new project you have to use another directory for placing your new project. This new directory is named as workdir path.
 
+
 git path
 
 This directory contains the MHCBI pipeline as appearing in GitHub repository. In this directory you can modify, add and remove any lines of code that you consider appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, do a pull request explaining your upgradings. Every time that you change your code you have to repeat the installation and configuration process doing ./clean.sh in git path first of all.
 
+This path contains the following folders:
 
+  1. BindingInteraction
+
+  2. docs
+
+  3. misc
+
+  4. source
+
+  5. test
+
+Where in the first folder there are manager scripts that control all scripts placed in the fourth folder. Detailed documentation about the MHCBI pipeline are placed in the second folder. Pipeline test are in the fifth folder and DFTB3 parameters are in the third one.
+
+For further information go to each folder and read the README file.
 
 
 MHCBI path
 
 In this directory, the pipeline is going to work. Do not change any line of code in this directory (read git path). In this directory test folder is going to change, adding a new folder that cointains the test performance.
 
+The folowing folders have the same information than git path ones:
 
+  1. misc
+
+  2. source
+
+  3. test
 
 
 workdir path
 
-In this directory your new project will be placed. Test in MHCBI path and workdir path have the same folder hierarchy.
+In this directory your new project will be placed. Test folders in MHCBI path and workdir path folders have the same hierarchy.
 
 In this directory there are the following folders:
 
-  1. optimizations
+  1. optimizations
 
-  2. mutations
+  2. mutations
 
-  3. calculations
+  3. calculations
 
-  4. fmo-calculations
+  4. fmo-calculations
 
-  5. misc
+  5. misc
 
-  6. source
+  6. source
 
 When finishing the pipeline execution you can explore the followings folders:
 
@@ -155,8 +189,6 @@ This folder corresponds to the all First step and you can explore step by step 
 6. Removing all waters
 
 
-
-
 2. mutations
 
 This folder corresponds to the all Second step and you can explore it by looking for each mutation folder. In this location there are two folder per each mutation (previously written in listm.log). Each pair of folders are named like this:
@@ -170,8 +202,6 @@ In the first folder you will find all substitution process and assignation of ne
 Additionally, there is a folder named as tobe_charged. This folder is the Second step output.
 
 
-
-
 3. calculations
 
 This folder corresponds to the all Third step and you can explore it by looking for each mutation folder. In this location there is one folder per each pdb file located in the tobe_charged folder (that in this location is the input).
@@ -179,22 +209,24 @@ This folder corresponds to the all Third step and you can explore it by looking 
 Additionally, there are another two folders (final_pdbs and be_outputs) that are the Third step output.
 
 
-
-
-
 4. fmo-calculations
 
-This folder corresponds to the all optional Fourth step and contains two folders. First folder named as input_pdbs that is a part of the Third step output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results. You can extract the energies by looking for (at the end of the .log file):
+This folder corresponds to the all optional Fourth step and contains two folders. First folder named as input_pdbs that is a part of the Third step output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results.
 
-The first energy printed below is the best in FMO/PCM
+ 
+5. misc
 
-Free unco+D energy in solvent= (energy in hartree)
+This folder is the same that are placed in git path.
+
+ 
+6. source
+
+This folder is the same that are placed in git path. 
+
 
 For understanding in detail each file in each folder it is necessary to study all scripts in the source code.
 
-
-
-
+____________________________________________________________
 Warnings!
 
 Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.
