@@ -1,18 +1,23 @@
 # MHCBI pipeline source
 
 
-`MHCBI source` contains the mayority of scripts that make possible the `MHCBI` performance. You can modify any script according your necessities. You can do a pull request through git if you consider that your changes are important for improving the pipeline.
+`MHCBI source` contains the mayority of scripts that make possible the `MHCBI` performance. You can modify any script according your nceds. You can do a pull request through git if you consider that your changes are important for improving the pipeline.
+
+## Notepadding
+
+First of all, read all documentation available in `docs` folder prior to keep reading this specific information.
 
 ## Additional files
 
 There two files that are not scripts at all: `listm.log` and `dftb_input.info`.
 
 `listm.log` is the format that `MHCBI` uses for creating mutations from initial PDB structure.
-`dftb_input.info` is the file that contains all necessary information for creating an GAMESS input under FMO and DFTB3 methods.
+`dftb_input.info` is the file that contains all necessary information for creating a GAMESS input under FMO and DFTB3 methods.
 
 ## Advance user
 
-MHCBI pipeline only enables one way for performing all the methodology. There a huge amount of conditions that you can change regarding your computational chemistry knowledge, (i.e. optimization parameters, semiempirical method choice, implicit solvent conditions, fragmentation method, level of theory under FMO method, memory use amount...).
+MHCBI pipeline only enables one way for performing all the methodology. There are a huge amount of conditions that you can change regarding your computational chemistry knowledge, (i.e. optimization parameters, quantum semiempirical mechanical method choice, implicit solvent conditions, fragmentation method, level of theory under FMO method, memory use amount...).
+
 So, you can modify the following scripts aiming to change computing chemical conditions:
 
     1. dftb_infomaker.sh
