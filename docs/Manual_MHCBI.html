@@ -1,21 +1,39 @@
 <p>&nbsp;</p>
 <h1 style="color: #5e9ca0;">The <span style="color: #3366ff;">MHC</span> BindingInteraction pipeline <span style="color: #999999;">Manual</span></h1>
+<p>&nbsp;</p>
 <h2><span style="color: #008080;">Overall</span></h2>
+<p>&nbsp;</p>
 <p><span style="color: #008080;"><span style="color: #333399;">The MHCBI pipeline has four stages (last stage is optional) in which each stage has its own algorithm. Named here as steps, each one has a main work:</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;"><span style="background-color: #ff6600;"><strong>First step</strong></span> modifies PDB structure (input) adding waters through Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong>.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> uses <span style="background-color: #ff6600;"><strong>First step </strong></span>output and listm.log for building new structures according to the written orders in listm.log, those new structures are named here as mutations.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> creates new similar protein geometries from the initial PDB structure in the <span style="background-color: #ff6600;"><strong>First step</strong></span>.&nbsp; </span></span><span style="color: #008080;"><span style="color: #333399;">After creating new geometries, <strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong> performs partial optimizations.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">listm.log file has the using instructions for creating new PDB structures. Read completely listm.log file before writing your mutation list. There are two examples of writing mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between</span></span></p>
-<p><code>*** Begin</code></p>
+<p>&nbsp;</p>
+<p><strong><code>*** Begin</code></strong></p>
+<p>&nbsp;</p>
 <p><span style="color: #008080;"><span style="color: #333399;">and (Changes must be here)</span></span></p>
-<p><code>*** End</code></p>
+<p>&nbsp;</p>
+<p><strong><code>*** End</code></strong></p>
+<p>&nbsp;</p>
 <p><span style="color: #333399;">In this frame there is an example that you can use or remove according your necessities, in the example there are ten mono-substitutions named as P01, P02, until P10. Amino acid that will be used in this example is Lysine for the ten cases for positions 1 up to 10 in the chain P from PDB structure.</span></p>
 <p><span style="color: #333399;">At the end of the <span style="color: #008080;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong></span> performance the output is created as <span style="background-color: #ccffff;">tobe_charged</span> folder. Inside that folder there are all new PDB structures partially optimized, the initial PDB structure and the list of 8-angstrom-distance residues from the ligand (main part of protein binding region) that could be protonated or deprotonated.</span></p>
-<p><span style="color: #333399;"><strong><span style="color: #333399; background-color: #ff6600;">Third step</span></strong> uses <span style="background-color: #ccffff;">tobe_charged</span> folder (<span style="color: #008080;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong></span> output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as <span style="background-color: #ccffff;">final_pdbs</span> and <span style="background-color: #ccffff;">be_outputs</span> folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy (HEAT OF FORMATION - Kcal/mol) that user will use for computing binding energies.</span></p>
-<p><span style="color: #333399;">Optional <strong><span style="color: #333399; background-color: #ff6600;">Fourth step</span></strong> uses <span style="background-color: #ccffff;">final_pdbs</span> folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place.</span></p>
+<p><span style="color: #333399;"><strong><span style="color: #333399; background-color: #ff6600;">Third step</span></strong> uses <span style="background-color: #ccffff;">tobe_charged</span> folder (<span style="color: #008080;"><strong><span style="color: #333399; background-color: #ff6600;">Second step</span></strong></span> output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as <span style="background-color: #ccffff;">final_pdbs</span> and <span style="background-color: #ccffff;">be_outputs</span> folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy as:</span></p>
+<p>&nbsp;</p>
+<p><strong><code>HEAT OF FORMATION = (energy value in Kcal/mol)</code></strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">Those energies will be used by the user for computing <strong>binding energies</strong>.</span></p>
+<p><span style="color: #333399;">Optional <strong><span style="color: #333399; background-color: #ff6600;">Fourth step</span></strong> uses <span style="background-color: #ccffff;">final_pdbs</span> folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place. After GAMESS execution </span>
+<span style="color: #008080;"><span style="color: #333399;">You can extract the energies from output file (.log file) by looking for (at the end of the file):</span></span></p>
+<p>&nbsp;</p>
+<p><strong><code>The first energy printed below is the best in FMO/PCM</code></strong></p>
+<p><strong><code>Free unco+D energy in solvent= (energy value in hartree)</code></strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">Those energies will be used by the user for computing <strong>binding energies</strong>.</span></p>
 <p><span style="color: #333399;">All hierarchy of each step is explained below (go to hierarchy).</span></p>
 
+<p>&nbsp;</p>
 <h2><span style="color: #008080;">Take into account</span></h2>
+<p>&nbsp;</p>
 <p><span style="color: #333399;">After performing all steps in the installing instructions you can run the pipeline over a <span style="background-color: #ccffff;"><em>new proyect</em></span>.</span></p>
 <pre><span style="background-color: #ccffcc;"><code>$ ./pre-run.sh</code></span></pre>
 <p><span style="color: #333399;">You have to complete all steps in order. <span style="background-color: #ff6600;"><strong>First step</strong></span> is aimed to set some paths prior to run a <span style="background-color: #ccffff;"><em>new proyect</em></span>:</span></p>
@@ -34,12 +52,13 @@
 <p><span style="color: #333399;"><span style="text-decoration: underline;"><strong>name of your work</strong></span>&nbsp;is the name of your <em><span style="background-color: #ccffff;">new proyect</span></em>.</span></p>
 <p>&nbsp;</p>
 <p><span style="color: #333399;">Setup and pre-run scripts create .log files having all required paths. You can modify them without using the pipeline, but you can not change any word related to the format. It is advisable to use the pipeline for setting paths.</span></p>
-<p><span style="color: #333399;">In pre-run script,&nbsp;</span><span style="color: #333399; background-color: #ff6600;">Second step</span><span style="color: #333399;">&nbsp;configures pipeline core in all of the new folders that will be the <span style="background-color: #ccffff;"><em>new proyect</em></span>. If the MHCBI can not detect one of the required paths, configuration step will not be performed.</span></p>
-<p><span style="color: #333399;">After configuring the <span style="background-color: #ccffff;"><em>new proyect</em></span> you can run the pipeline. <span style="background-color: #ff6600;">Third step</span> presents two options for running MHCBI over a PDB structure:</span></p>
+<p><span style="color: #333399;">In pre-run script,&nbsp;</span><span style="color: #333399; background-color: #ff6600;"><strong>Second step</strong></span><span style="color: #333399;">&nbsp;configures pipeline core in all of the new folders that will be the <span style="background-color: #ccffff;"><em>new proyect</em></span>. If the MHCBI can not detect one of the required paths, configuration step will not be performed.</span></p>
+<p><span style="color: #333399;">After configuring the <span style="background-color: #ccffff;"><em>new proyect</em></span> you can run the pipeline. <span style="background-color: #ff6600;"><strong>Third step</strong></span> presents two options for running MHCBI over a PDB structure:</span></p>
 <p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;1.&nbsp; Performing the three-stage methodology in a single step.</span></p>
 <p style="padding-left: 30px;"><span style="color: #333399;">&nbsp; &nbsp;2.&nbsp;&nbsp;Performing the three-stage methodology step by step.</span></p>
 <p>&nbsp;</p>
 <h2><span style="color: #008080;">To sum up</span></h2>
+<p>&nbsp;</p>
 <table class="editorDemoTable" style="width: 1000px;" border="1">
 <thead>
 <tr>
@@ -72,9 +91,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>&nbsp;</strong></p>
+
 <p><span style="color: #0000ff;"><strong>Now you can analyse your results!</strong></span></p>
+<p>&nbsp;</p>
 <h2><span style="color: #008080;">Hierarchy</span></h2>
+<p>&nbsp;</p>
 <p><span style="color: #008080;"><span style="color: #333399;">The <span style="background-color: #ccffff;">MHCBI</span> pipeline has several paths. First path is the directory where you download and open the <span style="background-color: #ccffff;">MHCBI</span> pipeline (by your own or using git clone) this directory is named as the git path. You can configure and install the pipeline in the <em><strong>git path</strong></em> or in another path. If you are going to modify some scripts according to your necessities, it is advisable to configure and install the pipeline in other location.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">If you use other location for configuring and installing the pipeline, the second path will be officially the <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em>, otherwise <em><strong>git</strong></em> and <strong><em><span style="background-color: #ccffff;">MHCBI</span> path</em></strong> will be the same. In <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em> you can test the pipeline and configure your own <em><span style="background-color: #ccffff;">projects</span></em>.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">Pipeline test will remain in the <em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em> and all configuration programs and setting works will be in this directory (<em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em>).</span></span></p>
@@ -82,12 +103,24 @@
 <hr />
 <h4><span style="color: #008080;"><span style="color: #333399;"><em><strong>git path</strong></em></span></span></h4>
 <p><span style="color: #008080;"><span style="color: #333399;">This directory contains the MHCBI pipeline as appearing in GitHub repository. In this directory you can modify, add and remove any lines of code that you consider appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, do a pull request explaining your upgradings. Every time that you change your code you have to repeat the installation and configuration process doing ./clean.sh in <em><strong>git path</strong></em> first of all.</span></span></p>
+<p><span style="color: #333399;">This path contains the following folders:</span></p>
+<p><span style="color: #333399;">&nbsp; 1. BindingInteraction</span></p>
+<p><span style="color: #333399;">&nbsp; 2. docs</span></p>
+<p><span style="color: #333399;">&nbsp; 3. misc</span></p>
+<p><span style="color: #333399;">&nbsp; 4. source</span></p>
+<p><span style="color: #333399;">&nbsp; 5. test</span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">Where in the first folder there are manager scripts that control all scripts placed in the fourth folder. Detailed documentation about the MHCBI pipeline are placed in the second folder. Pipeline test are in the fifth folder and DFTB3 parameters are in the third one. </span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">For further information go to each folder and read the README file.</span></span></p>
 <p>&nbsp;</p>
 <h4><span style="color: #008080;"><span style="color: #333399;"><em><strong><span style="background-color: #ccffff;">MHCBI</span> path</strong></em></span></span></h4>
 <p><span style="color: #008080;"><span style="color: #333399;">In this directory, the pipeline is going to work. Do not change any line of code in this directory (read <em><strong>git path</strong></em>). In this directory test folder is going to change, adding a new folder that cointains the test performance.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">The folowing folders have the same information than <em><strong>git path</strong></em> ones:</span></span></p>
+<p><span style="color: #333399;">&nbsp; 1. misc</span></p>
+<p><span style="color: #333399;">&nbsp; 2. source</span></p>
+<p><span style="color: #333399;">&nbsp; 3. test</span></p>
 <p>&nbsp;</p>
 <h4><span style="color: #008080;"><span style="color: #333399;"><em><strong>workdir path</strong></em></span></span></h4>
-<p><span style="color: #008080;"><span style="color: #333399;">In this directory your <span style="background-color: #ccffff;">new project</span> will be placed. Test in <span style="background-color: #ccffff;"><em><strong>MHCBI</strong></em></span> <em><strong>path</strong></em> and <em><strong>workdir path</strong></em> have the same folder hierarchy.</span></span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">In this directory your <span style="background-color: #ccffff;">new project</span> will be placed. Test folders in <span style="background-color: #ccffff;"><em><strong>MHCBI</strong></em></span> <em><strong>path</strong></em> and <em><strong>workdir path</strong></em> folders have the same hierarchy.</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">In this directory there are the following folders:</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 1. optimizations</span></span></p>
 <p><span style="color: #008080;"><span style="color: #333399;">&nbsp; 2. mutations</span></span></p>
@@ -117,23 +150,31 @@
 <p><span style="color: #333399;">Additionally, there are another two folders (final_pdbs and be_outputs) that are the <span style="background-color: #ff6600;"><strong>Third step</strong></span> output.</span></p>
 <p>&nbsp;</p>
 <h4><span style="color: #008080;"><span style="color: #333399;">4. fmo-calculations</span></span></h4>
-<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all optional</span></span><span style="color: #333399;"> <span style="background-color: #ff6600;"><strong>Fourth step</strong></span></span><span style="color: #333399;"> and contains two folders. First folder named as input_pdbs that is a part of the <span style="background-color: #ff6600;"><strong>Third step</strong></span> output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results. You can extract the energies by looking for (at the end of the .log file):</span></p>
-<p><code> </code></p>
-<p><code>The first energy printed below is the best in FMO/PCM</code></p>
-<p><code>Free unco+D energy in solvent= (energy in hartree)</code></p>
-<p><span style="color: #333399;">For understanding in detail each file in each folder it is necessary to study all scripts in the source code.</span></p>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder corresponds to the all optional <span style="background-color: #ff6600;"><strong>Fourth step</strong></span> and contains two folders. First folder named as input_pdbs that is a part of the <span style="background-color: #ff6600;"><strong>Third step</strong></span> output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results. </span></span>
 <p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;">5. misc</span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder is the same that are placed in <em><strong>git path</strong></em>.
 <p>&nbsp;</p>
+<h4><span style="color: #008080;"><span style="color: #333399;">6. source</span></span></h4>
+<p><span style="color: #008080;"><span style="color: #333399;">This folder is the same that are placed in <em><strong>git path</strong></em>.
+<p>&nbsp;</p>
+<p><span style="color: #333399;">For understanding in detail each file in each folder it is necessary to study all scripts from the source code.</span></p>
 
-<p><strong>&nbsp;</strong></p>
-<p><span style="color: #0000ff;"><strong>Warnnings!</strong></span></p>
-<p>Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.</p>
-<p>When Dowser puts waters, some conversions by OpenBabel generates some warnings that look like:</p>
-<p><code>=============================</code><br /><code>*** Open Babel Warning in parseAtomRecord</code><br /><code>WARNING: Problems reading a PDB file</code><br /><code>Problems reading a HETATM or ATOM record.</code><br /><code>According to the PDB specification,</code><br /><code>columns 77-78 should contain the element symbol of an atom.</code><br /><code>but OpenBabel found ' ' (atom 3)</code><br /><code>==============================</code></p>
-<p>In case of not finding waters by Dowser, messages like this could appear:</p>
-<p><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_1.pdb' contains no atoms.</code><br /><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_2.pdb' contains no atoms.</code><br /><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_3.pdb' contains no atoms.</code><br /><code>1 molecule converted</code></p>
 <p>&nbsp;</p>
-<p>The following message could appear due to a non-existent binary path related to another process in vmd:</p>
-<p><code>rlwrap: Command not found.</code></p>
-<p>That message do not affect the <span style="background-color: #99ccff;">MHCBI</span> performance.</p>
+<h2><span style="color: #008080;">Warnnings!</span></h2>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.</span></p>
+<p><span style="color: #333399;">When Dowser puts waters, some conversions by OpenBabel generates some warnings that look like:</span></p>
+<p>&nbsp;</p>
+<p><strong><code>=============================</code><br /><code>*** Open Babel Warning in parseAtomRecord</code><br /><code>WARNING: Problems reading a PDB file</code><br /><code>Problems reading a HETATM or ATOM record.</code><br /><code>According to the PDB specification,</code><br /><code>columns 77-78 should contain the element symbol of an atom.</code><br /><code>but OpenBabel found ' ' (atom 3)</code><br /><code>==============================</code></strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">In case of not finding waters by Dowser, messages like this could appear:</span></p>
+<p>&nbsp;</p>
+<p><strong><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_1.pdb' contains no atoms.</code><br /><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_2.pdb' contains no atoms.</code><br /><code>PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_3.pdb' contains no atoms.</code><br /><code>1 molecule converted</code></strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">The following message could appear due to a non-existent binary path related to another process in vmd:</span></p>
+<p>&nbsp;</p>
+<p><strong><code>rlwrap: Command not found.</code></strong></p>
+<p>&nbsp;</p>
+<p><span style="color: #333399;">That message does not affect the <span style="background-color: #99ccff;">MHCBI</span> performance.</span></p>
 <p>&nbsp;</p>
