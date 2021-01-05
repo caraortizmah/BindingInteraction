@@ -90,7 +90,7 @@ For further information read all documentation available in `docs` folder.
 * sed
 * vim
 
-### Requirements
+### Requirements - Specialized softwares
 
 * [Open Babel 2.3.1](https://openbabel.org/docs/dev/Installation/install.html) or [2.4.0](https://sourceforge.net/projects/openbabel/files/openbabel/2.4.0/) - Open Babel
 
