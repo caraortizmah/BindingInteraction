@@ -117,7 +117,7 @@ For further information read all documentation available in `docs` folder.
 
 ### Additional handling
 
-You can prove the `MHCBI` pipeline downloading and using the following virtual machine image [(MHCBI.zip)](ftp://190.255.53.138/). 
+You can prove the `MHCBI` pipeline downloading and using the following [virtual machine image](ftp://190.255.53.138/). 
 In this virtual machine there is an Ubuntu 20.04 installation having all of needed requirements for using the pipeline.
  
 
