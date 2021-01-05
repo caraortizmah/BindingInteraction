@@ -115,6 +115,12 @@ For further information read all documentation available in `docs` folder.
 * [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Facio page
 
 
+### Additional handling
+
+You can prove the `MHCBI` pipeline downloading and using the following virtual machine image [(`MHCBI`.zip)](ftp://190.255.53.138/). 
+In this virtual machine there is an Ubuntu 20.04 installation having all of needed requirements for using the pipeline.
+ 
+
 ## Reference and Citation
 
 Please cite the following reference in publications:
