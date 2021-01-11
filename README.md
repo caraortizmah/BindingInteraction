@@ -28,7 +28,7 @@ The `MHCBI` uses some programmes and does several tasks as detailed below:
 When the `MHCBI` uses GAMESS software, molecules must be fragmented prior to the single point energy calculation. These fragmentations are performed by a graphical user interface programme known as Facio; however, Facio is not controlled by `MHCBI` in script mode due to this programme is non-open source licence.
 
 
-## MHCBI v2.0
+## MHCBI 2.0.0
 
 The aim of the `MHCBI` pipeline is to automate tasks regarding binding energy methodology for MHC-like systems requiring several replications for estimating receptor-ligand interactions.
 This pipeline is open source GPL-3.0 License and intended to be adapted, modified or used according to user needs.
