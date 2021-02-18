@@ -22,16 +22,16 @@ The `MHCBI` uses some programmes and does several tasks as detailed below:
      2. MOPAC software for several kinds of calculation using semi-empirical quantum methods (SQM), 
         such as optimisation geometries and single point energies, as in this methodology.
      3. Dunbrack library on graphical interface Chimera software for substituting residues for others selected by the user.
-     4. Propka 3.1 for assigning charge to a protein structure.
-     5. GAMESS software for calculating binding energies using the Fragment Molecular Orbital method (FMO) at SQM DFTB3.
+     4. PROPKA 3.1 for assigning charges to a protein structure.
+     5. GAMESS software for calculating binding energy using the Fragment Molecular Orbital method (FMO) at SQM DFTB3.
 
-When the `MHCBI` uses GAMESS software, molecules must be fragmented prior to the single point energy calculation. These fragmentations are performed by a graphical user interface programme known as Facio; however, Facio is not controlled by `MHCBI` in script mode due to this programme is non-open source licence.
+Molecules must be fragmented prior to single point energy calculation, when the `MHCBI` uses GAMESS software. Such fragmentation is performed by a graphical user interface programme known as Facio; however, Facio is not controlled by `MHCBI` in script mode due to this program having a non-open-source licence.
 
 
 ## MHCBI 2.0.0
 
 The aim of the `MHCBI` pipeline is to automate tasks regarding binding energy methodology for MHC-like systems requiring several replications for estimating receptor-ligand interactions.
-This pipeline is open source GPL-3.0 License and intended to be adapted, modified or used according to user needs.
+This pipeline is an open source tool (GPL-3.0 Licence) and is intended to be adapted, modified or used according to user needs.
 
 ### Download
 
@@ -42,26 +42,26 @@ To get the git version type
 ### Installation
 
 The `MHCBI` pipeline is mostly written in Shell script and includes Python and Tcl languages for managing programme operations in graphical interface software, such as Dowser in VMD and Dunbrack’s library in Chimera.
-For installing and run the `MHCBI` pipeline, follow the steps below:
+Follow the steps below for installing and running the `MHCBI` pipeline:
 
-Follow the appearing instructions while executing every step:
+Follow the instructions which appear while executing every step:
 
 
-1st step: Initialize the `MHCBI` pipeline
+1st step: initialize the `MHCBI` pipeline
 
     $ chmod +x init.sh
     $ ./init.sh
 
-2nd step: Configure all pipeline scripts and set paths for external program
+2nd step: configure all pipeline scripts and set paths for external programs
 
     $ ./setup.sh
 
   Complete all setup steps in order
 
-    1. Paths for all of the required external programs
+    1. Paths for all the required external programs
     2. Test the pipeline
 
-3rd step: Configure a work directory and run the pipeline
+3rd step: configure a work directory and run the pipeline
 
     $ ./pre-run.sh
 
@@ -69,7 +69,7 @@ Follow the appearing instructions while executing every step:
 
     1. Paths for the work and PDB structure.
     2. Configure folders and directories for the user project.
-    3. Run pipeline over user project.
+    3. Run pipeline on user project.
 
 ## Notepadding
 
@@ -106,22 +106,22 @@ For further information read all documentation available in `docs` folder.
 
 * [Chimera](https://www.cgl.ucsf.edu/chimera/download.html) - Chimera page
 
-* [Propka-3.1](https://github.com/jensengroup/propka-3.1.git) - GitHub of Propka-3.1
+* [PROPKA-3.1](https://github.com/jensengroup/propka-3.1.git) - PROPKA-3.1 GitHub
 
     Optional
 
 * [GAMESS](https://www.msg.chem.iastate.edu/GAMESS/download/register/) - Gordon Group page
 
-* [Facio FMO util](http://zzzfelis.sakura.ne.jp/) - Facio page
+* [Facio FMOutil](http://zzzfelis.sakura.ne.jp/) - Facio page
 
 
 ### Additional handling
 
-You can prove the `MHCBI` pipeline downloading and using the following virtual machine image (ftp://190.255.53.138/). 
-In this virtual machine there is an Ubuntu 20.04 installation having all of needed requirements for using the pipeline.
+You can test the `MHCBI` pipeline by downloading and using the following [virtual machine](http://www.fidic.org.co/pagina/MHCBI.zip). 
+This virtual machine has an Ubuntu 20.04 installation having all the requirements needed for using the pipeline.
  
 
-## Reference and Citation
+## Referring to and citing the `MHCBI` pipeline
 
 Please cite the following reference in publications:
 
