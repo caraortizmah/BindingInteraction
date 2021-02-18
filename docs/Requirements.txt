@@ -1,11 +1,11 @@
 
 REQUIREMENTS
 
-The MHCBI pipeline only needs gfortran and some linux test processing tools (cut, grep, awk, gawk, sed and vim). 
-However the MHCBI uses several specialized softwares that rely on another kind of requirements.
+The MHCBI pipeline only needs gfortran and some linux test processing tools (cut, grep, awk, gawk, sed and vim);
+however, it uses several types of specialized software relying on another kinds of requirement.
 
 
-Before starting any procedure regarding MHCBI pipeline, first of all type:
+Before starting any procedure regarding the MHCBI pipeline, first of all type:
 
   $ sudo apt update
   $ sudo apt install build-essential
@@ -16,8 +16,8 @@ Before starting any procedure regarding MHCBI pipeline, first of all type:
 ____________________________
 *For Dowser installation:
 
-You have to install csh prior to do Dowser.
-Go to https://github.com/caraortizmah/dowser/blob/master/README.md for further information.
+You must install csh prior to Dowser.
+For further information go to https://github.com/caraortizmah/dowser/blob/master/README.md 
 
 ____________________________
 *For OpenBabel:
@@ -27,34 +27,34 @@ Further information about releases https://github.com/openbabel/openbabel/releas
 ___________________________
 *For VMD:
 
-Go to https://www.ks.uiuc.edu/Research/vmd/current/ig/ig.html for further information.
+For further information go to https://www.ks.uiuc.edu/Research/vmd/current/ig/ig.html
 A helpful page for installing could be:
 1. https://www.biostars.org/p/196147/
 
 ____________________________
-For Propka 3.1
+For PROPKA 3.1
 
-For this program you need python 3.6 or higher and pip (python package installer) for installing propka 3.1.
-Go to https://github.com/jensengroup/propka for further information.
+You will need python 3.6 or higher and pip (python package installer) for installing PROPKA 3.1.
+For further information go to https://github.com/jensengroup/propka
 
 ____________________________
 *For MOPAC:
 
-Due to installing MOPAC is a straightforward process (locating properly the MOPAC executable provided at http://openmopac.net/downloads.html), you only need to configure your .bashrc or .bash_profile typing:
+Installing MOPAC is straightforward (locating the MOPAC executable at http://openmopac.net/downloads.html). You only need to configure your .bashrc or .bash_profile by typing:
 
   $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/mopac/mopac_cuda_5.5_libs/
 
-In this path the following files must be there:
+The following files must in this path:
 libcublas.so.5.5  libcudart.so.5.5  libiomp5.so
 
-Further information at http://openmopac.net/Manual/Requirements_for_GPU_MOPAC.html
+Further information can be found at http://openmopac.net/Manual/Requirements_for_GPU_MOPAC.html
 
 ____________________________
 *For GAMESS:
 
-This is a general ab initio quantum chemistry package. It is not easy to install at all.
-Go to https://www.msg.chem.iastate.edu/gamess/download.html for downloading the source code.
-For installing GAMESS there are several pages that could be useful. You can clear up any doubts reading several of those pages below:
+This is a general ab initio quantum chemistry package. It is not easy at all to install.
+To download the source code, go to https://www.msg.chem.iastate.edu/gamess/download.html
+Several pages that could be useful for installing GAMESS. You can clear up any doubts by reading several the pages mentioned below:
 
 1. https://www.webmo.net/support/gamess_linux.html
 2. https://sites.google.com/site/rangsiman1993/comp-chem/program-install/install-gamess
@@ -64,8 +64,8 @@ For installing GAMESS there are several pages that could be useful. You can clea
 ____________________________
 *For GUI Facio:
 
-You need to install wine for executing Facio. Due to Facio is not open source only you have to launch Facio through wine.
-You can use the following page for wine:
+You need to install Wine for executing Facio; you must launch Facio through Wine as Facio is not open source.
+You can use the following page for Wine:
 1. https://vitux.com/how-to-install-wine-on-ubuntu/
 
-Go to docs/Install_documentation.html for configuring and running the MHCBI pipeline.
+For configuring and running the MHCBI pipeline go to docs/Install_documentation.html
