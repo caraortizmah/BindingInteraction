@@ -1,32 +1,32 @@
-# MHCBI pipeline test
+# The MHCBI pipeline test
 
-`MHCBI test` is aimed to prove that pipeline uses all specialized programs and was configured correctly.
+The `MHCBI test` is aimed at testing that the pipeline uses all the specialized programs and has been correctly configured.
 
 ## Notepadding
 
-First of all, read all documentation available in `docs` folder prior to keep reading this specific information.
+First, ensure that you have read all documentation available in the `docs` folder prior to attempting to use this specific information.
 
 ## Test core
 
-The `MHCBI pipeline` has two version tests: shortened 1BX2 and 3OXS PDB structures.
+The `MHCBI pipeline` has two test version: shortened 1BX2 and 3OXS PDB structures.
 
-     1. Shortened 1BX2 is a MHC class II molecule constituted by:
+     1. Shortened 1BX2 is an MHC class II molecule constituted by:
          a 14-residue peptide as a ligand and 
-         a reduced protein binding region (having an alpha helical form) as a receptor.
+         a reduced protein binding region (having an alpha helical form) as receptor.
 
-     2. Shortened 3OXS is a MHC class I molecule constituted by:
-         a 10-residue peptide as a ligand and 
-         a protein binding region (including alpha helical and beta sheet forms) as a receptor.
+     2. Shortened 3OXS is an MHC class I molecule constituted by:
+         a 10-residue-long peptide as ligand and 
+         a protein binding region (including alpha helical and beta sheet forms) as receptor.
 
-The shortened 1BX2 is the `short test` and the shortened 3OXS is the `straight test`. They differ in the size (3OXS is about double residue number).
+Shortened 1BX2 is the `short test` and shortened 3OXS the `straight test`. They differ in size (3OXS has about double the amount of residues).
 
 ## Additional files
 
-In test folder there are two folders named as `si_short` and `si_straight`.
-Each folder contains the expected PDB structures (as `MOPAC outputs`) obtained at the third stage end (calculations folder) using MOPAC.
+The test folder contains two folders named as `si_short` and `si_straight`.
+Each folder contains the expected PDB structures (as `MOPAC outputs`) obtained during the third stage end (calculations folder) using MOPAC.
 
-Additionally, these folders have FMO GAMESS inputs obtained using GUI Facio in default conditions for fragmenting PDB structures (`MOPAC outputs`).
-Only for testing the `MHCBI pipeline` those GAMESS input files are explicitly inside `test` folder for calculating binding energies using FMO in GAMESS.
+Additionally, these folders have FMO GAMESS input obtained using GUI Facio in default conditions for fragmenting PDB structures (`MOPAC outputs`).
+Only for testing the `MHCBI pipeline` those GAMESS input files are containedinside the `test` folder for calculating binding energies (BE) using FMO in GAMESS.
 
-PDB structures number in those folders are equal to the GAMESS input files number that are ready for calculating binding energy using DFTB3 under FMO.
-For running your own `projects` you need GUI Facio for converting a PDB structure into a FMO GAMESS input file.
+The amount of PDB structures in these folders are equal to the amount of GAMESS input files ready for calculating BE using DFTB3 under FMO framework.
+For running your own `projects` you need GUI Facio for converting a PDB structure into an FMO GAMESS input file.
