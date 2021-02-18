@@ -8,15 +8,15 @@ The MHC BindingInteraction pipeline Manual
 ____________________________________________________________
 Overall
 
-The MHCBI pipeline has four stages (last stage is optional) in which each stage has its own algorithm. Named here as steps, each one has a main work:
+The MHCBI pipeline has four stages (the last stage is optional), each stage having its own algorithm (named here as steps).
 
-First step modifies PDB structure (input) adding waters through Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the Second step.
+The First step modifies PDB structure (input) by adding water molecules using the Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the Second step.
 
-Second step uses First step output and listm.log for building new structures according to the written orders in listm.log, those new structures are named here as mutations.
+The Second step uses First step output and listm.log for building new structures according to the written orders in listm.log: the new structures are named here as mutations.
 
-Each mutation is performed by Dunbrack library in chimera program, it is possible to build mutiple amino acid changes for the same PDB structure. To sum up, Second step creates new similar protein geometries from the initial PDB structure in the First step.  After creating new geometries, Second step performs partial optimizations.
+Each mutation is performed by the Dunbrack library using the chimera program. Multiple amino acid changes can be made for the same PDB structure. To sum up, the Second step creates new similar protein geometries from the initial PDB structure in the First step. After creating new geometries, the Second step performs partial optimizations.
 
-listm.log file has the using instructions for creating new PDB structures. Read completely listm.log file before writing your mutation list. There are two examples of writing mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between
+The listm.log file has the usage instructions for creating new PDB structures. Read completely the listm.log file before writing your mutation list. There are two examples of writing a mutation list for mono- and multiple-substitutions. The only part that you are going to change is explicitly explained in the listm.log between
 
 *** Begin
 
@@ -24,19 +24,19 @@ and (Changes must be here)
 
 *** End
 
-In this frame there is an example that you can use or remove according your necessities, in the example there are ten mono-substitutions named as P01, P02, until P10. Amino acid that will be used in this example is Lysine for the ten cases for positions 1 up to 10 in the chain P from PDB structure.
+This frame gives an example that you can use or remove according to your specific needs. The example gives ten mono-substitutions named as P01, P02, up to P10. Lysine is used as the amino acid in this example for the ten cases for positions 1 to 10 in the PDB structure P chain.
 
-At the end of the Second step performance the output is created as tobe_charged folder. Inside that folder there are all new PDB structures partially optimized, the initial PDB structure and the list of 8-angstrom-distance residues from the ligand (main part of protein binding region) that could be protonated or deprotonated.
+At the end of the Second step  output is created as the "tobe_charged" folder. This folder there contains all new partially optimized PDB structures, the initial PDB structure and a list of 8-angstrom-distance residues from the ligand (the main part of the protein binding region) that could be protonated or deprotonated.
 
-Third step uses tobe_charged folder (Second step output) as input for using propka 3.1 for protonating and deprotonating residues in each PDB structure (geometries set) and performs single points throught MOPAC splitting each PDB structure in Complex, Receptor and Ligand. At the end output is generated as final_pdbs and be_outputs folders. In the first folder there are the PDB files that will be used for creating FMO GAMESS input (optional) and in the second folder there are .arc files that contains the energy as:
+The Third step uses "tobe_charged" folder (Second step output) as input for using PROPKA 3.1 for protonating and deprotonating residues in each PDB structure (geometries set). The Third step also performs single points through MOPAC splitting each PDB structure into Complex, Receptor and Ligand. Output is placed  the "final_pdbs" and "be_outputs" folders. In the first folder contains the PDB files that will be used for creating FMO GAMESS input (optional) and the second folder contains .arc files having printed the energy as:
 
 
 HEAT OF FORMATION = (energy value in Kcal/mol)
 
 
-Those energies will be used by the user for computing binding energies.
+Such energy will be used by the user for computing binding energy (BE).
 
-Optional Fourth step uses final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You have to put your GAMESS inputs in the same PDB structures place. After GAMESS execution You can extract the energies from output file (.log file) by looking for (at the end of the file):
+The optional Fourth step uses the final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You must put your GAMESS inputs in the same place as PDB structures. After executing GAMESS you can extract the energies from the output file (.log file) by looking for (at the end of the file):
 
 
 The first energy printed below is the best in FMO/PCM
@@ -44,46 +44,46 @@ The first energy printed below is the best in FMO/PCM
 Free unco+D energy in solvent= (energy value in hartree)
 
 
-Those energies will be used by the user for computing binding energies.
-All hierarchy of each step is explained below (go to hierarchy).
+Such energy will be used by the user for computing BE.
+Each steps's hierarchy is explained below (go to hierarchy).
 
 ____________________________________________________________
-Take into account
+Take into account:
 
-After performing all steps in the installing instructions you can run the pipeline over a new project.
+After performing all installing instruction steps, you can run the pipeline for a new project.
 
 $ ./pre-run.sh
-You have to complete all steps in order. First step is aimed to set some paths prior to run a new project:
+You must complete all steps in order. The First step is aimed at setting some paths prior to running a new project:
 
-Notepadding: A new project is a work performed by MHCBI pipeline passing through the three stages: optimizations, mutations and calculations. All folders, inputs and outputs created during the whole process are the new project. Each individual PDB structure has one new project.
+Notepadding: A new project is work performed by the MHCBI pipeline passing through the three stages: optimizations, mutations, and calculations. All folders, input and output created during the whole process are the new project. Each individual PDB structure has one new project.
 
-PDB structure path is the directory where is placed the new project PDB structure.
+The PDB structure path is the directory where the new PDB structure project is placed.
 
-PDB structure name is the PDB structure (located in the previous path). A PDB format can have several valid formats, however in this MHCBI pipeline, format has the following guideline:
+The PDB structure's name is the PDB structure (located in the previous path). A PDB format can have several valid formats, however, format has the following guidelines in this MHCBI pipeline:
 
-   1.  PDB structures having a receptor-ligand MHC-like
+   1.  PDB structures having an MHC-like receptor-ligand
 
-Receptor has to be named as chain A and B and ligand as chain P. In case of having crystallographic water molecules, all of them must be named as chain V.
+A receptor must be named as the A and B chain and the ligand as the P chain. All crystallographic water molecules must be named as the V chain.
 
    2.  PDB structures having a 12-column features
 
-In test folder there are two examples (shortened 1BX2 and 3OXS) having 12-column features as it should be used for every PDB structure in any project. In the PDB structure for a new project remove all information not related with 3D atomic coordinates.
+The test folder contains two examples (shortened 1BX2 and 3OXS) having 12-column features as should be used for every PDB structure in any project. All information not related with 3D atomic coordinates must be removed from the PDB structure for a new project.
 
-   3.  PDB structures name
+   3.  PDB structure name
 
-PDB structure names have to be named only with alpha-numeric characters and without any blank space. Remove any special character (#$/!@'´{}}}}), even any kind of hyphen (-_), or punctuation (.,:;) in your PDB structure name.
+PDB structures must only be named to using alpha-numeric characters without any blank spaces. Remove any special characters (#$/!@'´{}}}}), including any kind of hyphen (-_), or punctuation (.,:;) from your PDB structure's name.
 
-to-do work path is the directory where you want to place the new project.
+The to-do work path is the directory where you place the new project.
 
-name of your work is the name of your new project.
+The name of your work is your new project's name.
 
  
 
-Setup and pre-run scripts create .log files having all required paths. You can modify them without using the pipeline, but you can not change any word related to the format. It is advisable to use the pipeline for setting paths.
+Setup and pre-run scripts create .log files having all required paths. You can modify them without using the pipeline, but you cannot change any word related to the format. It is advisable to use the pipeline for setting paths.
 
-In pre-run script, Second step configures pipeline core in all of the new folders that will be the new project. If the MHCBI can not detect one of the required paths, configuration step will not be performed.
+In pre-run script, the Second step configures the pipeline core in all the new folders that will become the new project. If the MHCBI cannot detect one of the required paths, the configuration step will not be performed.
 
-After configuring the new project you can run the pipeline. Third step presents two options for running MHCBI over a PDB structure:
+After configuring the new project you can run the pipeline. The Third step has two options for running MHCBI concerning a PDB structure:
 
    1.  Performing the three-stage methodology in a single step.
 
@@ -109,18 +109,18 @@ Now you can analyse your results!
 ____________________________________________________________
 Hierarchy
 
-The MHCBI pipeline has several paths. First path is the directory where you download and open the MHCBI pipeline (by your own or using git clone) this directory is named as the git path. You can configure and install the pipeline in the git path or in another path. If you are going to modify some scripts according to your necessities, it is advisable to configure and install the pipeline in other location.
+The MHCBI pipeline has several paths. The first path is the directory where you download and open the MHCBI pipeline (by yourself or using git clone command); this directory is named as the git path. You can configure and install the pipeline in the git path or in another path. If you are going to modify some scripts according to your needs, it is advisable to configure and install the pipeline in other location.
 
-If you use other location for configuring and installing the pipeline, the second path will be officially the MHCBI path, otherwise git and MHCBI path will be the same. In MHCBI path you can test the pipeline and configure your own projects.
+If you use another location for configuring and installing the pipeline, the second path will be officially the MHCBI path, otherwise the git and MHCBI paths will be the same. In MHCBI path You can test the pipeline and configure your own projects.
 
-Pipeline test will remain in the MHCBI path and all configuration programs and setting works will be in this directory (MHCBI path).
+The pipeline test will remain in the MHCBI path and all configuration programs and setting works will be in this directory (MHCBI path).
 
-When you are configuring paths for a new project you have to use another directory for placing your new project. This new directory is named as workdir path.
+When you are configuring paths for a new project you must use another directory to place your new project in. This new directory is named as workdir path.
 
 
 git path
 
-This directory contains the MHCBI pipeline as appearing in GitHub repository. In this directory you can modify, add and remove any lines of code that you consider appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, do a pull request explaining your upgradings. Every time that you change your code you have to repeat the installation and configuration process doing ./clean.sh in git path first of all.
+This directory contains the MHCBI pipeline as it appears in the GitHub repository. In this directory you can modify, add and remove any lines of code appropriate for your needs. If you think that your changes are important and could improve the MHCBI pipeline, make a pull request explaining your upgradings. Every time that you change your code you must repeat the installation and configuration process by typing in ./clean.sh in git path first.
 
 This path contains the following folders:
 
@@ -134,16 +134,16 @@ This path contains the following folders:
 
   5. test
 
-Where in the first folder there are manager scripts that control all scripts placed in the fourth folder. Detailed documentation about the MHCBI pipeline are placed in the second folder. Pipeline test are in the fifth folder and DFTB3 parameters are in the third one.
+Where the first folder contains manager scripts controlling all scripts placed in the fourth folder. Detailed documentation about the MHCBI pipeline is placed in the second folder. DFTB3 parameters are in the third folder and the pipeline test are in the fifth one.
 
 For further information go to each folder and read their README files
 
 
 MHCBI path
 
-In this directory, the pipeline is going to work. Do not change any line of code in this directory (read git path). In this directory test folder is going to change, adding a new folder that cointains the test performance.
+In this directory the pipeline is going to work. Do not change any line of code in this directory (read git path). In this directory the test folder is going to change, adding a new folder cointaining test performance.
 
-The folowing folders have the same information than git path ones:
+The following folders have the same information as the git path ones:
 
   1. misc
 
@@ -156,7 +156,7 @@ workdir path
 
 In this directory your new project will be placed. Test folders in MHCBI path and workdir path folders have the same hierarchy.
 
-In this directory there are the following folders:
+The following folders are in this directory:
 
   1. optimizations
 
@@ -170,13 +170,13 @@ In this directory there are the following folders:
 
   6. source
 
-When finishing the pipeline execution you can explore the followings folders:
+You can explore the followings folders when the pipeline execution has finished:
 
 1. optimizations
 
-This folder corresponds to the all First step and you can explore step by step of the methodology into the folder that receives the name of your new project. Output folder in this step contains the result that Second step will use. Into the folder (named as your new project by the pipeline) there are six steps:
+This folder corresponds to the all the First step and you can explore the methodology step-by-step in the folder named according to your new project. The output folder in this step contains the result that the Second step will use. This folder involves six steps (named the same as your new project by the pipeline):
 
-1. Dowser (putting waters)
+1. Dowser (putting water molecules)
 
 2. Conversion to PDB structure for MOPAC
 
@@ -186,52 +186,52 @@ This folder corresponds to the all First step and you can explore step by step 
 
 5. Optimizing all PDB structure
 
-6. Removing all waters
+6. Removing all water molecules
 
 
 2. mutations
 
-This folder corresponds to the all Second step and you can explore it by looking for each mutation folder. In this location there are two folder per each mutation (previously written in listm.log). Each pair of folders are named like this:
+This folder corresponds to the all Second step and you can explore it by looking for each mutation folder. In this location there are two folder per mutation (previously written in listm.log). Each pair of folders are named like this:
 
 name_of_substitution folder and mutation_name_of_substitution folder.
 
-For instance: if the substitution name is P02 the name of its pair of folder will be: P02 and mutation_P02.
+For instance, if a substitution name is called P02 the name of its pair of folders will be: P02 and mutation_P02.
 
-In the first folder you will find all substitution process and assignation of new hydrogens. In the second folder you will find the partial optimization process for this substitution. At the end if you set ten mutations you will find twenty folder (two per substitution).
+In the first folder you will find all substitution process and assignation of new hydrogens. In the second folder you will find the partial optimization process for this substitution. It means that if you set ten mutations, you will find twenty folders (two per substitution).
 
-Additionally, there is a folder named as tobe_charged. This folder is the Second step output.
-
+Additionally, there is a folder named as "tobe_charged". This folder is the Second step output.
+   
 
 3. calculations
 
-This folder corresponds to the all Third step and you can explore it by looking for each mutation folder. In this location there is one folder per each pdb file located in the tobe_charged folder (that in this location is the input).
+This folder corresponds to the all Third step and you can explore it by looking for each mutation folder. In this location there is one folder per each PDB file located in the "tobe_charged" folder (that in this location is the input).
 
-Additionally, there are another two folders (final_pdbs and be_outputs) that are the Third step output.
+Another two folders ("final_pdbs" and "be_outputs") are placed in the Third step output.
 
 
 4. fmo-calculations
 
-This folder corresponds to the all optional Fourth step and contains two folders. First folder named as input_pdbs that is a part of the Third step output (final_pdbs). The second folder is named as fmo_molecules in which there are all FMO GAMESS input and a outputs results.
+This folder corresponds to the all optional Fourth step and contains two folders. The first folder named as "input_pdbs" forming part of the Third step output ("final_pdbs"). The second folder is named as "fmo_molecules" containing all FMO GAMESS input and a output results.
 
  
 5. misc
 
-This folder is the same that are placed in git path.
+This folder is the same as that placed in the git path.
 
  
 6. source
 
-This folder is the same that are placed in git path. 
+This folder is the same as that placed in the git path. 
 
 
-For understanding in detail each file in each folder it is necessary to study all scripts in the source code.
+All scripts in the source code must be studied for understanding each file in each folder in detail.
 
 ____________________________________________________________
-Warnings!
+Warnings
 
-Some Open Babel operations generate messages that could be frightening, however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.
+Some Open Babel operations trigger messages that could be frightening; however those messages are atoms (ATOM) in PDB format named as HETATM by Dowser operations, do not worry about it.
 
-When Dowser puts waters, some conversions by OpenBabel generates some warnings that look like:
+When Dowser puts water molecules, some OpenBabel conversions give warnings that look like this:
 
 =============================
 *** Open Babel Warning in parseAtomRecord
@@ -243,7 +243,7 @@ but OpenBabel found ' ' (atom 3)
 ==============================
 
 
-In case of not finding waters by Dowser, messages like this could appear:
+If Dowser cannot find water molecules, messages like those below could appear:
 
 PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_1.pdb' contains no atoms.
 PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_2.pdb' contains no atoms.
@@ -251,11 +251,11 @@ PDB file '/home/work_path/work_name/../dowser/1_iter/placed_waters_3.pdb' contai
 1 molecule converted
 
 
-The following message could appear due to a non-existent binary path related to another process in vmd:
+The following message could appear due to a non-existent binary path related to another process in VMD:
 
 rlwrap: Command not found.
 
 
-That message do not affect the MHCBI performance.
+Such messages do not affect the MHCBI performance.
 
 
