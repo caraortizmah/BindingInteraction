@@ -5,7 +5,7 @@
 
 ## Notepadding
 
-Read all documentation available in the `docs` folder prior to keep reading this specific information.
+Read all documentation available in the `docs` folder prior to keeping reading this specific information.
 
 ## Additional files
 
