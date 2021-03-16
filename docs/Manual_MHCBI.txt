@@ -8,7 +8,7 @@ The MHC BindingInteraction pipeline Manual
 ____________________________________________________________
 Overall
 
-The MHCBI pipeline has four stages (the last stage is optional), each stage having its own algorithm (named here as steps).
+The MHCBI pipeline has four stages (including an optional step in the last stage), each stage having its own algorithm (named here as steps).
 
 The First step modifies PDB structure (input) by adding water molecules using the Dowser program and performs some optimization procedures for refining PDB geometry. At the end of this step a PDB file and .arc file (MOPAC output) are used as input for the Second step.
 
@@ -26,9 +26,11 @@ and (Changes must be here)
 
 This frame gives an example that you can use or remove according to your specific needs. The example gives ten mono-substitutions named as P01, P02, up to P10. Lysine is used as the amino acid in this example for the ten cases for positions 1 to 10 in the PDB structure P chain.
 
-At the end of the Second step  output is created as the "tobe_charged" folder. This folder there contains all new partially optimized PDB structures, the initial PDB structure and a list of 8-angstrom-distance residues from the ligand (the main part of the protein binding region) that could be protonated or deprotonated.
+At the end of the Second step output is created as the "tobe_charged" folder. This folder there contains all new partially optimized PDB structures, the initial PDB structure and a list of 8-angstrom-distance residues from the ligand (the main part of the protein binding region) that could be protonated or deprotonated.
 
-The Third step uses "tobe_charged" folder (Second step output) as input for using PROPKA 3.1 for protonating and deprotonating residues in each PDB structure (geometries set). The Third step also performs single points through MOPAC splitting each PDB structure into Complex, Receptor and Ligand. Output is placed in the "final_pdbs" and "be_outputs" folders. In the first folder contains the PDB files that will be used for creating FMO GAMESS input (optional) and the second folder contains .arc files having printed the energy as:
+The Third step uses the "tobe_charged" folder (Second step output) as input for using PROPKA 3.1 for protonating and deprotonating residues in each PDB structure (geometries set). 
+
+The fourth step also performs single points through MOPAC splitting each PDB structure into Complex, Receptor and Ligand. Output is placed in the "final_pdbs" and "be_outputs" folders. In the first folder contains the PDB files that will be used for creating FMO GAMESS input (optional) and the second folder contains .arc files having printed the energy as:
 
 
 HEAT OF FORMATION = (energy value in Kcal/mol)
@@ -36,7 +38,7 @@ HEAT OF FORMATION = (energy value in Kcal/mol)
 
 Such energy will be used by the user for computing binding energy (BE).
 
-The optional Fourth step uses the final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You must put your GAMESS inputs in the same place as PDB structures. After executing GAMESS you can extract the energies from the output file (.log file) by looking for (at the end of the file):
+The optional procedure is part of the Fourth step and uses the final_pdbs folder as input for creating input for GAMESS computations. This step depends on user supervision due to the GUI Facio environment. You must put your GAMESS inputs in the same place as PDB structures. After executing GAMESS you can extract the energies from the output file (.log file) by looking for (at the end of the file):
 
 
 The first energy printed below is the best in FMO/PCM
@@ -55,7 +57,7 @@ After performing all installing instruction steps, you can run the pipeline for 
 $ ./pre-run.sh
 You must complete all steps in order. The First step is aimed at setting some paths prior to running a new project:
 
-Notepadding: A new project is work performed by the MHCBI pipeline passing through the three stages: optimizations, mutations, and calculations. All folders, input and output created during the whole process are the new project. Each individual PDB structure has one new project.
+Notepadding: A new project is work performed by the MHCBI pipeline passing through the four stages: optimizations, mutations, charge assignment and calculations. All folders, input and output created during the whole process are the new project. Each individual PDB structure has one new project.
 
 The PDB structure path is the directory where the new PDB structure project is placed.
 
