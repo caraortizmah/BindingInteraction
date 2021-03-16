@@ -11,20 +11,21 @@
 <p>&nbsp;</p>
 <p><span style="color: #333399;">After typing&nbsp;</span></p>
 <pre><span style="background-color: #ccffcc;"><code>$ git clone https://github.com/caraortizmah/bindinginteraction.git</code></span></pre>
-<p><span style="color: #333399;">you can modify the <span style="background-color: #ccffcc;">MHCBI</span>&nbsp;pipeline creating your own version. For installing (in&nbsp;your current location) type</span></p>
+<p><span style="color: #333399;">you can modify the <span style="background-color: #ccffcc;">MHCBI</span>&nbsp;pipeline to create your own version. For installing (in&nbsp;your current location) type</span></p>
 <p><span style="color: #333399;">$&nbsp; cd BindingInteraction</span></p>
-<p><span style="color: #333399;">The <span style="background-color: #ccffcc;">MHCBI</span> pipeline has four folders such as <em>BindingInteraction</em>, <em>docs</em>, <em>source</em>, <em>test</em>.&nbsp;</span></p>
-<p><span style="color: #333399;">In&nbsp;<span style="background-color: #ccffcc;"><em>BindingInteraction </em></span>folder there are essential scripts for installing and configuring the pipeline. Installation stage relies on this folder.</span></p>
-<p><span style="color: #333399;">In&nbsp;<em><span style="background-color: #ccffcc;">docs</span>&nbsp;</em>folder there are further information regarding installation and a brief manual for users.</span></p>
-<p><span style="color: #333399;">In&nbsp;<span style="background-color: #ccffcc;"><em>source </em></span>folder there are all scripts involved in the <span style="background-color: #ccffcc;">MHCBI</span> performance in every user proyect. This folder is the <span style="background-color: #ccffcc;">MHCBI</span> pipeline core.</span></p>
-<p><span style="color: #333399;">In <em><span style="background-color: #ccffcc;">test</span>&nbsp;</em>folder there are two PDB structure examples: short (MHC class II and straight (MHC class I) which user has to use to test the pipeline. </span></p>
-<p><span style="color: #333399;">In this folder short test is a shortened molecule from HLA-DR2 complexed with a peptide from human myelin basic protein (original PDB structure is known as 1BX2 in the protein data bank <a href="https://www.rcsb.org/structure/1bx2">see more</a>). Straight test is the HLA A*02:07 complexed with hepatitis B virus (HBV) core 18-27 peptide&nbsp;(original PDB structure is known as 3OXS in the protein data bank <a href="https://www.rcsb.org/structure/3OXS">see more</a>).</span></p>
+<p><span style="color: #333399;">The <span style="background-color: #ccffcc;">MHCBI</span> pipeline has five folders such as <em>BindingInteraction</em>, <em>docs</em>, <em>source</em>, <em>test</em> and <em>misc</em>.&nbsp;</span></p>
+<p><span style="color: #333399;">The&nbsp;<span style="background-color: #ccffcc;"><em>BindingInteraction </em></span>folder contains all the scripts involved in <span style="background-color: #ccffcc;">MHCBI</span> performance for every user project. The Installation stage relies on this folder.</span></p>
+<p><span style="color: #333399;">The&nbsp;<em><span style="background-color: #ccffcc;">docs</span>&nbsp;</em>folder contains further information regarding installation and a brief manual for users.</span></p>
+<p><span style="color: #333399;">The&nbsp;<span style="background-color: #ccffcc;"><em>source </em></span>folder contains all the scripts involved in <span style="background-color: #ccffcc;">MHCBI</span> performance for every user project. This folder is placed at the core of the <span style="background-color: #ccffcc;">MHCBI</span> pipeline.</span></p>
+<p><span style="color: #333399;">The <em><span style="background-color: #ccffcc;">test</span>&nbsp;</em>folder contains two PDB structure examples: short (MHC class II) and straight (MHC class I) which a user has to use to test the pipeline. </span></p>
+<p><span style="color: #333399;">The <em><span style="background-color: #ccffcc;">misc/span>&nbsp;</em>folder contains third order parameters for organic and biological systems (3OB) that are needed for calculations under FMO framework in GAMESS using the DFTB3 method. </span></p>
+<p><span style="color: #333399;">Short test consists of a shortened HLA-DR2 molecule complexed with a human myelin basic protein peptide (the original PDB structure is known as 1BX2 in the protein data bank <a href="https://www.rcsb.org/structure/1bx2">see more</a>). Straight test consists of HLA A*02:07 complexed with the hepatitis B virus (HBV) core 18-27 peptide (the original PDB structure is known as 3OXS in the protein data bank <a href="https://www.rcsb.org/structure/3OXS">see more</a>).</span></p>
 <p><span style="color: #333399;">After typing</span></p>
 <pre><span style="background-color: #ccffcc;"><code>$ chmod +x init.sh</code></span></pre>
 <pre><span style="background-color: #ccffcc;"><code>$ ./init.sh</code></span></pre>
-<p><span style="color: #333399;"> The <span style="background-color: #ccffcc;">MHCBI</span> asks about the location when you are going to install the pipeline. Answering <strong>yes</strong>, your location will be the same as the git location, otherwise (answering <strong>no</strong>) you have to provide the new location for installing it.</span></p>
+<p><span style="color: #333399;"> The <span style="background-color: #ccffcc;">MHCBI</span> asks about location when you are going to install the pipeline. If answering <strong>yes</strong>, your location will be the same as the git location, otherwise (answering <strong>no</strong>) you have to provide a new location for installing it.</span></p>
 <hr />
-<h4><span style="color: #333399;">Before configuring the pipeline <span style="background-color: #ff9900;">you must be aware of installing the following programs previously:</span></span></h4>
+<h4><span style="color: #333399;"> <span style="background-color: #ff9900;">You must install the following programmes</span> before configuring the pipeline: </span></h4>
 <p>&nbsp; &nbsp; Linux text processing tools:</p>
 <ul>
 <li>grep</li>
@@ -36,10 +37,10 @@
 </ul>
 <p>&nbsp; &nbsp; &nbsp;Specialized softwares:</p>
 <ul>
-<li>Open Babel</li>
-<li>VMD - Visual Molecular Dynamics</li>
+<li>Open Babel 2.3.1</li>
+<li>VMD 1.9.1 - Visual Molecular Dynamics</li>
 <li>Dowser</li>
-<li>MOPAC - Molecular Orbital PACkage (MOPAC2016)</li>
+<li>MOPAC 2016 - Molecular Orbital PACkage (MOPAC2016)</li>
 <li>UCSF Chimera</li>
 <li>PROPKA 3.1</li>
 <li>Python 2.7 or higher</li>
@@ -51,11 +52,11 @@
 <li>Facio (FMO software)</li>
 </ul>
 <hr />
-<p><span style="color: #333399;">Once you have installed all requirements and placed in the pre-installed pipeline&nbsp;location and after typing&nbsp;</span></p>
+<p><span style="color: #333399;">Once all the requirements have been installed and placed in the pre-installed pipeline location, type: </span></p>
 <pre><span style="background-color: #ccffcc;"><code>$ ./setup.sh</code></span></pre>
-<p><span style="color: #333399;">You have to complete all steps in order. </span></p>
-<p><span style="color: #333399;">In the first step you must provide to the MHCBI the absolute path names for specialized programs (external program paths).</span></p>
-<p><span style="color: #333399;">In the second step you are going to test the MHCBI pipeline, be aware of the proper functioning of every absolute path.</span></p>
+<p><span style="color: #333399;">You must complete all steps in order. </span></p>
+<p><span style="color: #333399;">The first step requires you to provide the MHCBI with absolute path names for specialized programs (external program paths).</span></p>
+<p><span style="color: #333399;">The second consists of testing the <span style="background-color: #ccffcc;">MHCBI</span> pipeline; be aware of the proper functioning of every absolute path.</span></p>
 <h2 style="color: #2e6c80;">To sum up:</h2>
 <table class="editorDemoTable" style="width: 1000px;" border="1">
 <thead>
