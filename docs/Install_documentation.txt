@@ -24,12 +24,13 @@ you can modify the MHCBI pipeline to create your own version. For installing (a
 
    $  cd BindingInteraction
 
-The MHCBI pipeline has four folders such as BindingInteraction, docs, source, test. 
+The MHCBI pipeline has five folders such as BindingInteraction, docs, source, test and misc. 
 
 The BindingInteraction folder contains essential scripts for installing and configuring the pipeline. The Installation stage relies on this folder.
 The docs folder contains further information regarding installation and a brief manual for users.
 The source folder contains all the scripts involved in MHCBI performance for every user project. This folder is placed at the core of the MHCBI pipeline.
 The test folder contains two PDB structure examples: short (MHC class II) and straight (MHC class I) which a user has to use to test the pipeline.
+The misc folder contains third order parameters for organic and biological systems (3OB) that are needed for calculations under FMO framework in GAMESS using the DFTB3 method.
 Short test consists of a shortened HLA-DR2 molecule complexed with a human myelin basic protein peptide (the original PDB structure is known as 1BX2 in the protein data bank). Straight test consists of HLA A*02:07 complexed with the hepatitis B virus (HBV) core 18-27 peptide (the original PDB structure is known as 3OXS in the protein data bank).
 
 After typing
