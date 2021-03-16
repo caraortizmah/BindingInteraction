@@ -87,9 +87,9 @@ In the pre-run script, the Second step configures the pipeline core in all the 
 
 After configuring the new project you can run the pipeline. The Third step has two options for running MHCBI concerning a PDB structure:
 
-   1.  Performing the three-stage methodology in a single step.
+   1.  Performing the four-stage methodology in a single step.
 
-   2.  Performing the three-stage methodology step by step.
+   2.  Performing the four-stage methodology step by step.
 
  
 ____________________________________________________________
@@ -113,7 +113,7 @@ Hierarchy
 
 The MHCBI pipeline has several paths. The first path is the directory where you download and open the MHCBI pipeline (by yourself or using git clone command); this directory is named as the git path. You can configure and install the pipeline in the git path or in another path. If you are going to modify some scripts according to your needs, it is advisable to configure and install the pipeline in other location.
 
-If you use another location for configuring and installing the pipeline, the second path will be officially the MHCBI path, otherwise the git and MHCBI paths will be the same. In the MHCBI path You can test the pipeline and configure your own projects.
+If you use another location for configuring and installing the pipeline, the second path will be officially the MHCBI path, otherwise the git and MHCBI paths will be the same. In the MHCBI path you can test the pipeline and configure your own projects.
 
 The pipeline test will remain in the MHCBI path and all configuration programs and setting works will be in this directory (MHCBI path).
 
