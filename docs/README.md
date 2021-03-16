@@ -9,7 +9,7 @@
 ## Requirements
 
 Requirements.txt and Requirements.html contain information about how to install or get more information about installation for any required program 
-prior to configuring and installing the `MHCBI` pipeline. This section must be read performed first.
+prior to configuring and installing the `MHCBI` pipeline. This section must be read first.
 
 ## Installation
 
