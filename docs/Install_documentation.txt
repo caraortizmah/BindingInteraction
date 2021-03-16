@@ -28,7 +28,7 @@ The MHCBI pipeline has four folders such as BindingInteraction, docs, source, te
 
 The BindingInteraction folder contains essential scripts for installing and configuring the pipeline. The Installation stage relies on this folder.
 The docs folder contains further information regarding installation and a brief manual for users.
-The source folder contains all the scripts involved in MHCBI performance for every user project. This folder is at core of the MHCBI pipeline.
+The source folder contains all the scripts involved in MHCBI performance for every user project. This folder is placed at the core of the MHCBI pipeline.
 The test folder contains two PDB structure examples: short (MHC class II) and straight (MHC class I) which a user has to use to test the pipeline.
 Short test consists of a shortened HLA-DR2 molecule complexed with a human myelin basic protein peptide (the original PDB structure is known as 1BX2 in the protein data bank). Straight test consists of HLA A*02:07 complexed with the hepatitis B virus (HBV) core 18-27 peptide (the original PDB structure is known as 3OXS in the protein data bank).
 
@@ -52,10 +52,10 @@ You must install the following programmes before configuring the pipeline:
  
      Specialized software:
 
- + Open Babel
- + VMD - Visual Molecular Dynamics
+ + Open Babel 2.3.1
+ + VMD 1.9.1 - Visual Molecular Dynamics
  + Dowser
- + MOPAC - Molecular Orbital PACkage (MOPAC2016)
+ + MOPAC 2016 - Molecular Orbital PACkage (MOPAC2016)
  + UCSF Chimera
  + PROPKA 3.1
  + Python 2.7 or higher
