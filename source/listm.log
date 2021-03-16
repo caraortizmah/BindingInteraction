@@ -5,7 +5,7 @@
 ||   the MHCBI pipeline.
 ||=======================================================================================================||
 ||- Mutation format                | - Example 1:                - | - Example 2:                      - ||
-||- Features:                      | - 1 pdb name per mutation   - | - 1 pdb name per several muations - ||
+||- Features:                      | - 1 pdb name per mutation   - | - 1 pdb name per several mutations- ||
 ||- (1). Name file (3 letters)     | ----------------------------- | ----------------------------------- ||
 ||- (2). Residue name (3 letters)  |    (1)    (2)    (3)    (4)   |    (1)     (2)      (3)      (4)    ||
 ||- (3). Residue number            |  ---------------------------  |  ---------------------------------  ||
