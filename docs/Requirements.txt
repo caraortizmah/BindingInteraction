@@ -1,8 +1,7 @@
 
 REQUIREMENTS
 
-The MHCBI pipeline only needs gfortran and some linux test processing tools (cut, grep, awk, gawk, sed and vim);
-however, it uses several types of specialized software relying on another kinds of requirement.
+The MHCBI pipeline only needs gfortran and some linux test processing tools (cut, grep, awk, gawk, sed and vim), however it uses several types of specialized software relying on other kinds of requirements.
 
 
 Before starting any procedure regarding the MHCBI pipeline, first of all type:
