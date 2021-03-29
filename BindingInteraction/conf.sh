@@ -6,7 +6,7 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#  This is the configuration pipeline through Shell Script, a straightforward to use it.
+#  This is the pipeline configuration through Shell Script, a straightforward way to use it.
 #*************************************
 
 
@@ -25,7 +25,7 @@ echo "  "
 count=0
 while [ $count -eq 0 ]
 do
-	read -p "Did you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
+	read -p "Did you already install all of requirements? (Yes(Y/y)/No(N/n)): " answer
 	answer=${answer,,}
 
 	if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
@@ -53,7 +53,7 @@ if [ -f "$FILE" ]; then
 			echo "Work directory is empty"
 		else
 		        WORK_PATH=$(echo "$WORK_PATH" | awk '$1=$1')
-			echo "work_path finished" $WORK_PATH
+			echo "work_path added" $WORK_PATH
 		fi
 	else
 		echo "Work directory was not detected"
@@ -68,7 +68,7 @@ if [ -f "$FILE" ]; then
 			echo "PDB structure path is empty"
 		else
 		        PDB_PATH=$(echo "$PDB_PATH" | awk '$1=$1')
-			echo "pdb_path finished" $PDB_PATH
+			echo "pdb_path added" $PDB_PATH
 		fi
 	else
 		echo "PDB structure path was not detected"
@@ -83,7 +83,7 @@ if [ -f "$FILE" ]; then
 			echo "PDB structure name is empty"
 		else
 		        PDB_NAME=$(echo "$PDB_NAME" | awk '$1=$1')
-			echo "pdb_name finished" $PDB_NAME
+			echo "pdb_name added" $PDB_NAME
 		fi
 	else
 		echo "PDB structure name was not detected"
@@ -98,16 +98,16 @@ if [ -f "$FILE" ]; then
 			echo "To-do work name is empty"
 			echo "Work name will be assigned as pdb structure name"
 			WORK_NAME=$(echo "$PDB_NAME" | cut -d'.' -f1)
-			echo "work_name finished" $WORK_NAME
+			echo "work_name added" $WORK_NAME
 		else
-			echo "work_name finished" $WORK_NAME
+			echo "work_name added" $WORK_NAME
 		fi
 		WORK_NAME=$(echo "$WORK_NAME" | awk '$1=$1')
 	else
 		echo "To-do work name was not detected"
 		echo "Work name will be assigned as pdb structure name"
 		WORK_NAME=$(echo "$PDB_NAME" | cut -d'.' -f1)
-		echo "work_name finished" $WORK_NAME
+		echo "work_name added" $WORK_NAME
 		WORK_NAME=$(echo "$WORK_NAME" | awk '$1=$1')
 	fi
 
@@ -156,12 +156,12 @@ if [ -f "$FILE2" ]; then
 	#MOPAC path
 	let cond=`grep -c "MOPAC path" pro_paths.log`
 	if [ ${cond} -eq 1 ]; then
-		MOPAC_PATH=$(grep "MOPAC path" pro_paths.log | cut -d':' -f2) # After this cut.. there is a non-empty string assigned in this variable
+		MOPAC_PATH=$(grep "MOPAC path" pro_paths.log | cut -d':' -f2) # After this cut... there is a non-empty string assigned in this variable
 		if [[ -z "${MOPAC_PATH// }" ]] ; then # This ( ${param //} ) expands the param variable and replaces all matches of the pattern (a single space) with nothing
 			echo "MOPAC path is empty"
 		else
 		        MOPAC_PATH=$(echo "$MOPAC_PATH" | awk '$1=$1') #remove blank spaces (head & tail)
-			echo "MOPAC_path finished" $MOPAC_PATH
+			echo "MOPAC_path added" $MOPAC_PATH
 		fi
 	else
 		echo "MOPAC path was not detected"
@@ -176,7 +176,7 @@ if [ -f "$FILE2" ]; then
 			echo "Work directory is empty"
 		else
 		        PKA_PATH=$(echo "$PKA_PATH" | awk '$1=$1')
-			echo "PKA_path finished" $PKA_PATH
+			echo "PKA_path added" $PKA_PATH
 		fi
 	else
 		echo "Propka 3.1 path was not detected"
@@ -191,7 +191,7 @@ if [ -f "$FILE2" ]; then
 			echo "VMD structure path is empty"
 		else
 		        VMD_PATH=$(echo "$VMD_PATH" | awk '$1=$1')
-			echo "VMD_path finished" $VMD_PATH
+			echo "VMD_path added" $VMD_PATH
 		fi
 	else
 		echo "VMD path was not detected"
@@ -206,7 +206,7 @@ if [ -f "$FILE2" ]; then
 			echo "gamess path is empty"
 		else
 		        GAMESS_PATH=$(echo "$GAMESS_PATH" | awk '$1=$1')
-			echo "GAMESS_PATH finished" $GAMESS_PATH
+			echo "GAMESS_PATH added" $GAMESS_PATH
 		fi
 	else
 		echo "gamess path was not detected"
@@ -221,7 +221,7 @@ if [ -f "$FILE2" ]; then
 			echo "OpenBabel path is empty"
 		else
 		        BABEL_PATH=$(echo "$BABEL_PATH" | awk '$1=$1')
-			echo "BABEL_PATH finished" $BABEL_PATH
+			echo "BABEL_PATH added" $BABEL_PATH
 		fi
 	else
 		echo "openbabel path was not detected"
@@ -236,7 +236,7 @@ if [ -f "$FILE2" ]; then
 			echo "Chimera path is empty"
 		else
 		        CHIMERA_PATH=$(echo "$CHIMERA_PATH" | awk '$1=$1')
-			echo "CHIMERA_PATH finished" $CHIMERA_PATH
+			echo "CHIMERA_PATH added" $CHIMERA_PATH
 		fi
 	else
 		echo "Chimera path was not detected"
