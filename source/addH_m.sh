@@ -28,4 +28,4 @@ ${MOPAC} "$j".mop
 #$mopac16 "$j".mop # manual mode
 mv "$j".pdb aux-"$arg"
 
-echo "fin"
+#echo "fin"
