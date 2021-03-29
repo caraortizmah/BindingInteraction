@@ -6,7 +6,7 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#  This is the installation pipeline through Shell Script.
+#  This is the pipeline installation through Shell Script.
 #*************************************
 
 echo "**********Installation**********"
