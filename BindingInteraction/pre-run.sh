@@ -34,7 +34,7 @@ do
 			echo "***Configuring program directories and folders***"
 			echo " "
 
-      echo "****Warning****"
+      echo "****MHCBI says:****"
       echo "  "
 
       count=0
@@ -50,7 +50,7 @@ do
           echo " "
           count=1
         elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
-          echo "Please make sure that you have successfully tested MHCBI pipeline and properly set your required paths for a new proyect."
+          echo "Please make sure that you have successfully tested the MHCBI pipeline and properly set your required paths for a new project."
           echo " bye..."
           exit 1;
         else
@@ -73,13 +73,13 @@ do
         WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
       else
         echo "paths.out doesn't exist"
-        echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
+        echo "Configure the MHCBI pipeline executing setup.sh and select option 3)"
         exit 1
       fi
 
 			while :
 			do
-				read -p "Did you previously configure your new proyect (steps 1 and 2 from pre-run.sh)? (Yes(Y/y)/No(N/n)) " answer
+				read -p "Did you previously configure your new project (steps 1 and 2 from pre-run.sh)? (Yes(Y/y)/No(N/n)) " answer
 				answer=${answer,,}
 
 				if [ -z "${answer}" ]; then
@@ -93,7 +93,7 @@ do
 					break
 				elif [ $answer == "no" ] || [ $answer == "n" ]; then
 					echo " "
-					read -p "Please, first of all complete steps 1 and 2 (in that order) prior to run your new proyect"
+					read -p "Please, first of all complete steps 1 and 2 (in that order) prior to run your new project"
 					break
 				else
 					echo "Please enter again your answer - yes (y) or no (n)"
@@ -116,4 +116,4 @@ do
 			;;
 	esac
 done
-echo "end"
+#echo "end"
