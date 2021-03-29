@@ -6,7 +6,7 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#  This is the configuration pipeline through Shell Script, a straightforward to use it.
+#  This is the pipeline configuration for paths through Shell Script.
 #*************************************
 
 echo "**********Setting work paths**********"
