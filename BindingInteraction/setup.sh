@@ -6,7 +6,7 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#  This is the setup for configuring external program paths and doing tests.
+#  This is the setup for setting external program paths and doing tests.
 #*************************************
 
 let input=0
@@ -27,7 +27,7 @@ do
 			echo " "
 			chmod +x pro_paths.sh
 			echo "****Warning****"
-      echo "Make sure that you have already installed the following linux text processing tools: "
+      echo "Make sure that you have already installed the following Linux text processing tools: "
       echo "  1. grep"
       echo "  2. cut"
       echo "  3. awk"
@@ -43,11 +43,12 @@ do
       echo " 11. GAMESS - General Atomic and Molecular Electronic Structure System (optional)"
       echo " 12. python 2.7 or higher"
       echo " 13. Facio - GUI program for fragmenting molecules for FMO method (optional)"
-      echo "****Warning****"
+      echo ""
+      echo "****MHCBI says****"
       count=0
       while [ $count -eq 0 ]
       do
-      	read -p "Do you already install all of requierements? (Yes(Y/y)/No(N/n)): " answer
+      	read -p "Do you already install all of requirements? (Yes(Y/y)/No(N/n)): " answer
       	answer=${answer,,}
 
       	if [ "$answer" == "yes" ] || [ "$answer" == "y" ]; then
@@ -94,4 +95,4 @@ do
 			;;
 	esac
 done
-echo "end"
+#echo "end"
