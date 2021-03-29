@@ -24,9 +24,9 @@ printf " PDB ADD-H GEO-OK DEBUG PDBOUT\n\n\n" > "$j"_H.mop #Put mopac commands i
 
 awk 'NF=="12"{print $0}' "$arg" >> "$j"_H.mop #adding all atoms of the pdb file to the new mopac input
 
-#mv "$arg" "$arg"-old #Remove auxiliar files
+#mv "$arg" "$arg"-old #Remove auxiliary files
 
 ${MOPAC} "$j"_H.mop # Execute input with mopac16
 #$mopac16 "$j"_H.mop # Execute input with mopac16 - manual mode
 
-echo "fin"
+#echo "fin"
