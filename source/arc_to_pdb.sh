@@ -19,4 +19,4 @@ fi
 j="$(echo "$arg" | cut -d'.' -f1)" #Remove the extension (".arc") of the file
 awk 'NF=="12"{printf "ATOM%7d%-2s%3s %1s%4d%12.3f%8.3f%8.3f  1.00  0.00%12s\n",$2,substr($0,16,6),$4,$5,$6,$7,$9,$11,substr($1,1,1)}' "$arg" >> "$j".pdb #Set pdb format to output .arc file
 
-echo "fin"
+#echo "fin"
