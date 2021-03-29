@@ -22,5 +22,5 @@ cd ../BindingInteraction/
 chmod -x *.sh
 
 echo "****** MHCBI says: ******"
-echo "  Pipeline were cleaned"
-echo "  Pipeline ready to configure or git (add, commit, pull, push...)"
+echo "  The pipeline has been cleaned"
+echo "  The pipeline is ready to configure or git (add, commit, pull, push...)"
