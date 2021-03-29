@@ -6,7 +6,7 @@
 #  (email: caraortizmah@gmail.com)
 #  (email: caraortizmah@unal.edu.co)
 # @comment:
-#
+# This is the setup for configuring program paths.
 #*************************************
 
 echo "**********Setting external program paths**********"
