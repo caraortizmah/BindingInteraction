@@ -226,4 +226,4 @@ done
 #
 #rm aux.pdb aux2.pdb
 
-echo "fin"
+#echo "fin"
