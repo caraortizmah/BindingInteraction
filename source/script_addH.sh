@@ -2,7 +2,9 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program creates an input in mopac to add hydrogens in a molecule
+#older version
 
 mopac16="/opt/mopac/MOPAC2016.exe" #Path of MOPAC program
 
@@ -20,5 +22,5 @@ do
 
   mv "$j".pdb aux-"$i"
 
-  echo "fin"
+  #echo "fin"
 done
