@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program executes a script without graphic environment
 
 #chimera="/opt/UCSF/Chimera64-1.9/bin/chimera" #Path of chimera - manual mode
