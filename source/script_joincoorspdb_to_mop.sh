@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comments:
 #This program creates an input for optimizing restrictively the mono- or multiple-substituted residue
 
 arg="$1"
@@ -56,14 +57,14 @@ for ch_n in $chain_num
 
     # | Part 1
     awk -v x=$ini 'NR == 1,NR == x {if (NF==12) printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' "$org" > aux_2.pdb
-    #editing a new pdb file with the new mono-substituted residue with coortinates of $org file until the firts atom in the original molecule
+    #editing a new pdb file with the new mono-substituted residue with coordinates of $org file until the first atom in the original molecule
 
-    #awk -v x=$ini 'NR == 1,NR == x {if (NF==12) printf "  %s%7d%-2s%4s %1s%5s%13.8f%13.8f%13.8f\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$9,$11}' "$org" > aux_2.pdb  #editing a new pdb file with the new mono-substituted residue with coortinates of $org file until the firts atom in the original molecule | Part 1
+    #awk -v x=$ini 'NR == 1,NR == x {if (NF==12) printf "  %s%7d%-2s%4s %1s%5s%13.8f%13.8f%13.8f\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$9,$11}' "$org" > aux_2.pdb  #editing a new pdb file with the new mono-substituted residue with coordinates of $org file until the firts atom in the original molecule | Part 1
 
     ini1=$(gawk -v x=$rnum -v y=$chain '$6==x {if ($5==y) {print NR}}' aux.pdb | head -1) #finding the first atom of the residue $chain and $rnum in the mono-substituted molecule
     fin2=$(gawk -v x=$rnum -v y=$chain '$6==x {if ($5==y) {print NR}}' aux.pdb | tail -1) #finding the last atom of the residue $chain and $rnum in the mono-substituted molecule
 
-    # The use of ^ is to make a match at the begining of the string
+    # The use of ^ is to make a match at the beginning of the string
 
     #ini1=$(grep -n "$chain  $rnum" aux.pdb | head -1 | cut -d ":" -f1) #finding the first atom of the residue $j in the mono-substituted molecule
     #fin2=$(grep -n "$chain  $rnum" aux.pdb | tail -1 | cut -d ":" -f1) #finding the last atom of the residue $j in the mono-substituted molecule
@@ -102,4 +103,4 @@ awk 'BEGIN{i=1} NF=="12"{printf "  %s%7d%-2s%4s %1s%5s%13.8f%13.8f%13.8f\n",$1,i
 #rm aux.pdb
 rm $listm
 
-echo "fin"
+#echo "fin"
