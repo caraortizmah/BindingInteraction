@@ -13,7 +13,7 @@ if [ -f "$FILE" ]; then
 	WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
 	echo "paths.out doesn't exist"
-	echo "Configure the MHCBI pipeline executing setup.sh and select option 3)"
+	echo "Configure the MHCBI pipeline executing setup.sh and select the option 3)"
 	exit 1
 fi
 
@@ -26,7 +26,7 @@ if [ -f "$FILE2" ]; then
   CHIMERA_PATH=$(grep "6 " ${FILE2} | cut -d':' -f2)
 else
   echo "pro_paths.out doesn't exist"
-  echo "Configure the MHCBI pipeline executing setup.sh and select option 3)"
+  echo "Configure the MHCBI pipeline executing setup.sh and select the option 3)"
   exit 1
 fi
 
@@ -41,14 +41,14 @@ if [ -d "calculations" ]; then
     cp -r final_pdbs/ ../fmo-calculations/
     echo " "
     echo "****Note***"
-    echo "All 3rd stage results are in PDB format at FMO-calculations folder"
+    echo "All 3rd stage results are in PDB format in the FMO-calculations folder"
     echo "Use GUI Facio for creating GAMESS inputs under Fragment Molecular Orbital (FMO) method"
   else
     echo "***Warning***"
     echo "final_pdbs folder was not found in the 3rd stage methodology"
   fi
 else
-  echo "****Note***"
+  echo "****Warning***"
   echo "Something went wrong, at this point third stage should be completed first. calculations folder was not found."
 fi
 
