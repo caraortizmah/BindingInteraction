@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program changes a mopac output into a new input file with other specific instructions
 
 #mopac16="/opt/mopac/MOPAC2016.exe" #Path of mopac program - manual mode
@@ -26,4 +27,4 @@ awk 'BEGIN{i=1} NF=="12"{printf "  %6s%7d%-2s%3s %1s%5s%13.8f%13.8f%13.8f\n",$1,
 ${MOPAC} input_OptH.mop # Execute input with mopac16
 #$mopac16 input_OptH.mop # Execute input with mopac16 - manual mode
 
-echo "fin"
+#echo "fin"
