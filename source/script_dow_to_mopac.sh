@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#comment:
 #This program changes a dowser output file into a pdb file available in mopac
 
 
@@ -52,5 +53,5 @@ else
 
 fi
 
-rm -f aux_step.pdb aux_step2.pdb #Delete auxiliar files
+rm -f aux_step.pdb aux_step2.pdb #Delete auxiliary files
 
