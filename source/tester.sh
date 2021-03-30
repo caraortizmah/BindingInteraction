@@ -1,6 +1,8 @@
 #!/bin/bash
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
+#This is a tester for the whole pipeline in the running stage, using preliminary information in the test folder
 
 FILE=paths.out
 FILE2=pro_paths.out
@@ -16,7 +18,7 @@ if [ -f "$FILE" ]; then
   echo -e "Running paths source found...           \e[1;32m passed \e[0m"
 else
 	echo "paths.out doesn't exist"
-	echo -e "Running paths source found...           \e[1;31m failded \e[0m"
+	echo -e "Running paths source found...           \e[1;31m failed \e[0m"
 	exit 1
 fi
 
@@ -30,7 +32,7 @@ if [ -f "$FILE2" ]; then
   echo -e "External program paths source found...           \e[1;32m passed \e[0m"
 else
   echo "pro_paths.out doesn't exist"
-  echo -e "External program paths source found...           \e[1;31m failded \e[0m"
+  echo -e "External program paths source found...           \e[1;31m failed \e[0m"
   exit 1
 fi
 
@@ -256,11 +258,11 @@ let num=1
 let num=$(ls *.arc | wc -l)
 
 if [ "${num}" -eq "1" ]; then
-  echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
+  echo -e "Stage 2: Substituted MOPAC outputs found...           \e[1;33m incomplete \e[0m"
 elif [ "${num}" -eq "0" ]; then
-  echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
+  echo -e "Stage 2: Substituted MOPAC outputs found...           \e[1;31m failed \e[0m"
 else
-  echo -e "Stage 2: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
+  echo -e "Stage 2: Substituted MOPAC outputs found...           \e[1;32m passed \e[0m"
 fi
 echo "Check yourself that substitutions amount (listm.log) matches with MOPAC outputs number (inside tobe_charged folder)"
 
@@ -277,11 +279,11 @@ cd tobe_charged
 let num=$(ls *.arc | wc -l)
 
 if [ "${num}" -eq "1" ]; then
-  echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;33m incomplete \e[0m"
+  echo -e "Stage 3: Substituted MOPAC outputs found...           \e[1;33m incomplete \e[0m"
 elif [ "${num}" -eq "0" ]; then
-  echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;31m failed \e[0m"
+  echo -e "Stage 3: Substituted MOPAC outputs found...           \e[1;31m failed \e[0m"
 else
-  echo -e "Stage 3: Substituted MOPAC ouputs found...           \e[1;32m passed \e[0m"
+  echo -e "Stage 3: Substituted MOPAC outputs found...           \e[1;32m passed \e[0m"
 fi
 echo "Check yourself that substitutions amount (listm.log) matches with MOPAC outputs number (inside tobe_charged folder)"
 
@@ -298,11 +300,11 @@ cd final_pdbs
 let num2=$(ls *.pdb | wc -l)
 
 if [ "${num}" -eq "${num2}" ]; then
-  echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;32m passed \e[0m"
+  echo -e "Stage 3: Overall substituted and charged PDB structures found...           \e[1;32m passed \e[0m"
 elif [ "${num2}" -eq "0" ]; then
-  echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;31m failed \e[0m"
+  echo -e "Stage 3: Overall substituted and charged PDB structures found...           \e[1;31m failed \e[0m"
 else
-  echo -e "Stage 3: Overal substituted and charged PDB structures found...           \e[1;33m incomplete \e[0m"
+  echo -e "Stage 3: Overall substituted and charged PDB structures found...           \e[1;33m incomplete \e[0m"
 fi
 echo "Check yourself that substitutions an charged PDB structures match with the initial ones in tobe_charged folder"
 
