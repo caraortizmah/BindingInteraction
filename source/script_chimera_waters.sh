@@ -2,7 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
-#This program calls and executes chimera without graphical enviroment
+#This program calls and executes chimera without graphical environment
 
 chimera="/opt/UCSF/Chimera64-1.9/bin/chimera"  # Path of chimera program
 
