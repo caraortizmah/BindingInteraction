@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
+#@comment:
+#Selecting information about the charged residues that will be changed (adding or deleting H)
+
 #mopac16="/opt/mopac/MOPAC2016.exe" - manual mode
 
 arg="$1"
@@ -41,7 +46,7 @@ then
 
     ${MOPAC} $mop
     #$mopac16 $mop #manual mode
-    echo "fin"
+    #echo "fin"
 
 else
 
