@@ -9,7 +9,7 @@ if [ -f "$FILE" ]; then
   WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
   echo "paths.out doesn't exist"
-  echo "Configure the MHCBI pipeline executig setup.sh and select option 3)"
+  echo "Configure the MHCBI pipeline executing setup.sh and selecting the option 3)"
   exit 1
 fi
 
@@ -24,8 +24,8 @@ do
     echo " "
     count=1
   elif [ "$answer" == "no" ] || [ "$answer" == "n" ]; then
-    echo "The MHCBI will open vim editor for writing the mutation list from the new proyect."
-    echo "Exit the pipelie if you want to write the mutation list with an editor of your preference"
+    echo "The MHCBI will open vim editor for writing the mutation list from the new project."
+    echo "Exit the pipeline if you want to write the mutation list with an editor of your preference"
     echo " "
 
     count1=0
