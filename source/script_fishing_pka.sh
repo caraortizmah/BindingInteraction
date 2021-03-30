@@ -1,4 +1,8 @@
 #!/bin/bash
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
+#comment:
+#This program finds out residues to be charged from propka 3.1 outputs
 
 cd tobe_charged/
 
@@ -35,7 +39,7 @@ do
       do
             
         line2="$(grep "$line" "$input" | tail -1)" #search a specific residue from the original list in the .pka file result
-        echo "$line2" > aux_ch #auxiliar file with the information above
+        echo "$line2" > aux_ch #auxiliary file with the information above
         #The next awk command organizes the information and assigns the charge for each residue case 
         awk '$1 == "ASP" || $1 == "GLU" { if ($4 < 7) printf "%3d%5s%4s%2s%9.2f%11.2f    -1         in file %s\n",i,$1,$2,$3,$4,$5,file;
              else printf "%3d%5s%4s%2s%9.2f%11.2f     0         in file %s\n",i,$1,$2,$3,$4,$5,file}
@@ -49,7 +53,7 @@ do
       
       #grep "$line" dir.pka | tail -1  
 
-    done < <(awk 'NF{printf "%s%4s%2s\n",$2,$3,$4}' residues_charges) #variable $line is gotten with a awk command from residues_charges file 
+    done < <(awk 'NF{printf "%s%4s%2s\n",$2,$3,$4}' residues_charges) #variable $line is gotten with an awk command from residues_charges file 
              #$line contains name and number of the residue and chain that belongs, for instance: "ASP  57 B"
 
     rm residues_charges
@@ -57,4 +61,4 @@ do
   fi
 done
 cd ..
-echo "fin"
+#echo "fin"
