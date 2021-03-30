@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program builds a list with the name and number of residue and its required charge.
 #It also modifies structures according to the step above.
 
@@ -136,6 +137,5 @@ do
 
   fi
 done
-
 
 #echo "fin"
