@@ -13,7 +13,7 @@ if [ -f "$FILE" ]; then
 	WORK_NAME=$(grep "5 " ${FILE} | cut -d':' -f2)
 else
 	echo "paths.out doesn't exist"
-	echo "Configure the MHCBI pipeline executing setup.sh and select option 3)"
+	echo "Configure the MHCBI pipeline executing setup.sh and selecting the option 3)"
 	exit 1
 fi
 
@@ -26,7 +26,7 @@ if [ -f "$FILE2" ]; then
   CHIMERA_PATH=$(grep "6 " ${FILE2} | cut -d':' -f2)
 else
   echo "pro_paths.out doesn't exist"
-  echo "Configure the MHCBI pipeline executing setup.sh and select option 3)"
+  echo "Configure the MHCBI pipeline executing setup.sh and selecting the option 3)"
   exit 1
 fi
 
