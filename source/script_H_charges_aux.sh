@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
 
   #awk 'BEGIN{i=1} NF=="5"{printf "%1d%5s%4s%2s%9d%11d \n",i++,$1,$2,$3,$4,$5}' aux2.pdb > 1BX2_"$name".pdb
   
@@ -33,7 +35,7 @@
 #          do
 #            
 #            line2="$(grep "$line" "$input" | tail -1)" #search a specific residue from the original list in the .pka file result
-#            echo "$line2" > aux_ch #auxiliar file with the information above
+#            echo "$line2" > aux_ch #auxiliary file with the information above
 #            #The next awk command organizes the information and assigns the charge for each residue case 
 #            awk '$1 == "ASP" || $1 == "GLU" { if ($4 < 5) printf "%3d%5s%4s%2s%9.2f%11.2f    -1         in file %s\n",i,$1,$2,$3,$4,$5,file;
 #                 else printf "%3d%5s%4s%2s%9.2f%11.2f     0         in file %s\n",i,$1,$2,$3,$4,$5,file}
@@ -88,7 +90,7 @@ do
   
   #`cat aux_charges | awk NF==10'{print $0}' | wc -l`  --> total number of lines with charged residues information
   #BEGIN{...} assignation of data in arrays a and b
-  #END{...} for ... this bucle evaluates each 2 steps 
+  #END{...} for ... this loop evaluates each 2 steps 
   #END{...} if ... due to the conditional it is possible to compare each to lines (file_alternate_state.pka vs file.pka)
   #END{...} c[j] this vector has all filtered information over charged residues
   # |
