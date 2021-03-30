@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#comment:
 #This program finds and puts the selected waters from the list in a .pdb file
 
 arg="$1"
@@ -26,7 +27,7 @@ awk '{if ($5=="A" || $5=="B" || $5=="P") printf "%s%7d%-2s%3s %1s%4s%12.3f%8.3f%
 for i in $(awk 'NF==12 {print $6}' list_waters.pdb | sort -u | sort -n) #selecting lines of the list file that has the same format of the .pdb file and print just the number of the residue
 do
   echo "$i"
-  awk '$6 == x {if ($5=="V") printf "%s%7d%-2s%3s %1s%4s%12.3f%8.3f%8.3f%6.2f%6.2f%12s\n",$1,$2,substr($0,12,6),$4,$5,$6,$7,$8,$9,$10,$11,$12}' x="$i" "$arg" >> aux_waters.pdb #copying in an auxiliar .pdb file all sentence line that belongs to the residue with number $i and chain V of the changed molecule
+  awk '$6 == x {if ($5=="V") printf "%s%7d%-2s%3s %1s%4s%12.3f%8.3f%8.3f%6.2f%6.2f%12s\n",$1,$2,substr($0,12,6),$4,$5,$6,$7,$8,$9,$10,$11,$12}' x="$i" "$arg" >> aux_waters.pdb #copying in an auxiliary .pdb file all sentence line that belongs to the residue with number $i and chain V of the changed molecule
 done
 
 awk '{if ($5=="A" || $5=="B" || $5=="P") printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' "$org" > aux_waters.arc #rewriting original molecule in a .arc file
@@ -34,7 +35,7 @@ awk '{if ($5=="A" || $5=="B" || $5=="P") printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%
 for i in $(awk 'NF==12 {print $6}' list_waters.pdb | sort -u | sort -n) #selecting lines of the list file that has the same format of the .pdb file and print just the number of the residue
 do
   echo "$i"
-  awk 'int($6) == x {if ($5=="V") printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' x="$i" "$org" >> aux_waters.arc #copying in an auxiliar .arc file all sentence line that belongs to the residue with number $i and chain V of the original molecule
+  awk 'int($6) == x {if ($5=="V") printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3s\n",$1,$2,substr($0,16,5),$4,$5,$6,$7,$8,$9,$10,$11,$12}' x="$i" "$org" >> aux_waters.arc #copying in an auxiliary .arc file all sentence line that belongs to the residue with number $i and chain V of the original molecule
 done
 
 # rewriting in two formats
@@ -47,4 +48,4 @@ awk 'BEGIN{i=1} NF=="12"{printf "  %s%7d%-2s%4s %1s%5s%13.8f%3s%13.8f%3s%13.8f%3
 
 rm -f aux_waters.pdb aux_waters.arc
 
-echo "fin"
+#echo "fin"
