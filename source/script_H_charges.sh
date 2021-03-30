@@ -52,7 +52,7 @@ do
 
     #`cat aux_charges | awk NF==10'{print $0}' | wc -l`  --> total number of lines with charged residues information
     #BEGIN{...} assignation of data in arrays a and b
-    #END{...} for ... this bucle evaluates each 2 steps
+    #END{...} for ... this loop evaluates each 2 steps
     #END{...} if ... due to the conditional it is possible to compare each to lines (file_alternate_state.pka vs file.pka)
     #END{...} c[j] this vector has all filtered information over charged residues
     # |
@@ -138,4 +138,4 @@ do
 done
 
 
-echo "fin"
+#echo "fin"
