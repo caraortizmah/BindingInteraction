@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#comment:
 #This program creates an input for optimizing restrictively the substituted residue
 
 tag="$1"
