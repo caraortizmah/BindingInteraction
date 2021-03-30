@@ -24,7 +24,7 @@ cd $work_dir
 
 cd $name_f/
 
-#Optimizing all molecule restrictely * Fifth step
+#Optimizing all molecule restrictively * Fifth step
 
 mkdir -p 5th_step
 cp -p $arg/source/script_optH_to_optall.sh 5th_step/
@@ -33,7 +33,7 @@ cd 5th_step/
 ./script_optH_to_optall.sh input_OptH.arc ${MOPAC}
 cd ..
 
-#Optimizing all molecule restrictely * sixth step
+#Optimizing all molecule restrictively * sixth step
 
 mkdir -p 6th_step
 cp -p $arg/source/arc_to_pdb.sh 6th_step/
