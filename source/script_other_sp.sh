@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program uses $arg to get the receptor and peptide input file
 
 arg="$1"
@@ -25,4 +26,4 @@ printf " PM6-D3H4X LET 1SCF MOZYME EPS=78.4 GNORM=20 PDBOUT CUTOFF=6 HTML\n\n\n"
 
 awk 'BEGIN{i=1} ( NF=="9" ) && ( $5=="P" ) {if (substr($0,1,2)=="  ")  {printf "  %s%7d%-2s%3s %1s%5s%13.8f%13.8f%13.8f\n",$1,i++,substr($0,16,6),$4,$5,$6,$7,$8,$9} else { printf "  %s%7d%-2s%3s %1s%5s%13.8f%13.8f%13.8f\n",$1,i++,substr($0,14,6),$4,$5,$6,$7,$8,$9}}' "$arg" >> pep_final2.mop
 
-echo "fin"
+#echo "fin"
