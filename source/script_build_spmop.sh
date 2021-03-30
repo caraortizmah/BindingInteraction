@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program converts a .arc file into a .mop file
 
 arg="$1"
