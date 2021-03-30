@@ -14,6 +14,8 @@ Two files that are not scripts at all: `listm.log` and `dftb_input.info`.
 `listm.log` is the format that `MHCBI` uses for creating mutations from an initial PDB structure.
 `dftb_input.info` is the file containing all necessary information for creating GAMESS input under FMO and DFTB3 methods.
 
+The `dftb_infomaker.sh` script generates the `dftb_input.info` file for each running process. The `dftb_input.info` file in the source is a template about the specific information that will be in every GAMESS input file for FMO/DFTB3 calculations.
+
 ## Advanced users
 
 The MHCBI pipeline only facilitates one way for carrying out the whole methodology. Many conditions can be changed regarding user computational chemistry knowledge, (i.e. optimization parameters, quantum semiempirical mechanical method choice, implicit solvent conditions, fragmentation method, level of theory under FMO method, memory use ...).
