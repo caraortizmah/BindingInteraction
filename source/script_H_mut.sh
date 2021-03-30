@@ -2,6 +2,7 @@
 
 #Author: Carlos Andres Ortiz Mahecha
 #caraortizmah@gmail.com
+#@comment:
 #This program changes mutated residue with hydrogens added in another input in mopac
 
 tag="$1"
@@ -81,4 +82,4 @@ done
 
 rm -f aux.pdb aux2.pdb
 
-echo "fin"
+#echo "fin"
