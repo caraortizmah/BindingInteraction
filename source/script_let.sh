@@ -1,4 +1,8 @@
 #!/bin/bash
+#Author: Carlos Andres Ortiz Mahecha
+#caraortizmah@gmail.com
+#comment:
+#This program creates the mopac input that will change the selected residues protonation in the PDB structure
 
 arg="$1"
 
